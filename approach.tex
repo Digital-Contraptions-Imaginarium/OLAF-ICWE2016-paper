@@ -4,20 +4,32 @@
 
     Although the OLAF data is conceptually simple, assembling such a large dataset while assuring sufficient quality is a complex task, even when starting from such valuable pre-existing open data such as Ordnance Survey's offering.
     
-    It is our hypothesis that, to make the best use of pre-existing open data and potentially available technology and human resources, such a problem can be decomposed in a series of complementary sub-problems targeting parts of its scope, each addressed by a dedicated socio-technical system, or social machine. This decomposition can take place over several iterations, hence creating a hierarchy of systems. 
+    It is our hypothesis that, to make the best use of pre-existing open data and potentially available technology and human resources, such a problem must be decomposed in a series of complementary sub-problems targeting parts of its scope. Each problem, then, can be solved by a socio-technical system designed for that purpose, or social machine. This decomposition can take place over several iterations, hence creating a hierarchy of systems. 
+
+    [THERE SHOULD BE AN IMAGE HERE BUT IMAGE POSITIONING IN LATEX IS TRICKY]
 
     \begin{figure*}
     	\includegraphics[width=0.95\textwidth]{social-machine-mix-1.png}
     	\caption{This picture should not be here, but apparently it is a nightmare in LaTeX.}
     	\label{fig:social_machine_mix_1}
     \end{figure*}
-
-    For simplicity, only data from authoritative sources is used, such as government bodies, and it is assumed to be of the highest possible quality, equivalent to what could be called {\it ground truth}. It is for this reason that no tasks related to the validation of the open data sources is considered in scope.
     
-    The open data available at the moment of writing makes it possible to divide the creation of OLAF in two main sub-problems {\it p1} and {\it p2}. 
+    \textbf{The central role of pre-existing open data.} 
+    
+    The main driver determining the possible decompositions of the original problem into a hierarchy of sub-problems is the availability of pre-existing and reliable open data. 
+    
+    The intuitive assumption that justifies giving pre-existing data such key role in the approach is that no social machine could produce data in a more cost-effective way than simply re-using a pre-published, reliable dataset. Hence, the focus of social machines in the overall mix can only be of two kinds: a) on creating original data where the same cannot be sourced in any other machine-only method, and b) on leveraging those skills where humans outperform machines. The obvious example of this is the survey of the streets, being it in person in the physical world, or by examining pictures of the locations, that is how crowdsourcing is used in the system described later in this paper. 
+
+    [DOES NOT SOUND LIKE IN THE RIGHT PLACE] For simplicity, in the decomposition exercise that follows, only data from authoritative sources is used, such as government bodies', and it is assumed to be of the highest possible quality, equivalent to what could be called {\it ground truth}. It is for this reason that no tasks related to the validation of the open data sources is considered in scope. The datasets are described in more detail in [REFERENCE TO LATER IN THE PAPER].
+    
+\subsection{A social machines mix for OLAF}
+
+    In the following we will consider only two British countries: England and Wales, as the availability of pre-existing open geospatial data is richer and homogeneous. It is easy to see that the validity of the method proposed in this paper is independent of the geographical region that is the subject of the study, as long is the problem is consistent, e.g. the definition of the address is the same. The moment the same open data used for England and Wales becomes available for Scotland and Northern Ireland, the method can be deployed to produce an UK-wide OLAF without modification.
+    
+    The open data available during our research makes it possible to divide the creation of OLAF in two main sub-problems {\it p1} and {\it p2}. 
     
     \begin{itemize}
-        \item {\it p1}: Create a list of all valid house numbers and house names for each road listed in Ordnance Survey's "Open Names"\footnote{SOME REFERENCE}.
+        \item {\it p1}: Create a list of all existing house numbers and house names for each road listed in Ordnance Survey's "Open Names".
         \item {\it p2}: Create a list of the associations between each of the house number and names above and the list of current\footnote{Postcodes can change. The problem of documenting how addresses change postcode in time is relevant but outside of the scope of research.} postcodes listed in Ordnance Survey's "Open Names". 
     \end{itemize}
 
@@ -26,10 +38,32 @@
     Problem {\it p1} can be further decomposed, again thanks to the availability of open data sources:
     
     \begin{itemize}
-        \item {\it p1.1}: Collect the list of house numbers and house names for each existing road from citation in Land Registry's "Price Paid"\footnote{SOME REFERENCE}
+        \item {\it p1.1}: Collect the list of house numbers and house names for each existing road from citation in Land Registry's "Price Paid".
         \item {\it p1.2}: Statistically infer the existence of house numbers from the house numbers collected above.
-        \item {\it p1.3}: Complement and correct the above through surveying.
+        \item {\it p1.3}: Enable the application of {\it p1.2} through surveying.
+        \item {\it p1.4}: Correct the output of {\it p1.2} through surveying.
     \end{itemize}
+
+    \subsubsection{{\it p1.1}: Collect the list of house numbers and house names for each existing road from citation in Land Registry's "Price Paid".} 
+
+        
+
+    \subsubsection{{\it p1.2}: Statistically infer the existence of house numbers from the house numbers collected above.} 
+
+        Each culture developed in time a convention for the assignment of house number and names to buildings. In the UK numbering was likely introduced in the early 18th Century as an alternative to house names. Buildings typically are numbered sequentially starting from 1, corresponding to the extremity of the road that is closest to the centre of the town the street is associated to. Odd numbers are on the left-hand side as seen from the centre, even number on the right-hand side. Intermediate properties usually have a number suffixed by one or more letters, this is typical of larger buildings that at some point in time got divided into more smaller dwellings. Modern buildings that have been named by their owner usually retain also a number, that was used by the local government authority during planning.
+        
+        Centuries of house development and using this system informally of course created many exceptions: e.g. there are buildings for whose house number is zero, places where numbers were assigned consecutively, and house numbers that are simply missing. Simple algorithms, though, have a very high probability to apply the numbering model described above to infer the existence of house numbers from other known house numbers. This is intuitive, as: 
+        \begin{itemize}
+            \item If we know that one even and one odd house numbers exist in a street, it is likely that all other numbers included within those numbers exist, too (e.g. we can infer 11 and 12 from the existence of 10 and 13)
+            \item If we know that two even or odd house numbers exist in a street, it is likely that all other even or odd house numbers included within those numbers exist, too (e.g. we can infer 7 from the existence of 5 and 9, but not 6 and 8, as the right-hand side of the street may not have buildings)
+            \item If we know that the same house number in a street is suffixed by two different letters, it is likely that all other letters included within those letters exist, too (e.g. we can infer 14B from the existence of 14A and 14C).
+        \end{itemize}
+        
+        This simple inference is one of the simplest that can be implemented. Other available open data sources enable more complex algorithms, e.g. Ordnance Survey's "Open Maps - Local" [NEED TO CHECK] includes summary shapes for the buildings in each British street, hence enabling the detection of how many buildings are present and suggest how some house numbers may be missing.
+        
+    \subsubsection{{\it p1.3}: Enable the application of {\it p1.2} through surveying.} 
+
+    \subsubsection{{\it p1.4}: Correct the output of {\it p1.2} through surveying.} 
 
 \subsection{Task model}
 
@@ -71,6 +105,8 @@
     \paragraph{}
     
     Some text after.
+    
+    [NEEED TO SAY] Unlike other countries, in the UK local authorities do not provide house number plates to the building owners, so this remains their responsibility. Building owners have the option not to affix any plate at all.
 	
 \subsection{Scalability}
 
