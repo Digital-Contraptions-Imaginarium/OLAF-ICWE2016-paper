@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
 
@@ -22,10 +22,19 @@ Oleson, D., Sorokin, A., Laughlin, G.P.: {Programmatic Gold: Targeted and
   Scalable Quality Assurance in Crowdsourcing.} Human {\ldots}  (2011),
   \url{http://publicassets.s3.amazonaws.com/papers/HCOMP2011_philosopher_stone.pdf}
 
+\bibitem{odugresponse}
+{Open Data User Group}: {Response to RM Postcode Address File licensing
+  consultation}. Tech. rep. (Sep 2013)
+
 \bibitem{OReilly:2015uo}
 O'Reilly, T.: {The WTF Economy {\textemdash} What{\textquoteright}s The Future
   of Work? {\textemdash} Medium} pp. 1--7 (Jul 2015),
   \url{https://medium.com/the-wtf-economy/the-wtf-economy-a3bd5f52ef00}
+
+\bibitem{shadboltpaf}
+Shadbolt, N.: {A Cornerstone for Open Data: The Postcode Address File} (Apr
+  2013),
+  \url{http://theodi.org/blog/cornerstone-open-data-postcode-address-file}
 
 \bibitem{sheng2008get}
 Sheng, V.S., Provost, F., Ipeirotis, P.G.: {Get another label? improving data
@@ -37,6 +46,17 @@ Sheng, V.S., Provost, F., Ipeirotis, P.G.: {Get another label? improving data
 Sui, D., Elwood, S., Goodchild, M.: {Crowdsourcing geographic knowledge:
   volunteered geographic information (VGI) in theory and practice} (2012),
   \url{http://books.google.com/books?hl=en&lr=&id=SSbHUpSk2MsC&oi=fnd&pg=PR7&dq=Crowdsourcing+Geographic+Knowledge&ots=J4Ux8AyBa3&sig=HJTMrc9O58rx2dHgBasDRGVcs8s}
+
+\bibitem{pascod}
+{UK House of Commons, Public Administration Select Commission}: {Statistics and
+  Open Data: Harvesting unused knowledge, empowering citizens and improving
+  public services}  (Mar 2014)
+
+\bibitem{postalserviceact2000}
+{UK Parliament}: {Postal Service Act 2000}  (Jul 2000)
+
+\bibitem{postalserviceact2011}
+{UK Parliament}: {Postal Service Act 2011}  (Jun 2000)
 
 \bibitem{Welinder:2010vkb}
 Welinder, P., Branson, S., Perona, P., Belongie, S.: {The multidimensional
