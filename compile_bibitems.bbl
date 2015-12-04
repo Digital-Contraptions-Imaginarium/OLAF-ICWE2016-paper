@@ -1,0 +1,49 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem{Committee:1993vp}
+Committee, M.S., Mapping Science~Committee, N.R.C.: {Toward a coordinated
+  spatial data infrastructure for the nation} (1993),
+  \url{http://books.google.com/books?hl=en&lr=&id=t6iUtE5M-kQC&oi=fnd&pg=PA1&dq=Toward+a+Coordinated+Spatial+Data+Infrastructure+for+the+Nation&ots=eL8wjGdRaX&sig=L12qNHmOXpYgKIM8Fp3gPpUSDns}
+
+\bibitem{ESTES:1994vz}
+Estes, J.E., Mooneyhan, D.W.: {Of Maps and Myths}. Photogrammetric Engineering
+  and Remote Sensing  60(5),  517--524 (May 1994),
+  \url{http://gateway.webofknowledge.com/gateway/Gateway.cgi?GWVersion=2&SrcAuth=mekentosj&SrcApp=Papers&DestLinkType=FullRecord&DestApp=WOS&KeyUT=A1994NW25600004}
+
+\bibitem{Goodchild:2007vt}
+Goodchild, M.F.: {Citizens as sensors: the world of volunteered geography}.
+  GeoJournal  (2007),
+  \url{http://link.springer.com/article/10.1007/s10708-007-9111-y}
+
+\bibitem{Oleson:2011tx}
+Oleson, D., Sorokin, A., Laughlin, G.P.: {Programmatic Gold: Targeted and
+  Scalable Quality Assurance in Crowdsourcing.} Human {\ldots}  (2011),
+  \url{http://publicassets.s3.amazonaws.com/papers/HCOMP2011_philosopher_stone.pdf}
+
+\bibitem{OReilly:2015uo}
+O'Reilly, T.: {The WTF Economy {\textemdash} What{\textquoteright}s The Future
+  of Work? {\textemdash} Medium} pp. 1--7 (Jul 2015),
+  \url{https://medium.com/the-wtf-economy/the-wtf-economy-a3bd5f52ef00}
+
+\bibitem{sheng2008get}
+Sheng, V.S., Provost, F., Ipeirotis, P.G.: {Get another label? improving data
+  quality and data mining using multiple, noisy labelers}. In: Proceedings of
+  the 14th ACM SIGKDD international conference on Knowledge discovery and data
+  mining. pp. 614--622. ACM (2008)
+
+\bibitem{Sui:2012uf}
+Sui, D., Elwood, S., Goodchild, M.: {Crowdsourcing geographic knowledge:
+  volunteered geographic information (VGI) in theory and practice} (2012),
+  \url{http://books.google.com/books?hl=en&lr=&id=SSbHUpSk2MsC&oi=fnd&pg=PR7&dq=Crowdsourcing+Geographic+Knowledge&ots=J4Ux8AyBa3&sig=HJTMrc9O58rx2dHgBasDRGVcs8s}
+
+\bibitem{Welinder:2010vkb}
+Welinder, P., Branson, S., Perona, P., Belongie, S.: {The multidimensional
+  wisdom of crowds}. Advances in Neural Information Processing Systems 23: 24th
+  Annual Conference on Neural Information Processing Systems 2010. Proceedings
+  of a meeting held 6-9 December 2010, Vancouver, British Columbia, Canada
+  (2010),
+  \url{http://machinelearning.wustl.edu/mlpapers/paper_files/NIPS2010_0577.pdf}
+
+\end{thebibliography}
