@@ -1,4 +1,4 @@
-\section{Crowdsourcing addresses: our approach}
+\section{Approach}
 
 \subsection{The social machine mix}
 
@@ -30,13 +30,15 @@
 
 \subsection{Scope restrictions}
     
-    [DOES NOT SOUND LIKE IN THE RIGHT PLACE] 
+    [DOES NOT SOUND LIKE IN THE RIGHT PLACE, BUT THE SECTIONS THAT COME AFTERWARDS NEED THIS CLARIFICATION BEFORE] 
     
     To make the problem suitable to research it was simplified as described below. 
     
-    We will consider only two British countries: England and Wales, as the availability of pre-existing open geospatial data is richer and homogeneous. It is easy to see that the validity of the method proposed in this paper is independent of the geographical region that is the subject of the study, as long is the problem is consistent, e.g. the definition of the address is the same. The moment the same open data used for England and Wales becomes available for Scotland and Northern Ireland, the method can be deployed to produce an UK-wide OLAF without modification.
+    \textbf{Open data availability.} Although the overarching objective for OLAF is to achieve UK coverage, the availability of open data differs substantially from one UK country to another. Our approach was based on what is available for England and Wales only, as the two have the richer and most homogeneous open data offering, and their territory is estimated to be [SOME PERCENT] of the overall problem\footnote{[FOOTNOTE EXPLAINING THE ESTIMATE, LIKELY TO BE MADE USING NO. OF HOUSEHOLDS BY COUNTRY FROM ONS AS AN INDICATION OF NO. OF BUILDINGS HENCE ADDRESSES]}.
     
-    Within the territory described above, we will perform our experiment only on a sample of the London area. This is the same sample that was used in literature in the past to analyse the performance of other geospatial data crowdsourcing initiatives, e.g. OpenStreetMap in [REFERENCE]. [SOME WORDING FROM THAT PAPER TO STATE HOW WE DID NOT SIMPLIFY THE PROBLEM BY DOING THIS BUT JUST REDUCED IT IN SIZE]
+    The validity of the approach is independent of the geographical region that is the subject of the study, as long is the problem is consistent, e.g. the definition of the address is the same. The moment the same open data used for England and Wales becomes available for Scotland and Northern Ireland, the method can be deployed to produce an UK-wide OLAF without modification. Alternatively, if that would not happen, complementary social machines would need being added to the mix.
+    
+    \textbf{Sample territory.} Within the territory described above, the experiments were performed to address just a sample of the London area. This is the same sample that was used in literature in the past to analyse the performance of other geospatial data crowdsourcing initiatives, e.g. OpenStreetMap in [REFERENCE]. [SOME WORDING FROM THAT PAPER TO STATE HOW WE DID NOT SIMPLIFY THE PROBLEM BY DOING THIS BUT JUST REDUCED IT IN SIZE]
     
     \begin{figure*}
     	\includegraphics[width=0.95\textwidth]{london-sample-1.png}
@@ -44,7 +46,7 @@
     	\label{fig:london_sample_1}
     \end{figure*}
     
-    For simplicity, in the decomposition exercise that follows, only data from authoritative sources is used, such as government bodies', and it is assumed to be of the highest possible quality, equivalent to what could be called {\it ground truth}. It is for this reason that no tasks related to the validation of the open data sources is considered in scope. The datasets are described in more detail in [REFERENCE TO LATER IN THE PAPER].
+    \textbf{Reliability of the sources.} Only open data from authoritative sources was considered as an option in defining the approach, such as government bodies', and it is assumed to be of the highest possible quality, equivalent to what could be called {\it ground truth}. This allowed the approach not to include any validation of the sources.
 
 \subsection{A social machines mix for OLAF}
 
@@ -72,8 +74,7 @@
 
         References to existing house names and numbers can be found in a few open data publications in the UK. The largest in size is the "Price Paid Data" by the Land Registry: a non-ministerial Government department with the responsibility to register the ownership of land and property in England and Wales. Data for each ownership transfer since 1995 - and the full address of the building - is available as open data and updated monthly.
         
-        20 years of record make an impressive collection of house names and numbers.*****
-        
+        20 years of record make an impressive collection of house names and numbers [MORE ABOUT WHAT THE OUTPUT OF THIS IS]
 
     \subsubsection{{\it p1.2}: Statistically infer the existence of house numbers from the house numbers collected above.} 
 
