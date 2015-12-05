@@ -1,11 +1,11 @@
 \section{Crowdsourcing addresses: our approach}
 
-\subsection{The social machines mix}
+\subsection{The social machine mix}
 
     Although the OLAF data is conceptually simple, assembling such a large dataset while assuring sufficient quality is a complex task, even when starting from such valuable pre-existing open data such as Ordnance Survey's offering.
     
-    It is our hypothesis that, to make the best use of pre-existing open data and potentially available technology and human resources, such a problem must be decomposed in a series of complementary sub-problems targeting parts of its scope. Each problem, then, can be solved by a socio-technical system designed for that purpose, or social machine. This decomposition can take place over several iterations, hence creating a hierarchy of systems. 
-
+    It is our hypothesis that, to make the best use of pre-existing open data and potentially available technology and human resources, such a problem must be decomposed in a series of complementary sub-problems targeting parts of its scope. Each problem, then, can be solved by a socio-technical system designed for that purpose, or social machine. This decomposition can take place over several iterations, hence creating a hierarchy of systems that we will call the "social machine mix". 
+    
     [THERE SHOULD BE AN IMAGE HERE BUT IMAGE POSITIONING IN LATEX IS TRICKY]
 
     \begin{figure*}
@@ -16,16 +16,38 @@
     
     \textbf{The central role of pre-existing open data.} 
     
-    The main driver determining the possible decompositions of the original problem into a hierarchy of sub-problems is the availability of pre-existing and reliable open data. 
-    
-    The intuitive assumption that justifies giving pre-existing data such key role in the approach is that no social machine could produce data in a more cost-effective way than simply re-using a pre-published, reliable dataset. Hence, the focus of social machines in the overall mix can only be of two kinds: a) on creating original data where the same cannot be sourced in any other machine-only method, and b) on leveraging those skills where humans outperform machines. The obvious example of this is the survey of the streets, being it in person in the physical world, or by examining pictures of the locations, that is how crowdsourcing is used in the system described later in this paper. 
+    [THIS IS AN INTERESTING STATEMENT, I WONDER IF IT CAN BE GENERALISED] The main driver determining the possible decompositions of the original problem into a hierarchy of sub-problems is the availability of pre-existing and reliable open data. There are two reasons for that.
 
-    [DOES NOT SOUND LIKE IN THE RIGHT PLACE] For simplicity, in the decomposition exercise that follows, only data from authoritative sources is used, such as government bodies', and it is assumed to be of the highest possible quality, equivalent to what could be called {\it ground truth}. It is for this reason that no tasks related to the validation of the open data sources is considered in scope. The datasets are described in more detail in [REFERENCE TO LATER IN THE PAPER].
+    \begin{itemize}
+
+        \item The first and more intuitive reason is an assumption: no social machine can produce data in a more cost-effective way than re-using a pre-published, reliable dataset is.  
+        
+        Hence, the focus of social machines in the overall mix can only be of two kinds: a) on creating original data where the same cannot be sourced in any other machine-only method, and b) on leveraging those skills where humans outperform machines. The obvious example of this is the survey of the streets, being it in person in the physical world, or by examining pictures of the locations, that is how crowdsourcing is used in the system described later in this paper.
+
+        \item The second reason is that open data can be instrumental to operate a social machine. Even when a dataset is not re-used directly to creating the target output data, it can be used for other functions, e.g. supporting the process by which humans contribute. There will be a clear example of this later in this paper. 
+
+    \end{itemize}
+
+\subsection{Scope restrictions}
     
+    [DOES NOT SOUND LIKE IN THE RIGHT PLACE] 
+    
+    To make the problem suitable to research it was simplified as described below. 
+    
+    We will consider only two British countries: England and Wales, as the availability of pre-existing open geospatial data is richer and homogeneous. It is easy to see that the validity of the method proposed in this paper is independent of the geographical region that is the subject of the study, as long is the problem is consistent, e.g. the definition of the address is the same. The moment the same open data used for England and Wales becomes available for Scotland and Northern Ireland, the method can be deployed to produce an UK-wide OLAF without modification.
+    
+    Within the territory described above, we will perform our experiment only on a sample of the London area. This is the same sample that was used in literature in the past to analyse the performance of other geospatial data crowdsourcing initiatives, e.g. OpenStreetMap in [REFERENCE]. [SOME WORDING FROM THAT PAPER TO STATE HOW WE DID NOT SIMPLIFY THE PROBLEM BY DOING THIS BUT JUST REDUCED IT IN SIZE]
+    
+    \begin{figure*}
+    	\includegraphics[width=0.95\textwidth]{london-sample-1.png}
+    	\caption{This picture should not be here, but apparently it is a nightmare in LaTeX.}
+    	\label{fig:london_sample_1}
+    \end{figure*}
+    
+    For simplicity, in the decomposition exercise that follows, only data from authoritative sources is used, such as government bodies', and it is assumed to be of the highest possible quality, equivalent to what could be called {\it ground truth}. It is for this reason that no tasks related to the validation of the open data sources is considered in scope. The datasets are described in more detail in [REFERENCE TO LATER IN THE PAPER].
+
 \subsection{A social machines mix for OLAF}
 
-    In the following we will consider only two British countries: England and Wales, as the availability of pre-existing open geospatial data is richer and homogeneous. It is easy to see that the validity of the method proposed in this paper is independent of the geographical region that is the subject of the study, as long is the problem is consistent, e.g. the definition of the address is the same. The moment the same open data used for England and Wales becomes available for Scotland and Northern Ireland, the method can be deployed to produce an UK-wide OLAF without modification.
-    
     The open data available during our research makes it possible to divide the creation of OLAF in two main sub-problems {\it p1} and {\it p2}. 
     
     \begin{itemize}
@@ -33,19 +55,24 @@
         \item {\it p2}: Create a list of the associations between each of the house number and names above and the list of current\footnote{Postcodes can change. The problem of documenting how addresses change postcode in time is relevant but outside of the scope of research.} postcodes listed in Ordnance Survey's "Open Names". 
     \end{itemize}
 
+    Open Names "lists definitive place names, roads numbers and postcodes in Great Britain"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}. It was central to the research work as it is dataset that is functionally closer to the target. OLAF is - in practical terms - equivalent to adding just one dimension to Open Names, that is the list of house names and number for each of its roads.
+
     Problem {\it p2} is not discussed in this paper. 
     
-    Problem {\it p1} can be further decomposed, again thanks to the availability of open data sources:
+    Problem {\it p1} can be further decomposed, thanks to the availability of additional open data sources:
     
     \begin{itemize}
-        \item {\it p1.1}: Collect the list of house numbers and house names for each existing road from citation in Land Registry's "Price Paid".
+        \item {\it p1.1}: Collect the list of house numbers and house names for each existing road as they are referenced in Land Registry's "Price Paid".
         \item {\it p1.2}: Statistically infer the existence of house numbers from the house numbers collected above.
         \item {\it p1.3}: Enable the application of {\it p1.2} through surveying.
         \item {\it p1.4}: Correct the output of {\it p1.2} through surveying.
     \end{itemize}
 
-    \subsubsection{{\it p1.1}: Collect the list of house numbers and house names for each existing road from citation in Land Registry's "Price Paid".} 
+    \subsubsection{{\it p1.1}: Collect the list of house numbers and house names for each existing road as they are referenced in Land Registry's "Price Paid".} 
 
+        References to existing house names and numbers can be found in a few open data publications in the UK. The largest in size is the "Price Paid Data" by the Land Registry: a non-ministerial Government department with the responsibility to register the ownership of land and property in England and Wales. Data for each ownership transfer since 1995 - and the full address of the building - is available as open data and updated monthly.
+        
+        20 years of record make an impressive collection of house names and numbers.*****
         
 
     \subsubsection{{\it p1.2}: Statistically infer the existence of house numbers from the house numbers collected above.} 
