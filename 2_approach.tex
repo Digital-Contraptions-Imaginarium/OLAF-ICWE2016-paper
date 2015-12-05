@@ -103,7 +103,15 @@
         It is clear from the description of problem {\it p1.2} that the inference of house numbers is enabled by the availability of two or more couples of house numbers that act as "seeds" and allow the inference rules to trigger one or more times, for each road.
         
         82\% of the streets in scope are referenced in Land Registry's "Price Paid. The house numbers sourced from {\it p1.1} create opportunities for inference for the 74\% of roads, inferring ~113k house numbers from ~111k known house numbers [DO I NEED TO DESCRIBE THE CALCULATIONS SOMEWHERE IN THE PAPER OR I JUST LINK TO THE GITHUB REPOSITORY WITH THE CODE? THE CODE AT THE MOMENT DOES NOT CALCULATE THE STATISTICS BUT JUST RUNS THE INFERENCE, THIS STUFF WAS CALCULATED 'BY HAND'.].  
+        
+        A substantial number of roads though are not described by sufficient data to trigger inference. Problem {\it 1.3} is about creating the minimum set of data capable of creating the largest sets of inferred house numbers. This means identifying the lowest and highest house numbers for each road for which no house numbers are known\footnote{For simplicity, we did not consider the case where one house number only is known for a street. Those roads are considered as roads with no house numbers.}.
 
+        \begin{figure*}
+        	\includegraphics[width=0.95\textwidth]{social-machine-mix-3.png}
+        	\caption{This picture should not be here, but apparently it is a nightmare in LaTeX.}
+        	\label{fig:social_machine_mix_3}
+        \end{figure*}
+        
         \begin{figure*}
         	\includegraphics[width=0.95\textwidth]{social-machine-mix-2.png}
         	\caption{This picture should not be here, but apparently it is a nightmare in LaTeX.}
