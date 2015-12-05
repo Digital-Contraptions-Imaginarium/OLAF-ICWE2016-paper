@@ -130,19 +130,27 @@
 
 \subsection{Crowdsourcing house numbers to enable inference}
 
+    The focus of the research described in this paper is the solution of problem {\it p1.3}. The following is a description of the approach that was used for crowdsourcing addresses, that is common to all experimental conditions that were tested.
+
     \subsubsection{Task model}
-    
-        The following is a description of the approach that was used for crowdsourcing addresses, that is common to all experimental conditions that were tested.
+
+        \textbf{Requester.} The Requester desires to gather the lowest and highest house numbers in a specified street, as they can be intelligibly identified by browsing pictures of the street from Google Maps / Google Street View or equivalent services. Alternatively, if no two house numbers are visible clearly, the Requester needs to know that, too. The Requester requires the help of human agents to carry out the tasks, that we will call Workers in the following.
         
-        \textbf{Requester.} The Requester desires to validate the existence of a series of house numbers (e.g. "3" or "7A") in a specified street. Those were previously inferred algorithmically from the observation of \textit{existing} house numbers, as sourced from published open datasets\footnote{See the GitHub repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_reference_data} to learn about the reference open data we used, and the repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_inference_data} for the inference algorithms.}. When the pictures in the survey tool are of insufficient quality to be read intelligibly (e.g. a house number could be "7A" but it is not clear) it is useful to the Requester to be informed of that. The Requester requires the help of human agents to carry out the tasks, that we will call Workers in the following.
-        
-        \textbf{Task.} Each HIT (Human Intelligence Task) consists of verifying the existence in a given street of a given specific tuple of inferred house numbers {[}SOME MATHS SYMBOLS HERE{]} that is a subset of the whole set of inferred house numbers for that street {[}SOME MATHS SYMBOLS HERE{]}. 
+        \textbf{Task.} Each HIT (Human Intelligence Task) consists of browsing the pictures of a street until achieving reasonable certainty of having identified the lowest and highest house numbers or, alternative, the lack thereof.
         
         \textbf{Strategy.} 
         {[}TO BE WRITTEN, DEPENDS ON THE EXPERIMENT SCENARIOS DEFINITION.{]}
         
-        \textbf{Crowd $\rightarrow$ Worker.} Each Worker performs her task by declaring, for each house number in the given tuple and street, if a) it can be found by using the survey tool, b) it can't be found or c) it cannot be said with certainty (e.g. if some of the pictures are blurred and could correspond to the house number being searched). Multiple Workers are asked to validate the same tuple and the resulting data is chosen through majority voting.
+        \textbf{Crowd $\rightarrow$ Worker.} Each Worker performs her task by using the survey tool to declare, for the street regarding the task, if she has found the lowest and highest house numbers or none. Multiple Workers are asked to identify the house numbers for the same street. The resulting data is chosen through majority voting.
+    
+        \textbf{Quality.} Beyond its peculiarities, the described task is not conceptually different than a labelling crowdsourcing exercise for which best practices described in literature suggest assessing quality in function of a combination of consensus of the Workers' submissions and trustworthiness, as measured by benchmarking them vs gold standard tasks [CITE SOMEONE. INTERESTINGLY, SEYI DID NOT CITE ANYONE HERE IN HIS "IMPROVING PAID MICROTASKS..." PAPER].
         
+        Our choice though was to define quality exclusively by consensus. The use of a set of roads as a gold standard to test the Workers' trustworthiness was not considered suitable, despite the limitations of such choice, demonstrated in studies such as \cite{DellaPenna:tf} or [SOME OTHER]. It was observed, in the early stages of testing the model, that Worker performance dropped dramatically after just surveying two or three roads, possibly because of the complexity of the task, that could not be reduced sensibly to anything simpler than what is described above. We could afford using such a large part of a Worker effort - 33\% or even 40\% - to be used to just probing them.
+        
+        It is then the highest number of consensual declarations of lowest and highest house numbers, or lack thereof, to be the best available tool to measure of the Workers performing their task correctly and gathering the correct information.  
+
+        [THE REST OF THIS SUBSUBSECTION IS VERY OLD, BUT SOMETHING COULD BE RE-USED]
+
         \textbf{Reliability.} When collecting data to build a dataset that is intended to be published under an open licence, the option to assess its \textit{quality} by comparison with other sources is often not available, for many reason. An alternative source of the same data could simply not be available. Moreover, from an intellectual property perspective, the comparison could make the former "derivative work" of the latter, hence compromising the purpose{[}SOME REFERENCE OR FOOTNOTE TO PUT MORE MEAT AROUND THIS POINT{]}. 
         
         What is possible, instead, is to estimate the \textit{reliability} of the crowdsourced data, independently of any actual knowledge of other sources and/or the ground truth. 
