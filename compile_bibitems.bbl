@@ -2,6 +2,11 @@
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
 
+\bibitem{CentreforSpatialLawandPolicy:2014tx}
+{Centre for Spatial Law and Policy}: {ODbL and OpenStreetMap: Analysis and Use
+  Cases}. Tech. rep. (Oct 2014),
+  \url{http://spatiallaw.blogspot.co.uk/2014/10/the-odbl-and-openstreetmap-analysis-and.html}
+
 \bibitem{Committee:1993vp}
 Committee, M.S., Mapping Science~Committee, N.R.C.: {Toward a coordinated
   spatial data infrastructure for the nation} (1993),
@@ -22,13 +27,18 @@ Goodchild, M.F.: {Citizens as sensors: the world of volunteered geography}.
   GeoJournal  (2007),
   \url{http://link.springer.com/article/10.1007/s10708-007-9111-y}
 
+\bibitem{pascod}
+{House of Commons, Public Administration Select Commission (PASC)}: {Statistics
+  and Open Data: Harvesting unused knowledge, empowering citizens and improving
+  public services}  (Mar 2014)
+
 \bibitem{Oleson:2011tx}
 Oleson, D., Sorokin, A., Laughlin, G.P.: {Programmatic Gold: Targeted and
   Scalable Quality Assurance in Crowdsourcing.} Human {\ldots}  (2011),
   \url{http://publicassets.s3.amazonaws.com/papers/HCOMP2011_philosopher_stone.pdf}
 
 \bibitem{odugresponse}
-{Open Data User Group}: {Response to RM Postcode Address File licensing
+{Open Data User Group (ODUG}: {Response to RM Postcode Address File licensing
   consultation}. Tech. rep. (Sep 2013)
 
 \bibitem{OReilly:2015uo}
@@ -51,11 +61,6 @@ Sheng, V.S., Provost, F., Ipeirotis, P.G.: {Get another label? improving data
 Sui, D., Elwood, S., Goodchild, M.: {Crowdsourcing geographic knowledge:
   volunteered geographic information (VGI) in theory and practice} (2012),
   \url{http://books.google.com/books?hl=en&lr=&id=SSbHUpSk2MsC&oi=fnd&pg=PR7&dq=Crowdsourcing+Geographic+Knowledge&ots=J4Ux8AyBa3&sig=HJTMrc9O58rx2dHgBasDRGVcs8s}
-
-\bibitem{pascod}
-{UK House of Commons, Public Administration Select Commission}: {Statistics and
-  Open Data: Harvesting unused knowledge, empowering citizens and improving
-  public services}  (Mar 2014)
 
 \bibitem{postalserviceact2000}
 {UK Parliament}: {Postal Service Act 2000}  (Jul 2000)
