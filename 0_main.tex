@@ -2,6 +2,10 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{url}
+%% This was made necessary to break` long URLs, no other system I tried worked and a few URLs still fail; see http://tex.stackexchange.com/a/10419/60582 
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
 \usepackage{graphicx}
 \graphicspath{{./images/}}
 
