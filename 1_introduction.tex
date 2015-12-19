@@ -49,26 +49,3 @@
     {]}
     
     {(}...{)}
-
-\subsection{The Open Legal Address File}
-
-    The main use case for this research is the attempt of creating a new geospatial dataset that is functionally equivalent to the "Postcode Address File" or "PAF"\footnote{PAF is a registered trademark by Royal Mail plc. For convenience we won't show the registered trademark sign "\textregistered" in this document every time we refer to it.}: a commercial dataset listing all known valid addresses and postcodes for the UK at a given point in time. 
-    An act of law\footnote{The Postal Service Act 2000, part VII, article 116 \cite{postalserviceact2000}.} makes PAF ownership of the Royal Mail: the ex-postal service monopolist in the UK, now a public limited company with only a 30\% of shares controlled by the Government\footnote{The Postal Services Act 2011 plans to reduce the Government control down to 10\% \cite{postalserviceact2011}.}. The same act of law requires Royal Mail to make PAF available on "reasonable terms" to "any person who wishes to use it".
-    
-    To this day, though, the "reasonable terms" translated only into PAF being made available by Royal Mail and its resellers as a commercial product\footnote{As an end user who wants to access PAF's data one may incur Royal Mail licence fees going from \pounds0.012 per transaction on a public website to \pounds90,000 per year for unlimited internal use by a corporate group. Even charitable organisation may not take advantage of free PAF access unless their income is less than \pounds10m/year.}. This is considered an anomaly by many, as "reasonable terms for the external use of PAF data by third parties should be no more than the marginal cost of distribution (...)" \cite{odugresponse}. 
-
-    To further limit the opportunities for PAF to be made open, in October 2013 Royal Mail and its assets were privatised, including PAF\footnote{\url{http://www.theguardian.com/uk-news/2014/mar/17/royal-mail-privatisation-ministers-rebuked-selling-data}}. The UK Parliament House of Commons' Public Administration Select Committee, just a few month later, called this "unacceptable and unnecessary" and recognised that PAF's "disposal for a short-term gain will impede economic innovation and growth" \cite{pascod}.
-
-    This makes the opportunity of creating an alternative to PAF an ideal case study. We will call this the "Open Legal Address File", or "OLAF". The term "legal addresses" refers to all addresses that are, by law, in the public domain, hence have no restrictions in terms of intellectual property or privacy protection and can be published as open data\footnote{Legal addresses belong to either or both of the following two categories: a) they are the addresses of current or past UK residents who are or were registered on the public electoral register, and b) they are the addresses of past or present UK companies that are or were registered at the relevant British registrar, such as Companies House for England and Wales.}.
-
-    {[}Definition of address{]}
-    
-    Many complementary and/or alternative strategies are possible and need to be used jointly to build OLAF. Among these is the opportunity to re-use published open datasets of addresses so to infer the existence of more addresses. 
-    
-    E.g. it is intuitive that if some source refers to the existence of house numbers 3, 5 and 9 in some street, and all are associated to the same postcode, it is very likely that number 7 exists as well and is associated to the same postcode\footnote{House numbering and postcode association are heavily dependant of the conventions used in the country the problem is applied to. This paper always refers to the UK conventions.}. It is shown experimentally that the method is effective, as it can produce large volumes of addresses from available open data\footnote{This was tested against the single largest known source of addresses open data for England and Wales: Land Registry's "Price Paid Data". See \url{https://www.gov.uk/government/collections/price-paid-data}.}.
-    
-    The experiments described in this paper implement the above strategy only, and  use crowdsourcing to validate sets of inferred addresses, as participants are asked to virtually survey the streets using pictures sourced from Google Street View.
-    
-    It has to be noted that not all existing house numbers are visible by surveying a street. E.g. there are no obligations in the UK to affix a house number or house name sign. Moreover, some of the house numbers may be associated to dwellings that are not visible unless the property is accessed, beyond what Google Street View's photos can capture.
-    
-    {(}...{)}
