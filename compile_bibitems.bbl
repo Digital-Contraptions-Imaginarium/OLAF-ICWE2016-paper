@@ -17,6 +17,12 @@ Della~Penna, N., Reid, M.D.: {Crowd {\&} Prejudice: An Impossibility Theorem
   for Crowd Labelling without a Gold Standard}. In: Collective Intelligence
   Conference,. \url{http://arxiv.org/pdf/1204.3511v1.pdf}
 
+\bibitem{Difallah:2012ty}
+Difallah, D.E., Demartini, G., Cudr{\'e}-Mauroux, P.: {Mechanical Cheat:
+  Spamming Schemes and Adversarial Techniques on Crowdsourcing Platforms.}
+  CrowdSearch  (2012),
+  \url{http://www.exascale.info/sites/default/files/Difallah_CrowdSearch_2012.pdf}
+
 \bibitem{ESTES:1994vz}
 Estes, J.E., Mooneyhan, D.W.: {Of Maps and Myths}. Photogrammetric Engineering
   and Remote Sensing  60(5),  517--524 (May 1994),
@@ -32,6 +38,11 @@ Goodchild, M.F.: {Citizens as sensors: the world of volunteered geography}.
   and Open Data: Harvesting unused knowledge, empowering citizens and improving
   public services}  (Mar 2014)
 
+\bibitem{Kittur:2008gj}
+Kittur, A., Chi, E.H., Suh, B.: {Crowdsourcing user studies with Mechanical
+  Turk}. ACM, New York, New York, USA (Apr 2008),
+  \url{http://portal.acm.org/citation.cfm?doid=1357054.1357127}
+
 \bibitem{Oleson:2011tx}
 Oleson, D., Sorokin, A., Laughlin, G.P.: {Programmatic Gold: Targeted and
   Scalable Quality Assurance in Crowdsourcing.} Human {\ldots}  (2011),
@@ -45,6 +56,11 @@ Oleson, D., Sorokin, A., Laughlin, G.P.: {Programmatic Gold: Targeted and
 O'Reilly, T.: {The WTF Economy {\textemdash} What{\textquoteright}s The Future
   of Work? {\textemdash} Medium} pp. 1--7 (Jul 2015),
   \url{https://medium.com/the-wtf-economy/the-wtf-economy-a3bd5f52ef00}
+
+\bibitem{Quinn:2011dj}
+Quinn, A.J., Bederson, B.B.: {Human computation: a survey and taxonomy of a
+  growing field}. ACM, New York, New York, USA (May 2011),
+  \url{http://dl.acm.org/citation.cfm?doid=1978942.1979148}
 
 \bibitem{shadboltpaf}
 Shadbolt, N.: {A Cornerstone for Open Data: The Postcode Address File} (Apr
