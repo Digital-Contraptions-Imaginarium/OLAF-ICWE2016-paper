@@ -48,11 +48,22 @@ Kittur, A., Chi, E.H., Suh, B.: {Crowdsourcing user studies with Mechanical
   Turk}. ACM, New York, New York, USA (Apr 2008),
   \url{http://portal.acm.org/citation.cfm?doid=1357054.1357127}
 
+\bibitem{Landis:1977kv}
+Landis, J.R., Koch, G.G.: {The Measurement of Observer Agreement for
+  Categorical Data}. biometrics  33(1),  159 (Mar 1977),
+  \url{http://www.jstor.org/stable/2529310?origin=crossref}
+
 \bibitem{Le:2010ug}
 Le, J., Edmonds, A., Hester, V.: {Ensuring quality in crowdsourced search
   relevance evaluation: The effects of training question distribution}. SIGIR
   2010 workshop on {\ldots}  (2010),
   \url{http://www.researchgate.net/profile/Andy_Edmonds/publication/229039373_Ensuring_quality_in_crowdsourced_search_relevance_evaluation_The_effects_of_training_question_distribution/links/00b4952d57a5a7881c000000.pdf}
+
+\bibitem{Nowak:2010gt}
+Nowak, S., R{\"u}ger, S.: {How reliable are annotations via crowdsourcing: a
+  study about inter-annotator agreement for multi-label image annotation}. In:
+  the international conference. pp. 557--566. ACM, New York, New York, USA (Mar
+  2010), \url{http://portal.acm.org/citation.cfm?doid=1743384.1743478}
 
 \bibitem{Oleson:2011tx}
 Oleson, D., Sorokin, A., Laughlin, G.P.: {Programmatic Gold: Targeted and
@@ -70,7 +81,8 @@ O'Reilly, T.: {The WTF Economy {\textemdash} What{\textquoteright}s The Future
 
 \bibitem{Quinn:2011dj}
 Quinn, A.J., Bederson, B.B.: {Human computation: a survey and taxonomy of a
-  growing field}. ACM, New York, New York, USA (May 2011),
+  growing field}. a survey and taxonomy of a growing field, ACM, New York, New
+  York, USA (May 2011),
   \url{http://dl.acm.org/citation.cfm?doid=1978942.1979148}
 
 \bibitem{shadboltpaf}
@@ -86,8 +98,8 @@ Sheng, V.S., Provost, F., Ipeirotis, P.G.: {Get another label? improving data
 
 \bibitem{Sheng:2008gra}
 Sheng, V.S., Provost, F., Ipeirotis, P.G.: {Get another label? improving data
-  quality and data mining using multiple, noisy labelers}. ACM (Aug 2008),
-  \url{http://dl.acm.org/citation.cfm?id=1401890.1401965}
+  quality and data mining using multiple, noisy labelers}. ACM, New York, New
+  York, USA (Aug 2008), \url{http://dl.acm.org/citation.cfm?id=1401890.1401965}
 
 \bibitem{Snow:2008wo}
 Snow, R., O'Connor, B., Jurafsky, D., Ng, A.Y.: {Cheap and fast---but is it
