@@ -1,6 +1,37 @@
 \section{Experiment design}
 
 \subsection{Research hypothesis}
+
+Our work was centred around the hypothesis below:
+
+\begin{enumerate}
+
+    \item Paid crowdsourcing can be used to address some of the limitations of VGI, e.g. to survey streets on demand, quickly and reliably without the need to wait for a volunteer to offer herself for the task.
+    
+    \item Paid crowdsourcing can be effective at image labelling tasks that are more complex than what is commonly found in literature, as in the case of finding house numbers - or the lack thereof - in interactive visualisations of streets as in Google Street View.
+
+    \item Effective workflow systems can be implemented by using just the native functionality of third party crowdsourcing services in the cloud such as CrowdFlower, hence maximising the system scalability and availability in respect to deploying custom components (code, application and database servers etc.)
+
+    \item An iterative crowdsourcing workflow is more performing...
+    
+\end{enumerate}
+
+To test these hypothesis, we carried out two experiments. Workers were offered to browse a street through a combination of Google Maps and Google Street View and asked to identify the lowest and the highest house numbers. The systems implementing the experiments were fully hosted on CrowdFlower, and only Google and CrowdFlower's native functionality was used, complemented by some "offline" scripting aimed at pre-processing the dataset and consolidating the results.
+
+To test the first and second hypothesis, the potential for the community of Workers to converge on consensus on some of the streets was assessed, targeting a high degree of statistical confidence on the results.
+
+To test the fourth hypothesis, two different approaches to judgement collection were implemented and their performance compared, both aiming at achieving results of equivalent quality.
+
+The systems of the two experiments were indistinguishable from a Worker point of view. Participants used the same user interface, were paid the same amount etc.
+
 \subsection{Dataset}
+
 \subsection{Evaluation metrics}
+
+We evaluate the performance of the approach as the average total cost per road required to reach Worker consensus. The lower the cost, the more effective the approach.
+
 \subsection{Experimental conditions}
+
+\textbf{Experiment 1} {\it Judgement collection: iterative, 5 judgements per road. Source dataset: the full sample of 184 roads, in "rounds" of max 10 roads depending on availability, chosen according to prioritisation. As road reach consensus, they are removed from the following round to make room for more roads. Stop condition: either (i) a total 400 judgements is collected or, (ii) consensus is reached on all roads, or (iii) at completion of any iteration, the number of total duplicate judgements by reliable Workers is higher than the number of unique judgement, whichever condition is verified first. Consensus: Fleiss kappa of 0.6 on roads where house numbers could be found, 0.8 on roads where house numbers could not be found, calculated at completion of each iteration.} 
+
+\textbf{Experiment 2} {\it Judgement collection: one-shot, with a minimum of **** judgements and a maximum of **** per road. Collection is stopped on a road by road basis when consensus is reached. Source dataset: the same set roads that were subject to judgement in any round of Experiment 1. Stop condition: either (i) the same total number of judgements of Experiment 1 is collected, or (ii) consensus is reached on all roads, whichever condition is verified first. Consensus: simple agreement \% of Workers equivalent or superior to the worst case scenario Fleiss kappa of Experiment 1, calculated at completion of each judgement\footnote{CrowdFlower provides natively the functionality to continue judgement collection on each road until a target simple agreement x\% between Workers is achieved. Differently than Fleiss' kappa that was used in experiment 1, this does not take into consideration the distribution of judgements in disagreement. It is possible, though, to calculate a simple agreement \% that is statistically equivalent or better, for each combination of number of judgements and target kappa. E.g. the smallest simple agreement \% that can achieve a Fleiss' kappa of 0.8 on 30 judgements is 90\%, that is like saying that 27 Workers were in agreement, whatever the judgements were by the other workers.}.} 
