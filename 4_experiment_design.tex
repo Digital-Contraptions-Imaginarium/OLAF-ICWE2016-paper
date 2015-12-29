@@ -1,5 +1,7 @@
 \section{Experiment design}
 
+[PLEASE NOTE: THE SECOND EXPERIMENT DESCRIBED BELOW IS NOT WORTH DOING, ONCE YOU DO THE MATH. IT WOULD REQUIRE AN EXCEPTIONALLY HIGH MAJORITY CONSENSUS ON CROWDFLOWER (~94\%) TO ASSURE EQUIVALENCE TO THE TARGET FLEISS] 
+
 \subsection{Research hypothesis}
 
 Our work was centred around the hypothesis below:
@@ -25,6 +27,12 @@ To test the fourth hypothesis, two different approaches to judgement collection 
 The systems of the two experiments were indistinguishable from a Worker point of view. Participants used the same user interface, were paid the same amount etc.
 
 \subsection{Dataset}
+
+For our experiments, we used all roads within scope - as described earlier in this document - for which no other tool but surveying could be used to produce the missing house numbers. These are those roads that did not offer sufficient data in LRPP to apply the inference algorithms. This comprises of 184 streets out of the 1,949 in the original sample. LRPP providing little or no data about these streets over 20 years of records suggests that these are "difficult streets", with few or no buildings, and likely rural.
+
+To simulate a real-world scenario in which different streets offer different degrees of interest to the Requester, fictional prioritisation criteria were associated to each of the five areas in scope. The objective was engaging the Workers on the highest prioritisation street first, possibly not completing coverage for the lowest prioritisation streets if budget was limited\footnote{The example scenario that was used as reference was the one where a charitable organisation wanted to run a campaign to support families in deprived areas in London. In order to produce the missing addresses, the charity would naturally prioritise their work by using the deprivation open data published as part of the latest census by the UK Office for National Statistics, e.g. at \url{https://www.nomisweb.co.uk/census/2011/qs119ew}.}.
+
+The data and scripts used to prepare the experiment are available at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab}.
 
 \subsection{Evaluation metrics}
 
