@@ -18,31 +18,28 @@ In designing the platform, we tried to achieve a good combination of the design 
 
 \subsection{Crowdsourcing component... WHAT?}
 
-[ELENA: introduce the platform according to the dimensions I use in my presentations. Note that this is a description of the platform as we envision it for the future, not as bespoke tool to elicit house numbers]
+The following is a high level description of the crowdsourcing component of the platform according to the dimensions presented in \cite{Wearethedata:2015uo}. The description is independent of the specific data creation / curation objective the system could be deployed to address. 
 
-The following is a high level description of the crowdsourcing component of the platform according to the dimensions presented in \cite{Wearethedata:2015uo}. The description is independent of the specific objective the system could be deployed to address.
+A general observation is that the crowdsourcing element was intentionally designed to explore characteristics that are far from what has been already extensively explored in VGI literature, particularly thanks to the opportunity to study the OpenStreetMap case. The hypothesis and ambition is that the finding of the research can be complementary to what can be achieved with VGI and enrich the set of tools available to the system designer.
 
 \textbf{What is outsourced} The objective of the outsourcing activity is the production of original geospatial data or the correction / validation of pre-existing data, wherever the activity can be only performed by human agents. 
 
 We use the term "geospatial data" in its wider connotation: data that relates to or is associated with a particular location. It can be about the geographic characteristics of a place (e.g. the topology of a street network), but also about facts associated to that place (e.g. how many trees in that street).
 
-The activity typically translates into surveying the locations and record observations (e.g. "how many trees can be seen from longitude x and latitude y?"), or, alternatively, amend some previous recording of the same (e.g. "can you confirm that there is a hospital in Vicarage Rd, Watford, Hertfordshire?"). 
+The activity typically translates into surveying the locations or examining imagery thereof and record observations (e.g. "how many trees can be seen from longitude x and latitude y?"), or, alternatively, amend some previous recording of the same (e.g. "can you confirm that there is a hospital in Vicarage Rd, Watford, Hertfordshire?"). 
 
-To make microtasking feasible and avoid the physical survey of the locations, publicly available imagery is used instead. The performance of humans observers is expected to outperform machine learning, computer vision and automation in general and keep being more cost effective for a few more years, particularly in observing imagery that are ambiguous [IT WOULD BE NICE TO QUOTE SOMEONE HERE].
+To avoid the physical survey of the locations, participants examine publicly available imagery of the location. This is not uncommon, e.g. the OpenStreetMap website uses aerial imagery sourced from Microsoft Bing to let its contributors edit the topology of the streets\footnote{See \url{https://www.openstreetmap.org/edit}.}. The cost effectiveness of humans observers is expected to outperform machine learning, computer vision and automation in general for a few more years, particularly in observing imagery that are ambiguous [IT WOULD BE NICE TO QUOTE SOMEONE HERE].
 
-\textbf{Who is the crowd} VGI literature explored extensively how geospatial data can be created by crowds of intrinsically motivated volunteers, often taking responsibility of tasks that require substantial effort, such as surveying a street in the real world, including travel to get to the location, the use of equipment to record GPS tracks etc. 
+\textbf{Who is the crowd} No specialised knowledge or skills are required, nor a connection to the places being surveyed. In VGI, though, contributors are often associated to the locations they work on, as it is both a driver for their motivation and direct knowledge of the place is occasionally necessary to assure the completeness of the data. The function of buildings or the location of mailboxes, for example, can't be inferred from observing OpenStreetMap's aerial imagery. Moreover, the first survey of new locations, e.g. new developments before they are visible on aerial imagery, are often made using specialised equipment, e.g. to record GPS tracks\footnote{E.g. the OpenStreetMap project advises against using conventional mobile phone GPS functionality, as it can be very difficult to work out the technical accuracy of a track. See \url{http://wiki.openstreetmap.org/wiki/Recording_GPS_tracks}.}.
 
-Our platform was designed to explore a somehow opposite scenario. Our contributors are oblivious of the the context of the project, have no personal connection to the locations being surveyed, and likely find no motivation in contributing to the "cause" of open data in general. They perform survey {\it micro}tasks and are driven merely by the financial reward. This is typically the crowd that can be recruited through mainstream crowdwork platforms such as Amazon Mechanical Turk and Crowdflower. 
+The crowdsourcing task design intends to assure the contributors detachment from the locations.
 
-\textbf{How are the task oursourced}
+\textbf{How are the task outsourced} Again, to explore different formulae than what is common in VGI, the crowdsourcing component focus is on implementing micro rather than macro tasks, and, definitely, microtasks cannot be burdened with the overhead typical of surveying in the real world, like planning a journey and travelling to the location and back, use equipment etc. 
 
-\textbf{Why do people contribute}
+Wherever possible, one's contribution is limited to max few minutes of work at the computer, the shorter the time required the better. Ideal tasks are closed- rather than open-ended and require no particular thought or focus. The participant has no visibility of the workflow she is part of: the volume of effort spent in preparing the data, aggregating the responses, assessing their accuracy etc. 
 
-
-what/who/how
-
-what to crowdsource (inputs/outputs/creation vs validation tasks)
-who is the crowd 
-how: task breakdown, open vs closed answers, incentives etc etc etc
+\textbf{Why do people contribute} In VGI, crowds are made of intrinsically motivated volunteers: open data advocates, geospatial practitioners and individuals who are passionate about geography in general [SOME REFERENCE]. Our contributors are oblivious of the the context of the project, have no personal connection to the locations being surveyed, and likely are unaware of and find no motivation in contributing to the "cause" of open data in general. They perform their tasks driven merely by the financial reward. This is typically the crowd that can be recruited through mainstream crowdwork platforms such as Amazon Mechanical Turk and Crowdflower. 
 
 \subsection{implementation}
+
+The prototype uses Google Maps and Google Street View. **** OpenStreetMap formally requested and was granted by Bing authorisation to use their aerial imagery \footnote{See \url{http://wiki.openstreetmap.org/wiki/Bing#Bing_Aerial_Imagery}, last accessed 2 January 2016.}.
