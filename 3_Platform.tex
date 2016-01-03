@@ -1,24 +1,51 @@
 \section{Platform}
 
-\subsection{overview: short summary of what the platform does}
+\subsection{Overview}
+
+This section describes the general-purpose platform that was designed and built for the creation and curation of geospatial data, enabled by hybrid human-machine workflows. 
+
+The general workflow model that was used as reference is shown in ****.
+
+[FIGURE]
+
+From the platform owner point of view, the system is made of:
+
+\begin{enumerate}
+    \item A set of tools to ingest the primary data sources into a reference database.
+    \item A set of tools to process the ingested data and derive new / enhanced data computationally, e.g. through statistical inference.
+    \item A set of templates to configure the crowdsourcing platform of choice - e.g. Amazon Mechanical Turk or CrowdFlower - and set up the interface the participants use to contribute.
+    \item A set of tools to iteratively (i) identify what the highest priority gaps in the reference and derived data are, (ii) load data into the crowdsourcing platform accordingly, to enable the collection of what is missing and (iii) evaluate the crowd's output, until a stop condition is verified, e.g. the data was successfully collected and at the target level of quality, or, in the case of paid crowdsourcing all budget has been spent.
+    \item A set of tools to consolidate the original, derived and crowdsourced data in one consistent dataset.
+\end{enumerate}
+
+From the participant point of view, the solution presents itself simply as a task hosted on their crowdsourcing platform of choice. The task web page offers interactive maps and a panoramic views of one or more locations to survey, and a form the participant will use to submit her observations, as shown in \ref{fig:virtual-survey-tool-01}. 
+
+At the top of the page, for contributors who are new to the task, instructions are given, possibly enhanced by a video used to illustrate the interactive features of the map and panoramic view, as in \ref{fig:virtual-survey-tool-02}.
+
+\begin{figure}[!h]
+    \begin{floatrow}
+        \ffigbox{\includegraphics[width=0.45\textwidth]{virtual-survey-tool-01.png}}{\caption{The task section of the web page, offering the Google Maps and Street View panes and the form participants use to submit their observation.}\label{fig:results-highest-not-found}}
+        \ffigbox{\includegraphics[width=0.45\textwidth]{virtual-survey-tool-01.png}}{\caption{The instruction section of the web page, embedding a video with the instructions.}\label{fig:virtual-survey-tool-02}}
+   \end{floatrow}
+\end{figure}
 
 \subsection{Overall design principles}
 
-In designing the platform, we tried to achieve a good combination of the design principles described below:
+In designing the platform, design principles below were used as guidance:
 
-\textbf{Support to human-machine workflows} The need to rely on hybrid human-machine workflows was a key assumption in our research. The solution was required to automate as much as possible of the data creation / curation process while effectively integrating human components, from the crowdsourcing of part of the data to the administration of the process itself.
+\textbf{Support to human-machine workflows} The opportunity to exploit hybrid human-machine workflows was a key assumption in our research. The solution was required to automate as much as possible of the data creation / curation process while effectively integrating human components, from the crowdsourcing of part of the data to the administration of the process itself.
 
 \textbf{Data re-use} Making the best possible use of pre-existing, reliable data was a key design driver, in particular to take advantage of the substantial volume of open data published in the UK over the last two-three years, and expecting a similar trend to be observable in many other countries in the upcoming years.
 
-\textbf{Open source software} It was assumed that any software component required by the solution could be built using open source software only, also to preserve any available budget for the compensation of paid contributors to the crowdsourcing campaigns.
+\textbf{Open source software} It was assumed that most original components required by the solution could be built using open source software only, also to preserve any available budget for the compensation of paid contributors to the crowdsourcing campaigns.
 
-\textbf{Scalability and high availability} The solution was designed to be highly scalable and available, beyond the needs of the experiments described later in this document and suitable for real-world deployment.
+\textbf{Scalability and high availability} The solution was designed to be highly scalable and available - well beyond the needs of the experiments described later in this document - and suitable for real-world deployment.
 
 \textbf{Versatility} The solution needed being versatile and suitable to support different workflows, input data sources and target output datasets. Despite the extensive literature, crowdsourcing in particular is still more of a craft than science and no design formula can assure success without experimentation. The design of the solution needed to support different forms of crowdsourcing across its many dimensions: paid contributors vs volunteers, results aggregation, quality assessment etc.
 
 \subsection{Crowdsourcing component design principles}
 
-The following is a high level description of the crowdsourcing component of the platform according to the dimensions presented in \cite{Wearethedata:2015uo}. The description is independent of the specific data creation / curation objective the system could be deployed to address. 
+The following is a high level description of the crowdsourcing component of the platform according to the dimensions presented in \cite{Wearethedata:2015uo}. The description is independent of the specific objective of the system. 
 
 A general observation is that the crowdsourcing element was intentionally designed to explore characteristics that are far from what has been already extensively explored in VGI literature, particularly thanks to the opportunity to study the OpenStreetMap case. The hypothesis and ambition is that the finding of the research can be complementary to what can be achieved with VGI and enrich the set of tools available to the system designer.
 
@@ -51,6 +78,11 @@ When using CML, the options available to implement a crowdsourcing model - such 
 \textbf{Google Maps} Google Maps is a Software-as-a-Service mapping service for the web and mobile devices made available by Google to the public for free within the limitations of some terms of service. It offers satellite and aerial imagery, maps, interactive panoramic views of streets ("Street View") and the respective metadata through APIs. Many of the services can be embedded in third party websites and customised using client-side JavaScript, hence making it very suitable to be integrated with CrowdFlower or any other template-based content management system. 
 
 The prototype uses Google's services as the team had already experience of programming their APIs, but other equivalent services could have been used, e.g. Microsoft's Bing Maps. OpenStreetMap's aerial imagery for example is currently based on the latter\footnote{See \url{http://wiki.openstreetmap.org/wiki/Bing#Bing_Aerial_Imagery}, last accessed 2 January 2016.}.
+
+\textbf{YouTube} YouTube is a video-sharing website owned by Google. As for Google Maps, videos can be embedded in third parties websites. The platform uses YouTube to offer participants an optional instructions video describing the user interface features and the task objective.
+
+
+
 
 \textbf{PostgreSQL + PostGIS} All data from primary sources was imported into a PostgreSQL relational database\footnote{See \url{http://www.postgresql.org/}.} running the PostGIS spatial extender \footnote{See \url{http://postgis.net/}.}. All geospatial data was converted from its original format (CSV, ESRI Shapefile etc.) to PostGIS' native geospatial types to be consistent across all sources and enabling spatial and geographic querying. When needed, QGIS \footnote{See \url{http://www.qgis.org/}.} was used to visually inspect the data on maps.
 
