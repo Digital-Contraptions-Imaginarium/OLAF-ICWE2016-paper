@@ -1,50 +1,67 @@
 \section{Crowdsourcing OLAF}
 
-    The open data available during our research makes it possible to divide the creation of OLAF in two main sub-problems {\it p1} and {\it p2}. 
+The problem of creating an address file for the UK was described in \ref{subs:the-problem-of-creating-an-olaf}. In this section we design a workflow that can be implemented on the platform and describe how we implemented a few of its parts for evaluation.
+
+\textbf{How the primary open data sources shape the problem} The availability of reliable relevant open data is central to the definition of the workflow, as it the main assumption of the work that the best use of computation and crowdsourcing is to use it to complement published data rather than creating it from scratch [I THOUGHT I HAD WRITTEN THIS IN THE DOCUMENT BEFORE, WHERE IS IT?]. 
+
+An assessment made at the time this work was performed made it possible to divide OLAF in three main sub-problems {\it p1}, {\it p2} and {\it p3}. 
     
-    \begin{itemize}
-        \item {\it p1}: Create a list of all existing {\it house numbers} for each road listed in Ordnance Survey's "Open Names".
-        \item {\it p2}: Create a list of all existing {\it house names} for each road listed in Ordnance Survey's "Open Names".
-        \item {\it p3}: Create a list of the associations between each of the house number and names above and the list of current\footnote{Postcodes can change. The problem of documenting how addresses change postcode in time is relevant but outside of the scope of research.} postcodes listed in Ordnance Survey's "Open Names". 
-    \end{itemize}
+\begin{itemize}
+    \item {\it p1}: Create a list of all existing {\it house numbers} for each road listed in Ordnance Survey's "Open Names".
+    \item {\it p2}: Create a list of all existing {\it house names} for each road listed in Ordnance Survey's "Open Names".
+    \item {\it p3}: Create a list of the associations between each of the house number and names above and the list of current\footnote{Postcodes can change. The problem of documenting how addresses change postcode in time is relevant but outside of the scope of research.} postcodes listed in Ordnance Survey's "Open Names". 
+\end{itemize}
 
-    For simplicity, we use the terms "place", "road" and "street" interchangeably, as they are equivalent from a data model perspective in OLAF.
+For simplicity, in the following the terms "place", "road" and "street" are used interchangeably, as they are equivalent from a data model perspective in OLAF.
 
-    Open Names "lists definitive place names, roads numbers and postcodes in Great Britain"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}. It was central to the research work as it is dataset that is functionally closer to the target. OLAF is - in practical terms - equivalent to adding just one dimension to Open Names, that is the list of house names and number for each of its roads. 
+Ordnance Survey's "Open Names" (referred to as "OSON" in the following) "lists definitive place names, roads numbers and postcodes in Great Britain"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}. OSON is instrumental to the work as it is the open dataset that is closer to the target, contentwise. In other words, OLAF can be seen as an augmentation of OSON, obtained by adding just one dimension to what can be already found in it, that is the list of house names and number associated to each of its roads and postcodes. 
     
-    Problems {\it p2}\footnote{Note that 98\% of UK addresses are characterised by a house number rather than a house name, so solving {\it p1} is substantially more relevant to achieve completeness in OLAF than {\it p2}.} and {\it p3} are not discussed in this paper. 
+Problems {\it p2}\footnote{Note that 98\% of UK addresses are characterised by a house number rather than a house name, so solving {\it p1} is substantially more relevant to achieve completeness in OLAF than {\it p2}.} and {\it p3} are not discussed further in this paper. 
+
+\textbf{Create a list of all existing house numbers for each road listed in OSON} Problem {\it p1} can be further decomposed, thanks to the availability of additional open data sources:
     
-    Problem {\it p1} can be further decomposed, thanks to the availability of additional open data sources:
-    
-    \begin{itemize}
-        \item {\it p1.1}: Collect the list of house numbers and house names for each existing road as they are referenced in pre-existing open data.
-        \item {\it p1.2}: Infer the existence of house numbers from the house numbers collected by {\it p1.1}.
-        \item {\it p1.3}: Enable the application of {\it p1.2} by creating the minimum necessary data to trigger more inference.
-        \item {\it p1.4}: Correct the output of {\it p1.2}.
-    \end{itemize}
+\begin{itemize}
+    \item {\it p1.1}: Identify the list of house numbers in each OSON road through reference in other open data.
+    \item {\it p1.2}: Statistically infer the existence of house numbers from the house numbers collected at {\it p1.1}.
+    \item {\it p1.3}: Enable the further application of {\it p1.2} by creating new data through crowdsourcing.
+    \item {\it p1.4}: Correct the output of {\it p1.2}.
+\end{itemize}
 
-    \subsubsection{{\it p1.1}: Collect the list of house numbers and house names for each existing road as they are referenced in pre-existing open data.} 
+References to existing house names and numbers can be found in a few open data publications in the UK. The largest in size, and the one used in our experiments, is Land Registry's "Price Paid Data"\footnote{Land Registry is a non-ministerial UK Government department with the responsibility to register the ownership of land and property in England and Wales. See \url{https://www.gov.uk/government/collections/price-paid-data}.} ("LRPP" in the following). LRPP records every property ownership transfer in England and Wales countries since 1995, including the full address of the building.
 
-        References to existing house names and numbers can be found in a few open data publications in the UK. The largest in size is the "Price Paid Data" by the Land Registry (LRPP in the following): a non-ministerial Government department with the responsibility to register the ownership of land and property in England and Wales. Data for each ownership transfer since 1995 - and the full address of the building - is available as open data and updated monthly.
+\textbf{House number inference} Each culture developed in time a convention for the assignment of house number and names to buildings. In the UK, numbering was likely introduced in the early 18th Century as an alternative to house names. Buildings typically are numbered sequentially starting from 1, corresponding to the extremity of the road that is closest to the centre of the town the street is associated to. Odd numbers are on the left-hand side as seen from the centre, even number on the right-hand side. Intermediate properties usually have a number suffixed by one or more letters, this is typical of larger buildings that at some point in time got divided into more smaller dwellings. 
         
-        20 years of record make an impressive collection of house names and numbers [MORE ABOUT WHAT THE OUTPUT OF THIS IS]
+Simple algorithms, as \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} below, apply this understanding of the numbering system and have a very high probability to infer correctly the existence of house numbers from other, known house numbers\footnote{It should be remembered, though, that centuries of house development and using the described numbering system loosely of course created many exceptions: e.g. there are buildings in the UK whose house number is zero, places where numbers were assigned consecutively on the same side of the street, and house numbers that are simply missing etc.}.  
 
-    \subsubsection{{\it p1.2}: Infer the existence of house numbers from the house numbers collected by {\it p1.1}.} 
+\begin{algorithm}[H]
+    \KwData{The list of known house numbers in a road}
+    \KwResult{The list of inferred house numbers in the same road}
+    \eIf{the list includes at least one even and one odd number}{
+        infer all numbers between the lowest and the highest known numbers\;
+    }{
+        \If{the list includes at least two even or two odd numbers}{
+            infer all even/odd numbers between the lowest and the highest numbers\;
+        }
+    }
+    \caption{Inference of house numbers}
+    \label{algo:inference-numbers}
+\end{algorithm}
 
-        Each culture developed in time a convention for the assignment of house number and names to buildings. In the UK numbering was likely introduced in the early 18th Century as an alternative to house names. Buildings typically are numbered sequentially starting from 1, corresponding to the extremity of the road that is closest to the centre of the town the street is associated to. Odd numbers are on the left-hand side as seen from the centre, even number on the right-hand side. Intermediate properties usually have a number suffixed by one or more letters, this is typical of larger buildings that at some point in time got divided into more smaller dwellings. Modern buildings that have been named by their owner usually retain also a number, that was used by the local government authority during planning.
-        
-        Centuries of house development and using this system informally of course created many exceptions: e.g. there are buildings for whose house number is zero, places where numbers were assigned consecutively, and house numbers that are simply missing. Simple algorithms, though, have a very high probability to apply the numbering model described above to infer the existence of house numbers from other known house numbers. This is intuitive, as: 
-        \begin{itemize}
-            \item If we know that one even and one odd house numbers exist in a street, it is likely that all other numbers included within those numbers exist, too (e.g. we can infer 11 and 12 from the existence of 10 and 13)
-            \item If we know that two even or odd house numbers exist in a street, it is likely that all other even or odd house numbers included within those numbers exist, too (e.g. we can infer 7 from the existence of 5 and 9, but not 6 and 8, as the right-hand side of the street may not have buildings)
-            \item If we know that the same house number in a street is suffixed by two different letters, it is likely that all other letters included within those letters exist, too (e.g. we can infer 14B from the existence of 14A and 14C).
-        \end{itemize}
-        
-        This simple inference is one of the simplest that can be implemented. Other available open data sources enable more complex algorithms, e.g. Ordnance Survey's "Open Maps - Local" [NEED TO CHECK] includes summary shapes for the buildings in each British street, hence enabling the detection of how many buildings are present and suggest how some house numbers may be missing.
-        
-        {\bf Error in inference.} The described inference criteria add error to the data, made of three components: (i) inferred house numbers that are in reality house names (2) inferred house numbers that in reality exist only in prefixed form instead (e.g. 7A instead of 7), and (iii) addresses that simply do not exist, e.g. because a building was demolished.
-        
-        We can estimate (i) and (ii) by observing in LRPP. The frequency of addresses identified by a house names instead than a house number is 2\% of the total for the geographic area in scope. This is like saying that 1 out of 50 inferred house numbers was supposed to be a house number instead. The volume of house numbers that exist in prefixed form only instead is [TO CALCULATE, LIKELY INCREDIBLY LOW]. We believe this is an acceptable burden to put on the {\it p1.4} system. 
+\begin{algorithm}[H]
+    \KwData{The list of known house numbers with suffixes in a road}
+    \KwResult{The list of inferred house numbers with suffixes in the same road}
+    \For{each house number appearing in the list with at least two suffixes}{
+        infer all suffixes between the lowest and the highest known suffix, in alphabetical order\;    
+    }
+    \caption{Inference of house number with suffixes}
+    \label{algo:inference-numbers-suffix}
+\end{algorithm}
+
+This simple inference is one of the simplest that can be implemented. Other available open data sources enable more complex algorithms, e.g. Ordnance Survey's "Open Maps - Local" [NEED TO CHECK] includes summary shapes for the buildings in each British street, hence enabling the detection of how many buildings are present and suggest how some house numbers may be missing.
+
+{\bf Error in inference.} The described inference criteria add error to the data, made of three components: (i) inferred house numbers that are in reality house names (2) inferred house numbers that in reality exist only in prefixed form instead (e.g. 7A instead of 7), and (iii) addresses that simply do not exist, e.g. because a building was demolished.
+
+We can estimate (i) and (ii) by observing in LRPP. The frequency of addresses identified by a house names instead than a house number is 2\% of the total for the geographic area in scope. This is like saying that 1 out of 50 inferred house numbers was supposed to be a house number instead. The volume of house numbers that exist in prefixed form only instead is [TO CALCULATE, LIKELY INCREDIBLY LOW]. We believe this is an acceptable burden to put on the {\it p1.4} system. 
         
     \subsubsection{{\it p1.3}: Enable the application of {\it p1.2} by creating the minimum necessary data to trigger more inference.} 
 
