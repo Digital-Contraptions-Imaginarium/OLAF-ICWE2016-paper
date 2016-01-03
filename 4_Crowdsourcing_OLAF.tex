@@ -152,56 +152,13 @@ We sourced all our Workers from CrowdFlower. For each experiment, we created one
 
 \textbf{Behaviour} Each Worker was paid for 1 task, and 1 task is made of 1 street to survey.
 
-\textbf{Reward / Time Limits} The reward was 0.34 US Dollars per task. Workers requiring less than 90 seconds per task were considered at high risk of being malicious and excluded to perform additional tasks. CrowdFlower imposes a time limit of 30 minutes maximum per task[NEED TO CHECK THIS].
+\textbf{Reward / Time Limits} The reward was 0.20 US Dollars per task. Workers requiring less than 90 seconds per task were considered at high risk of being malicious and excluded to perform additional tasks. CrowdFlower imposes a time limit of 30 minutes maximum per task.
 
-\subsubsection{Design}
-\subsubsection{The data processing solution}
-
-All of the data required to setup the crowdsourcing operation is created from the original distributions by Ordinance Survey and Land Registry. 
-
-The data is stored in a PostgreSQL database\footnote{See \url{http://www.postgresql.org/}.}, that was chosen mostly for its robust and well documented PostGIS extension\footnote{See \url{http://postgis.net/}.}, providing geospatial data processing functionality. NodeJS\footnote{See \url{https://nodejs.org}.} and PostgreSQL scripts were used to import and process the data end to end, up to the point where it is exported to the virtual survey tool, described below. Although the volume of the data being processed is not small, it's far from requiring the tools typical of big data applications. 
-
-The full code is available on GitHub in three repositories:
-
-\begin{itemize}
-    \item To import and filter the source Ordnance Survey and Land Registry data in what is then used by the experiments as reference: \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_reference_data}
-    \item To calculate address inference from the above: \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_inference_data}
-    \item To consolidate and prepare the data for uploading into the virtual survey tool: \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/}.
-\end{itemize}
-
-\subsubsection{The virtual survey tool}
-
-The virtual survey tool is built exclusively by using the native functionality of two highly available and scalable cloud systems: CrowdFlower and Google Maps and Street View APIs. 
-
-CrowdFlower\footnote{See \url{http://www.crowdflower.com/}.} is a common choice among crowdsourcing services outside of the US\footnote{Differently than Amazon Mechanical Turk, CrowdFlower users are not required to provide an US-registered payment card for registration.}. It offers a full end-to-end solution to run crowdsourcing campaigns, including the recruitment, profiling and management of the Workers, a few tools for quality control, the payment system and the hosting of the actual website through which the Workers contribute. Optionally, some or all of its services can be integrated through APIs into systems owned by its clients. CrowdFlower's particularly suitable to the delivery of open data initiatives as its services are available for free - but for the Workers' compensaton - by choosing their "Data for Everyone" plan, where CrowdFlower reserves the right to publish the data collected through the crowdsourcing jobs. To keep the overall system as simple as possible - while highly scalable and available - it was decided to rely on CrowdFlower's native functionality only and design the system within the limitations of its customisation features.
-
-The Google Maps and Street View APIs\footnote{See \url{https://developers.google.com/maps/web/}.} allow to embed fully featured interactive maps as part of third party websites. They provide out of the box powerful customisation features through JavaScript scripting, some of which were implemented for the survey tool, such as limiting the user freedom of movement within the maps to the bounding box that contains the street subject to surveying.   
-
-Below is how the tool looks like to a first time user.
-
-\begin{figure*}
-	\includegraphics[width=0.95\textwidth]{virtual-survey-tool-01.png}
-	\caption{This picture should not be here, but apparently it is a nightmare in LaTeX.}
-	\label{fig:some_figure}
-\end{figure*}
-
-\paragraph{}
-
-The full code is available on GitHub at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/}.
+[TEXT REVISED UP TO HERE]
 
 \subsection{Implementation}
 
-
 (i) ingestion and preparation of the reference data\footnote{See the GitHub repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_reference_data}.}, (ii) inference of house numbers where made possible from LRPP data\footnote{See the GitHub repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_inference_data}.} and (iii) creation of the data for the crowdsourcing component and elaborating its results\footnote{See the GitHub repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab}, {\it data-prep-scripts} and {\it analysis-scripts} folders respectively.}. 
-
-
-    	
-    \subsubsection{Scalability}
-    
-        [THE CALL FOR PAPER EXPLICITLY SAYS THAT "EVIDENCE OF USE IN PRACTICE AND/OR DEMONSTRATION OF SCALABILITY IS REGARDED AS A PLUS"]
-    
-    \subsubsection{{[}description of additional conditions to test X{]}}
-    \subsubsection{{[}description of additional conditions to test Y{]}}
 
 [FIND SOME PLACE TO SAY WHY WE DON'T USE OPENSTREETMAP, BECAUSE SOMEONE WILL ASK. THE ANSWER IS THAT ITS LICENSING IS CONTROVERSIAL ACCORDING TO SOME: E.G. READ \cite{CentreforSpatialLawandPolicy:2014tx}]
     
