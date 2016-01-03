@@ -8,13 +8,6 @@ The availability of reliable relevant open data is central to the definition of 
 
 An assessment of what open data sources were available, made at the time this work was performed, made it possible to consider solving the OLAF problem equivalent to solving three sub-problems {\it p1}, {\it p2} and {\it p3} centred around the same dataset: Ordnance Survey's "Open Names"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html} (referred to as "OSON" in the following), as described below:
 
-\begin{figure}[!h]
-    \begin{floatrow}
-        \ffigbox{\includegraphics[width=1.0\textwidth]{social-machine-mix-3.png}}{\caption{Applicability of address inference - General statistics}\label{fig:social_machine_mix_3}}
-   \end{floatrow}
-\end{figure}
-        
-    
 \begin{itemize}
     \item {\it p1}: Create a list of all existing {\it house numbers} for each road listed in OSON.
     \item {\it p2}: Create a list of all existing {\it house names} for each road listed in OSON.
@@ -78,7 +71,7 @@ Algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} 
 
 82\% of the streets in scope are referenced in LRPP. Executing the inference algorithms on the house numbers sourced from {\it p1.1} creates opportunities for inference for the 74\% of roads and ~113k house numbers. If more house numbers were know, inference could be applied to both (i) further populate streets where inference was already applied and (ii) apply inference for the very first time to streets we know nothing about.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \begin{floatrow}
         \ffigbox{\includegraphics[width=0.50\textwidth]{social-machine-mix-3.png}}{\caption{Applicability of address inference - General statistics}\label{fig:social_machine_mix_3}}
         \ffigbox{\includegraphics[width=0.40\textwidth]{social-machine-mix-2.png}}{\caption{Applicability of address inference - Sample statistics}\label{fig:social_machine_mix_2}}
