@@ -31,7 +31,9 @@ References to existing house names and numbers can be found in a few open data p
 
 \textbf{House number inference} Each culture developed in time a convention for the assignment of house number and names to buildings. In the UK, numbering was likely introduced in the early 18th Century as an alternative to house names. Buildings typically are numbered sequentially starting from 1, corresponding to the extremity of the road that is closest to the centre of the town the street is associated to. Odd numbers are on the left-hand side as seen from the centre, even number on the right-hand side. Intermediate properties usually have a number suffixed by one or more letters, this is typical of larger buildings that at some point in time got divided into more smaller dwellings. 
         
-Simple algorithms, as \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} below, apply this understanding of the numbering system and have a very high probability to infer correctly the existence of house numbers from other, known house numbers\footnote{It should be remembered, though, that centuries of house development and using the described numbering system loosely of course created many exceptions: e.g. there are buildings in the UK whose house number is zero, places where numbers were assigned consecutively on the same side of the street, and house numbers that are simply missing etc.}.  
+Simple algorithms, as \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} below, apply this understanding of the numbering system and have a very high probability to infer correctly the existence of house numbers from other, known house numbers\footnote{It should be remembered, though, that centuries of house development and using the described numbering system loosely of course created many exceptions: e.g. there are buildings in the UK whose house number is zero, places where numbers were assigned consecutively on the same side of the street, and house numbers that are simply missing etc. Other available open data sources enable more complex algorithms, e.g. Ordnance Survey's "Open Maps - Local" includes summary shapes for the buildings in each street, hence enabling the detection of how many buildings are present and hint at which house numbers may be missing.}. Although a few house numbers will be inferred in error, \footnote{Error is caused by three cases: (i) inferred house numbers for buildings that use house names (ii) inferred house numbers that in reality exist only in suffixed form (e.g. 7A instead of 7), and (iii) addresses that are simply missing, e.g. because a building was demolished. We can estimate (i) and (ii) by observing the occurrence of the cases in LRPP. For (i), the frequency of addresses identified by house names instead than house numbers is 2\% of the total for the sampled geographic area. For (ii), the volume of house numbers that exist in suffixed form only is 2.6\% of the total. This is like saying that, out of 50 inferred house numbers, (i) 1 is in reality a house name, and (ii) no more than 2 are instead a series of suffixed numbers instead. Correcting this volume of error is intuitively an acceptable burden to put on the system addressing {\it p1.4}.}.
+
+\vspace{5mm}
 
 \begin{algorithm}[H]
     \KwData{The list of known house numbers in a road}
@@ -47,6 +49,8 @@ Simple algorithms, as \ref{algo:inference-numbers} and \ref{algo:inference-numbe
     \label{algo:inference-numbers}
 \end{algorithm}
 
+\vspace{5mm}
+
 \begin{algorithm}[H]
     \KwData{The list of known house numbers with suffixes in a road}
     \KwResult{The list of inferred house numbers with suffixes in the same road}
@@ -57,12 +61,8 @@ Simple algorithms, as \ref{algo:inference-numbers} and \ref{algo:inference-numbe
     \label{algo:inference-numbers-suffix}
 \end{algorithm}
 
-This simple inference is one of the simplest that can be implemented. Other available open data sources enable more complex algorithms, e.g. Ordnance Survey's "Open Maps - Local" [NEED TO CHECK] includes summary shapes for the buildings in each British street, hence enabling the detection of how many buildings are present and suggest how some house numbers may be missing.
+\vspace{5mm}
 
-{\bf Error in inference.} The described inference criteria add error to the data, made of three components: (i) inferred house numbers that are in reality house names (2) inferred house numbers that in reality exist only in prefixed form instead (e.g. 7A instead of 7), and (iii) addresses that simply do not exist, e.g. because a building was demolished.
-
-We can estimate (i) and (ii) by observing in LRPP. The frequency of addresses identified by a house names instead than a house number is 2\% of the total for the geographic area in scope. This is like saying that 1 out of 50 inferred house numbers was supposed to be a house number instead. The volume of house numbers that exist in prefixed form only instead is [TO CALCULATE, LIKELY INCREDIBLY LOW]. We believe this is an acceptable burden to put on the {\it p1.4} system. 
-        
     \subsubsection{{\it p1.3}: Enable the application of {\it p1.2} by creating the minimum necessary data to trigger more inference.} 
 
         It is clear from the description of problem {\it p1.2} that the inference of house numbers is enabled by the availability of two or more couples of house numbers that act as "seeds" and allow the inference rules to trigger one or more times, for each road.
