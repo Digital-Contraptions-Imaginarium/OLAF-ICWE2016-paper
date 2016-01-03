@@ -187,19 +187,12 @@
 
         The full code is available on GitHub at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/}.
 
-    \subsubsection{Legal aspects}
+    \subsection{Implementation}
 
-    The choices made to get to the above approach may have legal implications that need to be taken into account, if it was decided to deploy the same methodology in the wild and - in particular - if the data that is the result of the process was published under an open licence, as originally intended. 
-    
-    To avoid any legal implications of this work, for the time being we are not publishing the data that was collected through our experiments, but just this paper and the source code that was used to build the system. [IS THIS IN CONTRADDICTION WITH THE CHOICE OF CROWDFLOWER'S DATA FOR EVERYONE? MOREOVER, THEIR SYSTEMS ARE NOT IN EUROPE]
-    
-    What is described below is our early understanding of three of the most interesting legal matters, that would need to be dealt with in future work. 
 
-    \textbf{Personal data and privacy implications.} According to EU Data Protection Directive (95/46/EC\footnote{See \url{http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:31995L0046:en:HTML}.} addresses are to be considered "personal data" even when they are not associated to information about who lives at those addresses, as they are "information relating to an identified or {\it identifiable} natural person" (no italics in the original). The directive describes a framework of good practices for member states to make into law that we would need to comply with.
-    	
-    \textbf{Annotation as derivative work.} Google Maps' terms of service \footnote{See \url{https://www.google.com/intl/en-GB_US/help/terms_maps.html}.} specify a restriction on producing "derivative works of the Content or any part thereof". We believe that asking crowdworkers to examine the Street View pictures and annotate them with the house numbers does not consist in deriving data as it would instead, for example, using a computer vision algorithm to systematically scan the data of pictures, or re-publishing any of machine-readable data that can be retrieved simply by calling Google's APIs. 
-    
-    \textbf{Database of places.} Again from Google's terms of service comes a restriction on using the services to create "a database of places or other local listings information". We believe that the terms allude to the possibility of re-using Google's data to create a competitor product to any of their services, which is not our case. In general, we also consider addresses as "attributes of places" (e.g. 10 Downing Street, London) rather than "places" (e.g. the UK Prime Minister official residence and office, at 10 Downing Street, London).
+(i) ingestion and preparation of the reference data\footnote{See the GitHub repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_reference_data}.}, (ii) inference of house numbers where made possible from LRPP data\footnote{See the GitHub repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_inference_data}.} and (iii) creation of the data for the crowdsourcing component and elaborating its results\footnote{See the GitHub repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab}, {\it data-prep-scripts} and {\it analysis-scripts} folders respectively.}. 
+
+
     	
     \subsubsection{Scalability}
     
