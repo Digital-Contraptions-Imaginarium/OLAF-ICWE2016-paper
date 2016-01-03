@@ -1,12 +1,12 @@
 \section{Applying the platform to the OLAF problem}
 
-The problem of creating an address file for the UK was described in \ref{subs:the-problem-of-creating-an-olaf}. This section describes a possible workflow that can be implemented on the platform and how some of its parts were implemented for evaluation.
+The problem of creating an address file for the UK was described in chapter \ref{subs:the-problem-of-creating-an-olaf}. This section describes a possible workflow that can be implemented on the platform and how some of its parts were implemented for evaluation.
 
-\subsection{How the primary open data sources shape the problem}
+\subsection{How primary open data sources shape the problem}
 
 The availability of reliable relevant open data is central to the definition of the workflow, as it is the main assumption of the work that the best possible use of computation and crowdsourcing is to complement published data rather than creating it from scratch [I THOUGHT I HAD WRITTEN THIS IN THE DOCUMENT BEFORE, WHERE IS IT?]. 
 
-An assessment of what open data sources were available, made at the time this work was performed, made it possible to consider solving the OLAF problem equivalent to solving three sub-problems {\it p1}, {\it p2} and {\it p3} as shown in figure \ref{fig:problem_decomposition_1}, centred around the same dataset: Ordnance Survey's "Open Names"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}, (referred to as "OSON" in the following).
+An assessment of what open data sources were available, made at the time this work was performed, made it possible to consider solving the OLAF problem equivalent to solving three sub-problems {\it p1}, {\it p2} and {\it p3} as shown in figure \ref{fig:problem_decomposition_1}, focused on enhancing the same open dataset: Ordnance Survey's "Open Names"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}, (referred to as "OSON" in the following).
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{problem-decomposition-1.png}
@@ -18,11 +18,9 @@ For simplicity, in the following the terms "place", "road" and "street" are used
 
 OSON "lists definitive place names, roads numbers and postcodes in Great Britain" and is instrumental to the work as it is the open dataset that is closer to the target, contentwise. In other words, OLAF can be seen as an augmentation of OSON, obtained by adding just one dimension to what can be already found in it, that is the list of house names and numbers associated to each of its roads and postcodes. 
     
-Problems {\it p2}\footnote{Note that 98\% of UK addresses are characterised by a house number rather than a house name, so solving {\it p1} is substantially more relevant to achieve completeness in OLAF than {\it p2}.} and {\it p3} are not discussed further in this paper. 
+Problems {\it p2}\footnote{Note that 98\% of UK addresses are characterised by a house number rather than a house name, so solving {\it p1} is substantially more relevant to achieve completeness in OLAF than {\it p2}.} and {\it p3} are not discussed further in this document. 
 
-\subsection{Creating a list of all existing house numbers for each road listed in OSON} 
-
-Problem {\it p1} can be further decomposed in four sub-problems, thanks to the availability of additional open data sources as shown in figure \ref{fig:problem_decomposition_2}.
+Problem {\it p1} can be further decomposed in four sub-problems as shown in figure \ref{fig:problem_decomposition_2}, thanks to the availability of additional open data sources and Land Registry's "Price Paid Data"\footnote{Land Registry is a non-ministerial UK Government department with the responsibility to register the ownership of land and property in England and Wales. See \url{https://www.gov.uk/government/collections/price-paid-data}.} ("LRPP" in the following) in particular.
     
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{problem-decomposition-2.png}
@@ -30,11 +28,19 @@ Problem {\it p1} can be further decomposed in four sub-problems, thanks to the a
 	\label{fig:problem_decomposition_2}
 \end{figure}
 
-\textbf{House numbers from references in other open data} References to existing house names and numbers can be found in several open data publications in the UK. The largest in size, and the one used in the experiments, is Land Registry's "Price Paid Data"\footnote{Land Registry is a non-ministerial UK Government department with the responsibility to register the ownership of land and property in England and Wales. See \url{https://www.gov.uk/government/collections/price-paid-data}.} ("LRPP" in the following). LRPP records every property ownership transfer in England and Wales since 1995, including its full address.
+Problem {\it p1.3} is not discussed in this paper\footnote{Error in inferred house numbers is caused by three situations: (i) inferred house numbers for buildings that use house names instead (ii) inferred house numbers that in reality exist only in suffixed form (e.g. 7A instead of 7), and (iii) addresses that are simply missing, e.g. because a building was demolished. The volume of errors is considered not sufficient to compromise the use of inference. E.g. it can be calculated for (i) that the frequency of addresses identified by house names instead than house numbers is only 2\% of the total for the sampled geographic area. For (ii), the probability that a house number is used only in suffixed format is estimated to be 2.6\%, and that it is used {\it also} in suffixed format an additional 4.1\%. This is like saying that, out of 50 inferred house numbers, (i) 1 is in reality a house name, (ii) 2 are correct but are missing the suffixed variations and 1 is does not exist and should be replaced by its suffixed variations. Moreover, this is a worst case scenario, as the sample we used for the estimates is heavily urbanised.}.
 
-\textbf{House number inference} Each culture developed in time a convention for the assignment of house number and names to buildings. In the UK, it is reported that numbering was likely introduced in the early 18th Century as an alternative to house names. Buildings typically are numbered sequentially starting from 1, corresponding to the extremity of the road that is closest to the centre of the town the street belongs to. Odd numbers are on the left-hand side as seen from the centre, even number on the right-hand side. Intermediate properties usually have a number suffixed by one or more letters, this is typical of larger buildings that at some point in time got divided into more smaller dwellings. 
+\subsection{Creating a list of all existing house numbers for each road listed in OSON} 
+
+LRPP records every property ownership transfer in England and Wales since 1995, including their full addresses. It is just one of the several open data publications in the UK that include addresses, and the largest in size, hence particularly suitable to be used in the experiments.
+
+Although the streets referenced in LRPP may not necessarily exactly match the ones in OSON (e.g. because of slightly different spelling) it is possible to identify most of them without manual intervention and with a good degree of confidence to collect the house numbers as needed.
+
+\subsection{Inferring the existence of house numbers} 
+
+\textbf{Numbering convention} Inferring house numbers is strictly dependent on the numbering convention for the assignment of house number and names to building. Each culture developed its own over time. In the UK, buildings are typically numbered sequentially starting from 1, corresponding to the extremity of the road that is closest to the centre of the town the street belongs to. Odd numbers are on the left-hand side as seen from the centre, even number on the right-hand side. Intermediate properties usually have a number suffixed by one or more letters, this is typical of larger buildings that at some point in time got divided into more smaller dwellings. 
         
-Algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} below apply this understanding of the numbering system and have a very high probability to infer correctly the existence of house numbers from other known house numbers\footnote{It should be remembered, though, that centuries of house development and using the described numbering system loosely of course created many exceptions: e.g. there are buildings in the UK whose house number is zero, places where numbers were assigned consecutively on the same side of the street, and house numbers that are simply missing etc. Other available open data sources enable more complex algorithms, e.g. Ordnance Survey's "Open Maps - Local" includes summary shapes for the buildings in each street, hence enabling the detection of how many buildings are present and hint at which house numbers may be missing.}. Although a few house numbers will be inferred in error, \footnote{Error is caused by three cases: (i) inferred house numbers for buildings that use house names (ii) inferred house numbers that in reality exist only in suffixed form (e.g. 7A instead of 7), and (iii) addresses that are simply missing, e.g. because a building was demolished. We can estimate (i) and (ii) by observing the occurrence of the cases in LRPP. For (i), the frequency of addresses identified by house names instead than house numbers is 2\% of the total for the sampled geographic area. For (ii), the probability that a house number is used only in suffixed format is 2.6\% and that it is used also in suffixed format an additional 4.1\%. This is like saying that, out of 50 inferred house numbers, (i) 1 is in reality a house name, (ii) 2 are correct but are missing the suffixed variations and 1 is does not exist and should be replaced by its suffixed variations. This is a worst case scenario, as the sample we used for the estimates is heavily urban, where suffixes are used more often. The research team believes that, intuitively, correcting this volume of error is an acceptable burden to put on the system addressing {\it p1.4}.}.
+\textbf{Inference algorithms} Algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} below apply this understanding of the numbering system and have a very high probability to infer correctly the existence of house numbers from other known house numbers\footnote{It should be remembered, though, that centuries of house development and using the described numbering system loosely of course created many exceptions: e.g. there are buildings in the UK whose house number is zero, places where numbers were assigned consecutively on the same side of the street, and house numbers that are simply missing etc. Other available open data sources enable more complex algorithms, e.g. Ordnance Survey's "Open Maps - Local" includes summary shapes for the buildings in each street, hence enabling the detection of how many buildings are present and hint at which house numbers may be missing.}. Although a few house numbers will be inferred in error, .
 
 \vspace{5mm}
 
@@ -64,11 +70,11 @@ Algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} 
     \label{algo:inference-numbers-suffix}
 \end{algorithm}
 
-\vspace{5mm}
+\subsection{Enabling the further application of the inference algorithms} 
 
-\textbf{Enabling the application of the inference algorithms} It is clear from the specification of the algorithms that the inference of house numbers is enabled one of these two conditions: (a) the knowledge of two or more different house numbers in the same street and (b) the knowledge of two or more suffixes for the same number.
+It is evident from the specification of the algorithms that the inference of house numbers is enabled one of these two conditions: (a) the knowledge of two or more different house numbers in the same street and (b) the knowledge of two or more suffixes for the same number.
 
-82\% of the streets in scope are referenced in LRPP. Executing the inference algorithms on the house numbers sourced from {\it p1.1} creates opportunities for inference for the 74\% of roads and ~113k house numbers. If more house numbers were know, inference could be applied to both (i) further populate streets where inference was already applied and (ii) apply inference for the very first time to streets we know nothing about.
+\textbf{Potential of inference} 82\% of the streets in scope are referenced in LRPP. Executing the inference algorithms on the house numbers sourced from {\it p1.1} creates opportunities for inference for the 74\% of roads and ~113k house numbers. If more house numbers were known, inference could be applied to both (i) further populate streets where inference was already applied and (ii) apply inference for the very first time to streets we know nothing about.
 
 \begin{figure}[!ht]
     \begin{floatrow}
@@ -77,35 +83,25 @@ Algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} 
    \end{floatrow}
 \end{figure}
         
-The focus going forward is on the latter problem. Using inference to create the largest sets of inferred house numbers translates into finding out the lowest and highest house numbers the algorithms could be applied to\footnote{For simplicity, we did not consider (a) that it is also useful to know if the streets have both odd and even house numbers and (b) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
+\textbf{Enabling inference for roads for which no house numbers are known} The focus going forward is on the latter problem. Using inference to create the largest sets of inferred house numbers translates into finding out the lowest and highest house numbers the algorithms could be applied to\footnote{For simplicity, we did not consider (a) that it is also useful to know if the streets have both odd and even house numbers and (b) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
 
 As no pre-existing open data is available by definition to address this problem, the needed data needs being generated through surveying. 
 
-\subsubsection{{\it p1.4}: Correct the output of {\it p1.2} through surveying.} 
+\subsection{Crowdsourcing house numbers}
 
-Finally, problem {\it p1.4} is about correcting error in {\it p1.2}, typically identifying house numbers that were inferred but do not exist, or that are replaced by house names.
-        
-As no pre-existing open data is available by definition to address this problem, the identification of error and the data needed for correction needs being obtained through surveying. 
+The crowdsourcing component of the platform can be configured to create the house numbers needed to enable inference. 
 
-Problem {\it p1.4} is not discussed in this paper.
+Observing the imagery of a street to identify its lowest and highest house number is not conceptually different than crowdsourced annotation applications that extensively studied in literature. 
 
-\subsection{Crowdsourcing house numbers to enable inference}
+It is worth though to highlight a few differences, though:
 
-The focus of the research described in this paper is the solution of problem {\it p1.3.1}. This is not conceptually different than an annotation problem where for each annotated instance there is a single right answer, with a few key differences:
-    
 \begin{itemize}
         
-    \item For each item subject to annotation, two independent annotations are collected: the lowest and highest visible house numbers. 
+    \item For each item subject to annotation, two independent\footnote{One could argue that the two annotations are not truly independent, as the lowest house number is, by definition, lower than the highest house number. In practical terms, though, the task of surveying a street cannot leverage such mathematical relation. In other words, knowing what the highest house number is won't help the participant finding the lowest house number, as her finding is rather due to the observation of the topology of the street and the progression of nearby house numbers.} annotations rather than one are collected: the lowest and highest visible house numbers\footnote{It is not useful to as a participant to look for the lowest house number and another to look for the highest. By exploring the pictures, participants will naturally focus her research on the extremities of the road, where the relevant house numbers are, without knowing in advance which of the two she is finding first.}.
         
-        There is no use in splitting the task in two, asking one Worker to look for the lowest house number and another to look for the highest. By exploring the pictures of the assigned street the Worker will naturally focus her research on the extremities of the road, where the relevant house numbers are, without knowing in advance which of the two she is finding.
+    \item The information subject to the annotation could be identified as existing, but the annotation may not be possible anyway\footnote{E.g. a participant may be able to identify the first house in a street, but vegetation may hide the number. There is also the possibility that the mapping provider coverage does not include the surveyed street. Moreover, unlike other countries, in the UK local authorities do not provide house number plates to the building owners, so this remains their responsibility. Building owners have the option not to affix any plate at all.}.
         
-        One could argue that the two annotations are not truly independent, as the lowest house number is, by definition, lower than the highest house number. In practical terms, though, the task of surveying a street cannot leverage such mathematical relation. For example, knowing the highest house number won't help the Worker finding the lowest house number, as her finding is rather due toto the observation of the morphology of the street and the progression of nearby house numbers. 
-        
-    \item The information subject to the annotation could be identified as existing, but the annotation may not be possible anyway. E.g. a Worker will be able to see which the first house in a street is from observing the house numbers on nearby buildings, but vegetation may hide the number. There is also the possibility that Google Street View coverage does not include the surveyed street.
-        
-        Moreover, unlike other countries, in the UK local authorities do not provide house number plates to the building owners, so this remains their responsibility. Building owners have the option not to affix any plate at all. 
-        
-    \item There may be nothing to annotate. Because of the nature of the problem, the streets we are using crowdsourcing to collect data about are the ones that appeared little or not at all in pre-existing data, e.g. in Land Registry's Price Paid data over the last 20 years. There likely is a reason for that, e.g. the street may be rural and have few buildings. 
+    \item The road to survey may be no buildings\footnote{Because of how the workflow was defined, crowdsourcing is used on streets of which there is little or no reference in LRPP over the last 20 years. This means that the road is likely rural and have few buildings.}.
         
 \end{itemize}
     
