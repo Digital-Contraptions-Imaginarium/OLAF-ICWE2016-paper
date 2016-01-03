@@ -2,6 +2,10 @@
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
 
+\bibitem{Wearethedata:2015uo}
+{We are the data} (Jul 2015),
+  \url{http://www.slideshare.net/elenasimperl/we-are-the-data}
+
 \bibitem{CentreforSpatialLawandPolicy:2014tx}
 {Centre for Spatial Law and Policy}: {ODbL and OpenStreetMap: Analysis and Use
   Cases}. Tech. rep. (Oct 2014),
@@ -36,7 +40,7 @@ Goodchild, M.F.: {Citizens as sensors: the world of volunteered geography}.
 \bibitem{Hirth:2011fh}
 Hirth, M., Hossfeld, T., Tran-Gia, P.: {Cost-Optimal Validation Mechanisms and
   Cheat-Detection for Crowdsourcing Platforms}. IEEE (2011),
-  \url{http://ieeexplore.ieee.org/articleDetails.jsp?arnumber=5976178}
+  \url{http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=5976178}
 
 \bibitem{pascod}
 {House of Commons, Public Administration Select Commission (PASC)}: {Statistics
@@ -62,8 +66,9 @@ Le, J., Edmonds, A., Hester, V.: {Ensuring quality in crowdsourced search
 \bibitem{Nowak:2010gt}
 Nowak, S., R{\"u}ger, S.: {How reliable are annotations via crowdsourcing: a
   study about inter-annotator agreement for multi-label image annotation}. In:
-  the international conference. pp. 557--566. ACM, New York, New York, USA (Mar
-  2010), \url{http://portal.acm.org/citation.cfm?doid=1743384.1743478}
+  The 11th ACM International Confer- ence on Multimedia Information Retrieval.
+  pp. 557--566. ACM, New York, New York, USA (Mar 2010),
+  \url{http://portal.acm.org/citation.cfm?doid=1743384.1743478}
 
 \bibitem{Oleson:2011tx}
 Oleson, D., Sorokin, A., Laughlin, G.P.: {Programmatic Gold: Targeted and
@@ -99,7 +104,8 @@ Sheng, V.S., Provost, F., Ipeirotis, P.G.: {Get another label? improving data
 \bibitem{Sheng:2008gra}
 Sheng, V.S., Provost, F., Ipeirotis, P.G.: {Get another label? improving data
   quality and data mining using multiple, noisy labelers}. ACM, New York, New
-  York, USA (Aug 2008), \url{http://dl.acm.org/citation.cfm?id=1401890.1401965}
+  York, USA (Aug 2008),
+  \url{http://dl.acm.org/citation.cfm?doid=1401890.1401965}
 
 \bibitem{Snow:2008wo}
 Snow, R., O'Connor, B., Jurafsky, D., Ng, A.Y.: {Cheap and fast---but is it
