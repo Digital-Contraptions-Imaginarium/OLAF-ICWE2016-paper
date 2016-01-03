@@ -16,13 +16,14 @@ WITH
 		SELECT
 			street,
 			house_number_without_suffix,
-			SUM(CASE WHEN suffix IS NULL THEN 1 ELSE 0 END) > 0 AS exists_without_suffix,
-			SUM(CASE WHEN suffix IS NULL THEN 0 ELSE 1 END) > 0 AS exists_with_suffix
+			SUM(CASE WHEN suffix IS NULL THEN 1 ELSE 0 END) AS occurrencies_without_suffix,
+			SUM(CASE WHEN suffix IS NULL THEN 0 ELSE 1 END) AS occurrencies_with_suffix
 		FROM unique_house_numbers
 		GROUP BY street, house_number_without_suffix
 	)
 SELECT
-	SUM(CASE WHEN exists_without_suffix AND NOT exists_with_suffix THEN 1 ELSE 0 END) AS no_that_exist_in_nonsuffixed_form_only,
-	SUM(CASE WHEN NOT exists_without_suffix AND exists_with_suffix THEN 1 ELSE 0 END) AS no_that_exist_in_suffixed_form_only,
-	SUM(CASE WHEN exists_without_suffix AND exists_with_suffix THEN 1 ELSE 0 END) AS no_that_exist_in_both_forms
-FROM house_numbers_with_or_without_suffixes;
+	COUNT(*) AS total,
+	SUM(CASE WHEN (occurrencies_without_suffix > 0) AND (occurrencies_with_suffix = 0) THEN 1 ELSE 0 END) AS no_that_exist_in_nonsuffixed_form_only,
+	SUM(CASE WHEN (occurrencies_without_suffix = 0)  AND (occurrencies_with_suffix > 0) THEN 1 ELSE 0 END) AS no_that_exist_in_suffixed_form_only,
+	SUM(CASE WHEN (occurrencies_without_suffix > 0) AND (occurrencies_with_suffix > 0) THEN 1 ELSE 0 END) AS no_that_exist_in_both_forms
+FROM house_numbers_with_or_without_suffixes
