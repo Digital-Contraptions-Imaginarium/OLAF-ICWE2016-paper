@@ -6,17 +6,17 @@ The problem of creating an address file for the UK was described in \ref{subs:th
 
 The availability of reliable relevant open data is central to the definition of the workflow, as it is the main assumption of the work that the best possible use of computation and crowdsourcing is to complement published data rather than creating it from scratch [I THOUGHT I HAD WRITTEN THIS IN THE DOCUMENT BEFORE, WHERE IS IT?]. 
 
-An assessment of what open data sources were available, made at the time this work was performed, made it possible to consider solving the OLAF problem equivalent to solving three sub-problems {\it p1}, {\it p2} and {\it p3} centred around the same dataset: Ordnance Survey's "Open Names"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html} (referred to as "OSON" in the following), as described below:
+An assessment of what open data sources were available, made at the time this work was performed, made it possible to consider solving the OLAF problem equivalent to solving three sub-problems {\it p1}, {\it p2} and {\it p3} centred around the same dataset: Ordnance Survey's "Open Names"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}, (referred to as "OSON" in the following), as described below:
 
-\begin{itemize}
-    \item {\it p1}: Create a list of all existing {\it house numbers} for each road listed in OSON.
-    \item {\it p2}: Create a list of all existing {\it house names} for each road listed in OSON.
-    \item {\it p3}: Create a list of the associations between each of the house numbers and names above and the list of current\footnote{Postcodes can change. The problem of documenting how addresses change postcode in time is relevant but outside of the scope of research.} postcodes in OSON. 
-\end{itemize}
+\begin{figure}
+	\includegraphics[width=0.95\textwidth]{problem-decomposition-1.png}
+	\caption{This picture should not be here, but apparently it is a nightmare in LaTeX.}
+	\label{fig:problem_decomposition_1}
+\end{figure}
 
 For simplicity, in the following the terms "place", "road" and "street" are used interchangeably, as they are equivalent in OLAF from a data model perspective.
 
-OSON "lists definitive place names, roads numbers and postcodes in Great Britain".} and is instrumental to the work as it is the open dataset that is closer to the target, contentwise. In other words, OLAF can be seen as an augmentation of OSON, obtained by adding just one dimension to what can be already found in it, that is the list of house names and numbers associated to each of its roads and postcodes. 
+OSON "lists definitive place names, roads numbers and postcodes in Great Britain" and is instrumental to the work as it is the open dataset that is closer to the target, contentwise. In other words, OLAF can be seen as an augmentation of OSON, obtained by adding just one dimension to what can be already found in it, that is the list of house names and numbers associated to each of its roads and postcodes. 
     
 Problems {\it p2}\footnote{Note that 98\% of UK addresses are characterised by a house number rather than a house name, so solving {\it p1} is substantially more relevant to achieve completeness in OLAF than {\it p2}.} and {\it p3} are not discussed further in this paper. 
 
