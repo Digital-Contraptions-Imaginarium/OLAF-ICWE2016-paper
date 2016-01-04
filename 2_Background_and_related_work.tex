@@ -41,17 +41,15 @@ The opportunity to create an alternative to PAF is an ideal case study. The term
 
 OLAF is a list of valid UK addresses. For the objectives of this study, and without going into the detail of official standards such as BS7666\footnote{See \url{http://shop.bsigroup.com/ProductDetail/?pid=000000000030127201}.}, it is possible to give a practical, operational definition of what a "valid UK address" is, that is, in addition to the name of the addressee, {\it the set of unambiguous information needed to instruct any delivery service operator to deliver a piece of mail at a given public address (a private house, a commercial establishment etc.), from a consumer perspective}. 
 
-An address has the following properties\footnote{These are actually a subset of BS7666, that includes elements consumers are not required to specify in an address such as the UPRN: a nationally unique number assigned by the UK National Land \& Property Gazetteer to local authorities in order to give a unique identity to any addressable piece of land or property. UPRNs are also not available as open data.}:
+An address is characterised by the following properties\footnote{These are actually a subset of BS7666, that includes elements consumers are not required to specify in an address such as the UPRN: a nationally unique number assigned by the UK National Land \& Property Gazetteer to local authorities in order to give a unique identity to any addressable piece of land or property. UPRNs are also not available as open data.}:
 
-\begin{enumerate}
+\begin{itemize}
     \item A "primary addressable object name" (PAON), e.g. "10". The PAON identifies one property.
     \item A "secondary addressable object name" (SAON), e.g. "Flat 2". The SAON identifies a part of a property and is optional.
-    \item A street name, e.g. "Downing Street".
+    \item A street name\footnote{For simplicity, note that the terms "place", "road" or "street" are used interchangeably here and in the rest of this document, as they are equivalent from an OLAF perspective. The "street name" in the model above, for example, may be the name of a square, etc.}, e.g. "Downing Street".
     \item A town name, e.g. "London".
     \item An UK postcode, e.g. "SW1A 2AA".
-\end{enumerate}
-
-For simplicity, note that the terms "place", "road" or "street" are used interchangeably here and in the rest of this document, as they are equivalent from an OLAF perspective. The "street name" in the model above, for example, may be the name of a square, etc.
+\end{itemize}
 
 The elements of an address are not case sensitive and tolerant of abbreviations and alternative spellings and punctuation used in common British English language (e.g "Downing Street" is the same as "DOWNING ST.").
 
