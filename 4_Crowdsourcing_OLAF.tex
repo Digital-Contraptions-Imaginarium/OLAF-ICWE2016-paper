@@ -87,13 +87,7 @@ As no pre-existing open data is available by definition to address this problem,
 
 \subsection{Crowdsourcing house numbers}
 
-The crowdsourcing component of the platform can be configured to create the house numbers needed to enable inference. Figure \ref{fig:workflow_1} summarises all the components of the workflow described this far and adds a new component: Ordnance Survey's "Open Roads"\footnote{See \url{}.} ("OSOR") that is used to calculate the extremities of the roads that are suggested to the crowdworkers as "points of interest" where the lowest and the highest house numbers are more likely to be found.
-
-\begin{figure}
-	\includegraphics[width=1.0\textwidth]{workflow-1.png}
-	\caption{Crowdsourcing house numbers in context}
-	\label{fig:workflow_1}
-\end{figure}
+The crowdsourcing component of the platform can be configured to create the house numbers needed to enable inference. 
 
 \textbf{Finding house numbers as a labelling exercise} Observing the imagery of a street to identify its lowest and highest house number is not conceptually different than crowdsourced annotation applications that extensively studied in literature. 
 
@@ -108,6 +102,19 @@ It is worth though to highlight a few differences, though:
     \item The road to survey may be no buildings\footnote{Because of how the workflow was defined, crowdsourcing is used on streets of which there is little or no reference in LRPP over the last 20 years. This means that the road is likely rural and have few buildings.}.
         
 \end{itemize}
+
+\subsection{The workflow}
+
+Figure \ref{fig:workflow_1} summarises all the components of workflow described this far.
+
+A new component is added to the picture, that is Ordnance Survey's "Open Roads"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-roads.html}.} ("OSOR"). OSOR is used to calculate the geographical coordinates of the extremities of the roads. These are then transferred into CrowdFlower together with the rest of the referene data, and offered to the crowdworkers as "points of interest", where the lowest and the highest house numbers are more likely to be found. It is just one example of how open data can be used not necessarily as a direct input into the output dataset, but to support the human participants in their function.
+
+\begin{figure}
+	\includegraphics[width=1.0\textwidth]{workflow-1.png}
+	\caption{Crowdsourcing house numbers in context}
+	\label{fig:workflow_1}
+\end{figure}
+
     
 The following is a description of the approach that was used for crowdsourcing addresses, that is common to all experimental conditions that were tested.
 
