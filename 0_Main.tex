@@ -11,7 +11,7 @@
 \usepackage{graphicx}
 \graphicspath{{./images/}}
 
-\title{Using hybrid human-machine workflows to create geospatial data}
+\title{Using hybrid human-machine workflows to create and curate geospatial data}
 
 \author{AUTHOR 1\inst{1}, AUTHOR 2\inst{1} \and AUTHOR 3\inst{2}}
 \institute{INSTITUTE 1 \email{EMAIL FOR AUTHOR 1} \and INSTITUTE 2}
@@ -23,26 +23,35 @@
 \maketitle
 
 \begin{abstract}
-As more open data is published by governments and organisations, the task of creating new data evolves from being a ground-up process - where data is collected and shaped from scratch - to an enhancement process, where pre-existing sources and original additions merge into new, valuable data products. 
+As more open data is published by governments and organisations, the task of creating new or improving existing data evolves from being a ground-up process - where data is collected and shaped from scratch - to an enhancement process, where pre-existing sources and original additions merge into new, valuable data products. 
 
-Machine learning, computer vision and automation in general can't (yet?) address all challenges in this area, and available data, computation and original contributions by human participants - e.g. through crowdsourcing - need integration and enabling each other through hybrid human-machine workflows. 
+Machine learning, computer vision and automation in general can't (yet?) address all challenges in this area. Available data, computation and original contributions by human participants - e.g. through crowdsourcing - need integration and enabling each other through hybrid human-machine workflows. 
 
-In this paper we present an experimental platform that implements this model, aimed specifically at the creation of geospatial data. The platform is then applied to a real world use case: the creation of "OLAF", an open dataset of all valid UK addresses, starting from available open data and augmenting it through computational inference and microtask crowdsourcing. Experimental evaluation show the feasibility and effectiveness of the approach.
+In this paper we present an experimental platform that implements this model, aimed specifically at the creation and curation of geospatial data. The platform is then applied to a real world use case: the creation of "OLAF", an open dataset of all valid UK addresses, starting from available open data, augmenting it through computational inference and complementing it by using microtask crowdsourcing. Experimental evaluation show the feasibility and effectiveness of the approach.
 \end{abstract}
 
 \begin{keywords}
 Crowdsourcing, Geographic Information, hybrid human-machine systems, open data 
 \end{keywords}
 
+[REVIEW NOTES IN THIS DOCUMENT ARE SHOWN IN CAPITALISED LETTERS AND / ON IN SQUARE BRACKETS] 
 \begin{itemize}
+
     \item MAX 18 PAGES
     \item OPEN POINTS
         \begin{itemize}
-            \item XXX
+            \item ELENA'S POINTS AT \url{https://docs.google.com/document/d/1V82Zlk1MPbUGjMDrM4gej9aL50_Sqktth_mVK5B67jA/edit?usp=sharing}
+            \item MANY READERS DID NOT GET THE CONCEPT OF DATA "CURATION" AS A GENERIC TERM TO INCLUDE ALL ACTIVITIES RELATED TO THE DATA MAINTENANCE, FIXING ERRORS, UPDATING ETC.  PERHAPS IT'S NECESSARY TO MOVE TO ANOTHER TERM
+            \item THE "BACKGROUND AND RELATED WORK" SECTION IS ONE OF THE OLDEST AND NEED SUBSTANTIAL RE-EDIT
+            \item WAS IT ELENA TO SUGGEST NOT TO TALK ABOUT OPEN DATA IN THE TITLE AND ABSTRACT? I BELIEVE IT COULD GIVE ME A LITTLE EDGE INSTEAD
+            \item AFTER THE FOCUS WAS SHIFTED TOWARDS PRESENTING THE "PLATFORM" IT IS USEFUL TO HIGHLIGHT THIS CAN BE EASILY USED TO CURATE DATA (E.G. FIX ERRROS) NOT ONLY CREATE IT, AS THE ORIGINAL TITLE SAID. I'VE DONE SOME OF THESE ADJUSTMENTS ALREADY
+            \item USE A DIAGRAM TO ILLUSTRATE THE WORKFLOW
+            \item SIZE OF GRAPHS IN THE EVALUATION SECTION IS OK BUT THE LABELS CAN'T BE READ
         \end{itemize}
     \item WEAKNESSES 
         \begin{itemize}
-            \item STRONG FOCUS ON USE CASE, POOR GENERALISATION, BUT IS IT NECESSARY?, GIVEN THE CONFERENCE'S EXPLICIT INTEREST IN "Use cases and experiences with human computing and crowdsourcing applications" \url{http://icwe2016.inf.usi.ch/topics#crowd}
+            \item THE PAPER FOCUS PROBABLY FAILS BEING BALANCED BETWEEN (A) PRESENTING THE PLATFORM AS A WHOLE, (B) DESCRIBING THE APPROACH TO OLAF IN PARTICULAR AND (C) THE CROWDSOURCING COMPONENT.  
+            \item THE EVALUATION SECTON EVALUATES THE CROWDSOURCING COMPONENT ONLY, AND NOT NECESSARILY THAT ROBUSTLY
         \end{itemize}
 \end{itemize}
 
@@ -54,7 +63,7 @@ Crowdsourcing, Geographic Information, hybrid human-machine systems, open data
 \input{6_Discussion.tex}
 \input{7_Conclusions.tex}
 
-\textbf{Acknowledgements.} [WRITE THIS, NOTHING REVEALING IF THE REVIEW IS BLIND]
+\textbf{Acknowledgements.} [REMOVED IF REVIEW IS BLIND]
 
 \input{compile_bibitems.bbl}
 
