@@ -63,15 +63,16 @@ Haklay, M.: {How good is volunteered geographical information? A comparative
   Planning B Planning and Design  (2010),
   \url{http://www.researchgate.net/publication/46559698_How_good_is_volunteered_geographical_information_A_comparative_study_of_OpenStreetMap_and_Ordnance_Survey_datasets}
 
+\bibitem{Harvey:2012wsa}
+Harvey, F.: {\textbf{To Volunteer or to Contribute Locational Information?
+  Towards Truth in Labeling for Crowdsourced Geographic Information }}. In:
+  Crowdsourcing geographic knowledge: volunteered geographic information (VGI)
+  in theory and practice (2012)
+
 \bibitem{Hirth:2011fh}
 Hirth, M., Hossfeld, T., Tran-Gia, P.: {Cost-Optimal Validation Mechanisms and
   Cheat-Detection for Crowdsourcing Platforms}. IEEE (2011),
   \url{http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=5976178}
-
-\bibitem{pascod}
-{House of Commons, Public Administration Select Commission (PASC)}: {Statistics
-  and Open Data: Harvesting unused knowledge, empowering citizens and improving
-  public services}  (Mar 2014)
 
 \bibitem{Kittur:2008gj}
 Kittur, A., Chi, E.H., Suh, B.: {Crowdsourcing user studies with Mechanical
@@ -144,6 +145,11 @@ Sui, D., Elwood, S., Goodchild, M.: {Crowdsourcing geographic knowledge:
   volunteered geographic information (VGI) in theory and practice}. Volunteered
   Geographic Information (VGI) n Theory and Practice (2012),
   \url{http://books.google.com/books?hl=en&lr=&id=SSbHUpSk2MsC&oi=fnd&pg=PR7&dq=Crowdsourcing+Geographic+Knowledge&ots=J4Ux8AyBa3&sig=HJTMrc9O58rx2dHgBasDRGVcs8s}
+
+\bibitem{pascod}
+{UK House of Commons, Public Administration Select Commission}: {Statistics and
+  Open Data: Harvesting unused knowledge, empowering citizens and improving
+  public services}  (Mar 2014)
 
 \bibitem{postalserviceact2000}
 {UK Parliament}: {Postal Service Act 2000}  (Jul 2000)
