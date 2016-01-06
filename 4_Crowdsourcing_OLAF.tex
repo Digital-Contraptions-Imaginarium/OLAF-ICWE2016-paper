@@ -1,6 +1,6 @@
 \section{Applying the platform to the OLAF problem}
 
-The problem of creating an address file for the UK was described in chapter \ref{subs:the-problem-of-creating-an-olaf}. This section describes a possible workflow that can be implemented on the platform and how some of its parts were implemented for evaluation.
+The problem of creating an address file for the UK was described in chapter \ref{subs:the-problem-of-creating-an-olaf}. [SOMETHING MORE HERE]
 
 \subsection{How primary open data sources shape the problem}
 
@@ -81,7 +81,15 @@ It is evident from the specification of the algorithms that the inference of hou
    \end{floatrow}
 \end{figure}
         
-\textbf{Enabling inference for roads for which no house numbers are known} The focus going forward is on the latter problem. Using inference to create the largest sets of inferred house numbers translates into finding out the lowest and highest house numbers the algorithms could be applied to\footnote{For simplicity, we did not consider (a) that it is also useful to know if the streets have both odd and even house numbers and (b) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
+\textbf{Enabling inference for roads for which no house numbers are known} The focus going forward is on the latter problem. In order to evaluate the efficacy of the platform and identify its strengths and weaknesses, the platform was deployed specifically to address this part of the overall problem and implement the workflow shown in Figure \ref{fig:workflow_2}.
+
+\begin{figure}
+	\includegraphics[width=1.0\textwidth]{workflow-2.png}
+	\caption{UML process diagram of the OLAF-specific workflow developed for the experiments}
+	\label{fig:workflow_2}
+\end{figure}
+
+Using inference to create the largest sets of inferred house numbers translates into finding out the lowest and highest house numbers the algorithms could be applied to\footnote{For simplicity, we did not consider (a) that it is also useful to know if the streets have both odd and even house numbers and (b) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
 
 As no pre-existing open data is available by definition to address this problem, the needed data needs being generated through surveying. 
 
