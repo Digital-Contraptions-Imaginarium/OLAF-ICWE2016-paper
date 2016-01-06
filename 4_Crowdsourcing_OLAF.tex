@@ -36,9 +36,9 @@ Although the streets referenced in LRPP may not necessarily exactly match the on
 
 \subsection{Inferring the existence of house numbers} 
 
-\textbf{Numbering convention} Inferring house numbers is strictly dependent on the numbering convention for the assignment of house number and names to building. Each culture developed its own over time. In the UK, buildings are typically numbered sequentially starting from 1, corresponding to the extremity of the road that is closest to the centre of the town the street belongs to. Odd numbers are on the left-hand side as seen from the centre, even number on the right-hand side. Intermediate properties usually have a number suffixed by one or more letters, this is typical of larger buildings that at some point in time got divided into more smaller dwellings. 
+\textbf{Numbering convention} Inferring house numbers is strictly dependent on the numbering convention for the assignment of house numbers and names to buildings. Each culture developed its own over time. In the UK, buildings are typically numbered sequentially starting from 1, corresponding to the extremity of the road that is closest to the centre of the town. Odd numbers are on the left-hand side, as seen from the centre, while even number are on the right-hand side. House numbers can be suffixed by one or more letters: this is typical of larger buildings that at some point in time got divided into more smaller dwellings. 
         
-\textbf{Inference algorithms} Algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} below apply this understanding of the numbering system and have a very high probability to infer correctly the existence of house numbers from other known house numbers\footnote{It should be remembered, though, that centuries of house development and using the described numbering system loosely of course created many exceptions: e.g. there are buildings in the UK whose house number is zero, places where numbers were assigned consecutively on the same side of the street, and house numbers that are simply missing etc. Other available open data sources enable more complex algorithms, e.g. Ordnance Survey's "Open Maps - Local" includes summary shapes for the buildings in each street, hence enabling the detection of how many buildings are present and hint at which house numbers may be missing.}. Although a few house numbers will be inferred in error, .
+\textbf{Inference algorithms} From knowing the numbering convention, inference can be used to create a large volume of missing house numbers from the observation of known house numbers. Algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} below have a very high probability to infer correctly the existence of house numbers\footnote{It should be remembered, though, that centuries of house development and using the described numbering system loosely of course created many exceptions: e.g. there are buildings in the UK whose house number is zero, places where numbers were assigned consecutively on the same side of the street, and house numbers that are simply missing etc. Other available open data sources enable more complex algorithms, e.g. Ordnance Survey's "Open Maps - Local" includes summary shapes for the buildings in each street, hence enabling the detection of how many buildings are present and hint at which house numbers may be missing.}. 
 
 \vspace{5mm}
 
@@ -68,11 +68,11 @@ Although the streets referenced in LRPP may not necessarily exactly match the on
     \label{algo:inference-numbers-suffix}
 \end{algorithm}
 
-\subsection{Enabling the further application of the inference algorithms} 
+\subsection{Enabling the application of the inference algorithms} 
 
-It is evident from the specification of the algorithms that the inference of house numbers is enabled one of these two conditions: (a) the knowledge of two or more different house numbers in the same street and (b) the knowledge of two or more suffixes for the same number.
+It is evident from the specification of the algorithms that the inference of house numbers is enabled by one of the following two conditions: (a) the knowledge of two or more different house numbers in the same street and (b) the knowledge of two or more suffixes for the same number. To infer the largest set of house numbers for a road it is necessary to have as input its lowest and highest known house numbers\footnote{For simplicity, we did not consider (a) that it is also useful to know if the streets have both odd and even house numbers and (b) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
 
-\textbf{Potential of inference} 82\% of the streets in scope are referenced in LRPP. Executing the inference algorithms on the house numbers sourced from {\it p1.1} creates opportunities for inference for the 74\% of roads and ~113k house numbers. If more house numbers were known, inference could be applied to both (i) further populate streets where inference was already applied and (ii) apply inference for the very first time to streets we know nothing about.
+\textbf{Potential for inference} [SHOULD MOVE THIS TO THE RESULTS] 82\% of the streets in scope are referenced in LRPP. Executing the inference algorithms on the house numbers sourced from {\it p1.1} creates opportunities for inference for the 74\% of roads and ~113k house numbers. If more house numbers were known, inference could be applied to both (i) further populate streets where inference was already applied and (ii) apply inference for the very first time to streets we know nothing about.
 
 \begin{figure}[!ht]
     \begin{floatrow}
@@ -81,17 +81,21 @@ It is evident from the specification of the algorithms that the inference of hou
    \end{floatrow}
 \end{figure}
         
-\textbf{Enabling inference for roads for which no house numbers are known} The focus going forward is on the latter problem. In order to evaluate the efficacy of the platform and identify its strengths and weaknesses, the platform was deployed specifically to address this part of the overall problem and implement the workflow shown in Figure \ref{fig:workflow_2}.
+\textbf{Enabling inference for roads for which no house numbers are known} The focus going forward is on the latter problem. In order to evaluate the platform, the platform was deployed specifically to address this part of the overall problem and implement the workflow shown in Figure \ref{fig:workflow_2}.
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{workflow-2.png}
-	\caption{UML process diagram of the OLAF-specific workflow developed for the experiments}
+	\caption{UML process diagram of the OLAF-specific workflow developed for evaluation}
 	\label{fig:workflow_2}
 \end{figure}
 
-Using inference to create the largest sets of inferred house numbers translates into finding out the lowest and highest house numbers the algorithms could be applied to\footnote{For simplicity, we did not consider (a) that it is also useful to know if the streets have both odd and even house numbers and (b) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
+Figure \ref{fig:workflow_1} shows in more detail which primary and derived datasets were used in each stage of the workflow. A new component is added to the picture, that is Ordnance Survey's "Open Roads"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-roads.html}.} ("OSOR"). OSOR is used to calculate the geographical coordinates of the extremities of the roads where the lowest and the highest house numbers are more likely to be found. These are offered as "points of interest" to support the crowdworkers in their search. It is an example of how open data can be used not necessarily as a direct input into producing the output dataset, but to support the human participants in their function, too.
 
-As no pre-existing open data is available by definition to address this problem, the needed data needs being generated through surveying. 
+\begin{figure}
+	\includegraphics[width=1.0\textwidth]{workflow-1.png}
+	\caption{Crowdsourcing house numbers in context}
+	\label{fig:workflow_1}
+\end{figure}
 
 \subsection{Crowdsourcing house numbers}
 
@@ -111,21 +115,6 @@ It is worth though to highlight a few differences, though:
         
 \end{itemize}
 
-\subsection{The workflow}
-
-Figure \ref{fig:workflow_1} summarises all the components of workflow described this far.
-
-A new component is added to the picture, that is Ordnance Survey's "Open Roads"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-roads.html}.} ("OSOR"). OSOR is used to calculate the geographical coordinates of the extremities of the roads. These are then transferred into CrowdFlower together with the rest of the referene data, and offered to the crowdworkers as "points of interest", where the lowest and the highest house numbers are more likely to be found. It is just one example of how open data can be used not necessarily as a direct input into the output dataset, but to support the human participants in their function.
-
-[SHOULD I USE A MORE FORMAL WORKFLOW NOTATION, SUCH AS UML? IT FEELS LIKE IT MAY BE OVERKILL, THIS IS NOT THAT COMPLICATED IN THE END]
-
-\begin{figure}
-	\includegraphics[width=1.0\textwidth]{workflow-1.png}
-	\caption{Crowdsourcing house numbers in context}
-	\label{fig:workflow_1}
-\end{figure}
-
-    
 The following is a description of the approach that was used for crowdsourcing addresses, that is common to all experimental conditions that were tested.
 
 \subsubsection{Task model} \leavevmode \\ %% Why is this necessary to get a new line?
