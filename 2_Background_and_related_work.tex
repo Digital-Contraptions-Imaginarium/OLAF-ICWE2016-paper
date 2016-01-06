@@ -2,13 +2,27 @@
 
 \subsection{Crowdsourcing geospatial information}
 
-[TO WRITE]
+Geographical Information Systems (GIS) are extensively studied in literature. They are systems designed to capture, manipulate, analyse and visualise geographical data, that traditionally is produced and maintained by professional organisations or institutions such as the NMCAs. 
 
-Crowdsourcing geospatial data is extensively studied in in literature [BLAH BLAH AND REFERENCES], particularly when performed by volunteers, under the name of Volunteered Geographic Information (Volunteered GI, or VGI) [BLAH BLAH AND REFERENCES], also thanks to use cases such as Wikimapia\footnote{\url{http://wikimapia.org/}.} or OpenStreetMap\footnote{\url{http://www.openstreetmap.org/}.}. The latter is likely the best known VGI-based mapping service available today.
+In the early 2000's, the consolidation of web technologies permitted the emergence of publicly available, web-based GIS systems such as OpenStreetMap\footnote{Created in 2004, see \url{https://www.openstreetmap.org}.} ("OSM" in the following), Google Maps\footnote{Launched in 2005, see \url{https://www.google.com/maps}. Google Earth is actually precedent to Google Maps and was launched in 2001, but at the time it was available as a downloadable desktop application only, see \url{https://www.google.co.uk/intl/en_uk/earth/explore/products/desktop.html}.} and Wikimapia\footnote{Created in 2006, see \url{http://wikimapia.org/}.}. At the same time, non-GIS applications started integrating geospatial data into their features, too; e.g. photo publishing platform Flickr\footnote{See \url{https://www.flickr.com/}.} permitted its users to upload and locate their media on interactive maps. 
 
-Crowdsourcing GI is seen a the cost effective and "good enough" solution to [SOMETHING] [REFERENCE]. The phenomenon of {\it Volunteered} Geographic Information (VGI) in particular was studied extensively since the term was coined \cite{Goodchild:2007vt}. Developing understanding of VGI was made possible by the success of services 
+Not only these made GIS technology available to the larger public, but allowed non professionals to contribute to the systems, either augmenting pre-existing data or creating new data, in a transformation that some called "the democratisation of GIS" \cite{Butler:2006fe}. This was around the same time the term "crowdsourcing" itself was first used\footnote{See \url{http://www.wired.com/2006/06/crowds/}.}.
 
-[ELENA: NEED TO ADD DESCRIPTION OF PAST ATTEMPTS AT DOING THIS SUCCESSFULLY]
+Crowdsourcing geospatial data started being the subject of extensive study. In 2007 Michael F. Goodchild examined the phenomenon as a new form of citizen science and coined the term "Volunteered Geographic Information" (Volunteered GI, or VGI) in his "Citizens as sensors: the world of volunteered geography" article \cite{Goodchild:2007vt}. In the same paper, Goodchild started examining the contributors' motivation and also proposed the hypothesis that relying on the crowd could be much more cost-effective at maintaining geospatial data than any of the traditional ways. 
+
+\subsection{Challenges of crowdsourcing geospatial data}
+
+[STILL WRITING HERE, EXPANDING THE TEXT AS I RECOLLECT RELEVANT ITEMS FROM THE LITERATURE REVIEW]
+
+\textbf{Contributor credibility} Both VGI and paid crowdsourcing share the problem of the contributors' credibility. This was examined for example in \cite{Flanagin:2008ck}. Although Flanagin and Metzger's work is focused on VGI only, crowdsourcing GI in general shares the same problems of data gatekeeping, quality control and credibility in general of the contributors and their output. 
+
+\textbf{Data reliability} Even assuming that the contributors are sufficiently credible, the quality of their work could anyway not be sufficiently reliable for the target application. Haklay, for example, performed a comparative study of the data offered by OSM and the British NMCA Ordnance Survey ("OS" in the following) \cite{Haklay:2010vs}. Already in 2008, he found that OSM offered a reasonable accuracy of about 6m and an overlap of up to 100\% of roads in OS' data. The quality of the data was inconsistent, though, and heavily dependent on the contributor rather than the complexity of the areas being surveyed.
+
+Crowdsourcing GI is seen a the cost effective and "good enough" solution to [SOMETHING] [REFERENCE]. 
+
+\textbf{Data completeness} Volunteered GI in particular also has a completeness issue. Haklay attributes this to the loose organisation of the contributors \cite{Haklay:2010vs} [BLAH BLAH] and socioeconomic barriers: at the time when physical survey of the streets was still one of the main channels to create new data, OSM creator Steve Coast stated in an interview that "Nobody wants to do council estates" \cite{Anonymous:2007ux} and in general there will always be places volunteers won't be interested in contributing to.
+
+Moreover, even if completeness could be achieved eventually, depending on the application the data may be useful only if it is timely available.
 
 \subsection{Open data and open Geographic Information}
 
@@ -21,10 +35,6 @@ The availability of such high quality and authoritative sources becomes a substa
 All useful and needed geospatial data is not always made available in the open, though. Demand and offer for open data can be suppressed, for example, due to failure in recognising open data-enabled business models, restrictive legislative and patent systems, or charging for public datasets \cite{shadboltpaf}. The OLAF problem, described later in this document, is a great example of this.
 	
 One of the assumption at the base of our research is that the people's contribution is useful and necessary to work around this blockages. People can be enabled, through technology, to capture and curate data, alongside what is already published by governments and businesses. Human-machine hybrid systems such as the one proposed in this paper can be built to facilitate this process.
-
-\subsection{Challenges of crowdsourcing geospatial data}
-
-[SUMMARY OF LITERATURE ON THIS SUBJECT]
 
 \subsection{The Open Legal Address File (OLAF)}
 \label{subs:the-problem-of-creating-an-olaf}
