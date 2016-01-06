@@ -2,9 +2,17 @@
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
 
+\bibitem{Anonymous:2007ux}
+{The GISPro Interview with OSM founder Steve Coast}. GIS Professional (18)
+  (2007)
+
 \bibitem{Wearethedata:2015uo}
 {We are the data} (Jul 2015),
   \url{http://www.slideshare.net/elenasimperl/we-are-the-data}
+
+\bibitem{Butler:2006fe}
+Butler, D.: {The web-wide world}. Nature  439(7078),  776--778 (2006),
+  \url{http://www.nature.com/doifinder/10.1038/439776a}
 
 \bibitem{CentreforSpatialLawandPolicy:2014tx}
 {Centre for Spatial Law and Policy}: {ODbL and OpenStreetMap: Analysis and Use
@@ -32,10 +40,28 @@ Estes, J.E., Mooneyhan, D.W.: {Of Maps and Myths}. Photogrammetric Engineering
   and Remote Sensing  60(5),  517--524 (May 1994),
   \url{http://gateway.webofknowledge.com/gateway/Gateway.cgi?GWVersion=2&SrcAuth=mekentosj&SrcApp=Papers&DestLinkType=FullRecord&DestApp=WOS&KeyUT=A1994NW25600004}
 
+\bibitem{Flanagin:2008ck}
+Flanagin, A.J., Metzger, M.J.: {The credibility of volunteered geographic
+  information}. GeoJournal  72(3-4),  137--148 (2008),
+  \url{http://link.springer.com/article/10.1007/s10708-008-9188-y/fulltext.html}
+
 \bibitem{Goodchild:2007vt}
 Goodchild, M.F.: {Citizens as sensors: the world of volunteered geography}.
   GeoJournal  (2007),
   \url{http://link.springer.com/article/10.1007/s10708-007-9111-y}
+
+\bibitem{Gottlieb:2012fh}
+Gottlieb, L., Choi, J., Kelm, P., Sikora, T., Friedland, G.: {Pushing the
+  limits of mechanical turk: qualifying the crowd for video geo-location}. In:
+  CrowdMM '12: Proceedings of the ACM multimedia 2012 workshop on Crowdsourcing
+  for multimedia. p.~23. ~ACM Request Permissions, New York, New York, USA (Oct
+  2012), \url{http://dl.acm.org/citation.cfm?doid=2390803.2390815}
+
+\bibitem{Haklay:2010vs}
+Haklay, M.: {How good is volunteered geographical information? A comparative
+  study of OpenStreetMap and Ordnance Survey datasets}. Environment and
+  Planning B Planning and Design  (2010),
+  \url{http://www.researchgate.net/publication/46559698_How_good_is_volunteered_geographical_information_A_comparative_study_of_OpenStreetMap_and_Ordnance_Survey_datasets}
 
 \bibitem{Hirth:2011fh}
 Hirth, M., Hossfeld, T., Tran-Gia, P.: {Cost-Optimal Validation Mechanisms and
@@ -115,7 +141,8 @@ Snow, R., O'Connor, B., Jurafsky, D., Ng, A.Y.: {Cheap and fast---but is it
 
 \bibitem{Sui:2012uf}
 Sui, D., Elwood, S., Goodchild, M.: {Crowdsourcing geographic knowledge:
-  volunteered geographic information (VGI) in theory and practice} (2012),
+  volunteered geographic information (VGI) in theory and practice}. Volunteered
+  Geographic Information (VGI) n Theory and Practice (2012),
   \url{http://books.google.com/books?hl=en&lr=&id=SSbHUpSk2MsC&oi=fnd&pg=PR7&dq=Crowdsourcing+Geographic+Knowledge&ots=J4Ux8AyBa3&sig=HJTMrc9O58rx2dHgBasDRGVcs8s}
 
 \bibitem{postalserviceact2000}
