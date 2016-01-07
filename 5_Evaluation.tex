@@ -1,5 +1,25 @@
 \section{Results}
 
+[SOMETHING ABOUT THE SAMPLE THE APPROACH WAS APPLIED TO, I HAD THIS BEFORE BUT WAS CUT OUT IN EDITING]
+
+\begin{figure}
+	\includegraphics[width=1.0\textwidth]{scope.png}
+	\caption{Scope for the experiments}
+	\label{fig:scope}
+\end{figure}
+
+\subsection{House number inference}
+
+The implementation of the approach described in section \ref{crowdsourcing-olaf} showed that LRPP offers house numbers for 82\% of the streets in scope. The algorithms described in \ref{inference-algorithms} can be applied to the 74\% of roads, generating ~113k house numbers. 
+
+\begin{figure}
+	\includegraphics[width=1.0\textwidth]{social-machine-mix-2.png}
+	\caption{Primary and derived datasets used to implement the workflow}
+	\label{fig:workflow_1}
+\end{figure}
+
+\subsection{BLAH}
+
 The result of the experiment is summarised in tables \ref{table:distribution-of-workers} and \ref{table:judgements-summary} below. 
 
 After three consecutive iterations and a total of 150 judgements per road by 80 Workers, the number of total duplicate judgements by reliable Workers was higher than the number of unique judgements, hence triggering the stop condition. 
