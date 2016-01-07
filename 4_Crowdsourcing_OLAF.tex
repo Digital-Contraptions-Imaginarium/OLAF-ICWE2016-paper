@@ -1,4 +1,5 @@
 \section{Applying the platform to the OLAF problem}
+\label{crowdsourcing-olaf}
 
 The problem of creating an address file for the UK was described in chapter \ref{subs:the-problem-of-creating-an-olaf}. [SOMETHING MORE HERE]
 
@@ -35,6 +36,7 @@ LRPP records every property ownership transfer in England and Wales since 1995, 
 Although the streets referenced in LRPP may not necessarily exactly match the ones in OSON (e.g. because of slightly different spelling) it is possible to identify most of them without manual intervention and with a good degree of confidence to collect the house numbers as needed.
 
 \subsection{Inferring the existence of house numbers} 
+\label{inference-algorithms} 
 
 \textbf{Numbering convention} Inferring house numbers is strictly dependent on the numbering convention for the assignment of house numbers and names to buildings. Each culture developed its own over time. In the UK, buildings are typically numbered sequentially starting from 1, corresponding to the extremity of the road that is closest to the centre of the town. Odd numbers are on the left-hand side, as seen from the centre, while even number are on the right-hand side. House numbers can be suffixed by one or more letters: this is typical of larger buildings that at some point in time got divided into more smaller dwellings. 
         
@@ -72,15 +74,8 @@ Although the streets referenced in LRPP may not necessarily exactly match the on
 
 It is evident from the specification of the algorithms that the inference of house numbers is enabled by one of the following two conditions: (a) the knowledge of two or more different house numbers in the same street and (b) the knowledge of two or more suffixes for the same number. To infer the largest set of house numbers for a road it is necessary to have as input its lowest and highest known house numbers\footnote{For simplicity, we did not consider (a) that it is also useful to know if the streets have both odd and even house numbers and (b) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
 
-\textbf{Potential for inference} [SHOULD MOVE THIS TO THE RESULTS] 82\% of the streets in scope are referenced in LRPP. Executing the inference algorithms on the house numbers sourced from {\it p1.1} creates opportunities for inference for the 74\% of roads and ~113k house numbers. If more house numbers were known, inference could be applied to both (i) further populate streets where inference was already applied and (ii) apply inference for the very first time to streets we know nothing about.
+[SOMETHING HERE] 
 
-\begin{figure}[!ht]
-    \begin{floatrow}
-        \ffigbox{\includegraphics[width=0.50\textwidth]{social-machine-mix-3.png}}{\caption{Applicability of address inference - General statistics}\label{fig:social_machine_mix_3}}
-        \ffigbox{\includegraphics[width=0.40\textwidth]{social-machine-mix-2.png}}{\caption{Applicability of address inference - Sample statistics}\label{fig:social_machine_mix_2}}
-   \end{floatrow}
-\end{figure}
-        
 \textbf{Enabling inference for roads for which no house numbers are known} The focus going forward is on the latter problem. In order to evaluate the platform, the platform was deployed specifically to address this part of the overall problem and implement the workflow shown in Figure \ref{fig:workflow_2}.
 
 \begin{figure}
