@@ -3,15 +3,22 @@
 \usepackage[ruled]{algorithm2e}
 \usepackage{floatrow}
 \usepackage[utf8]{inputenc}
+
 \usepackage{url}
 %% This was made necessary to break` long URLs, no other system I tried worked and a few URLs still fail; see http://tex.stackexchange.com/a/10419/60582 
 \makeatletter
 \g@addto@macro{\UrlBreaks}{\UrlOrds}
 \makeatother
+
+%% This is to be able to use " to do proper double quotes instead of ''
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
 \usepackage{graphicx}
 \graphicspath{{./images/}}
 
-\title{Using hybrid human-machine workflows to create and curate geospatial data}
+\title{Hybrid human-machine workflows to create and curate geospatial data}
 
 \author{AUTHOR 1\inst{1}, AUTHOR 2\inst{1} \and AUTHOR 3\inst{2}}
 \institute{INSTITUTE 1 \email{EMAIL FOR AUTHOR 1} \and INSTITUTE 2}
@@ -43,6 +50,7 @@ Crowdsourcing, Geographic Information, hybrid human-machine systems, open data
             \item TOO LONG
             \item TAKE MORE OPPORTUNITIES IN THE LANGUAGE TO REMOVE FOCUS FROM THE OLAF APPLICATION AND PUT IT ON THE PLATFORM AS A RE-USABLE, VERSATILE TOOL
             \item ELENA'S POINTS AT \url{https://docs.google.com/document/d/1V82Zlk1MPbUGjMDrM4gej9aL50_Sqktth_mVK5B67jA/edit?usp=sharing}, THE ONES NOT IN GREEN ARE OUTSTANDING
+            \item NO REFERENCES TO ANY HUMAN-MACHINE WORKFLOW LITERATURE
             \item MANY READERS DID NOT GET THE CONCEPT OF DATA "CURATION" AS A GENERIC TERM TO INCLUDE ALL ACTIVITIES RELATED TO THE DATA MAINTENANCE, FIXING ERRORS, UPDATING ETC.  PERHAPS IT'S NECESSARY TO MOVE TO ANOTHER TERM
             \item THE "BACKGROUND AND RELATED WORK" SECTION IS ONE OF THE OLDEST AND NEED SUBSTANTIAL RE-EDIT
             \item WAS IT ELENA TO SUGGEST NOT TO TALK ABOUT OPEN DATA IN THE TITLE AND ABSTRACT? I BELIEVE IT COULD GIVE ME A LITTLE EDGE INSTEAD
