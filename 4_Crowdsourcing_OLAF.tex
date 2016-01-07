@@ -1,13 +1,9 @@
 \section{Applying the platform to the OLAF problem}
 \label{crowdsourcing-olaf}
 
-The problem of creating an address file for the UK was described in chapter \ref{subs:the-problem-of-creating-an-olaf}. [SOMETHING MORE HERE]
-
 \subsection{How primary open data sources shape the problem}
 
-The availability of reliable relevant open data is central to the definition of the workflow, as it is the main assumption of the work that the best possible use of computation and crowdsourcing is to complement published data rather than creating it from scratch [I THOUGHT I HAD WRITTEN THIS IN THE DOCUMENT BEFORE, WHERE IS IT?]. 
-
-An assessment of what open data sources were available, made at the time this work was performed, made it possible to consider solving the OLAF problem equivalent to solving three sub-problems {\it p1}, {\it p2} and {\it p3} as shown in figure \ref{fig:problem_decomposition_1}, focused on enhancing the same open dataset: Ordnance Survey's "Open Names"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}, (referred to as "OSON" in the following).
+The availability of reliable relevant open data is central to the definition of the workflow. An assessment of what open data sources were available made it possible to consider solving the OLAF problem equivalent to solving three sub-problems {\it p1}, {\it p2} and {\it p3} as shown in figure \ref{fig:problem_decomposition_1}, focused on enhancing the same open dataset: OS' "Open Names"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}, ("OSON").
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{problem-decomposition-1.png}
@@ -19,7 +15,7 @@ OSON "lists definitive place names, roads numbers and postcodes in Great Britain
     
 Problems {\it p2}\footnote{Note that 98\% of UK addresses are characterised by a house number rather than a house name, so solving {\it p1} is substantially more relevant to achieve completeness in OLAF than {\it p2}.} and {\it p3} are not discussed further in this document. 
 
-Problem {\it p1} can be further decomposed in four sub-problems as shown in figure \ref{fig:problem_decomposition_2}, thanks to the availability of additional open data sources and Land Registry's "Price Paid Data"\footnote{Land Registry is a non-ministerial UK Government department with the responsibility to register the ownership of land and property in England and Wales. See \url{https://www.gov.uk/government/collections/price-paid-data}.} ("LRPP" in the following) in particular.
+Problem {\it p1} can be further decomposed in four sub-problems as shown in figure \ref{fig:problem_decomposition_2}, thanks to the availability of additional open data sources and Land Registry's "Price Paid Data"\footnote{Land Registry is a non-ministerial UK Government department with the responsibility to register the ownership of land and property in England and Wales. See \url{https://www.gov.uk/government/collections/price-paid-data}.} ("LRPP") in particular. LRPP records every property ownership transfer in England and Wales since 1995, including their full addresses. It is just one of the several open data publications in the UK that include addresses, and the largest in size, hence particularly suitable to be used in the experiments.
     
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{problem-decomposition-2.png}
@@ -31,16 +27,14 @@ Problem {\it p1.3} is not discussed in this paper\footnote{Error in inferred hou
 
 \subsection{Creating a list of all existing house numbers for each road listed in OSON} 
 
-LRPP records every property ownership transfer in England and Wales since 1995, including their full addresses. It is just one of the several open data publications in the UK that include addresses, and the largest in size, hence particularly suitable to be used in the experiments.
-
-Although the streets referenced in LRPP may not necessarily exactly match the ones in OSON (e.g. because of slightly different spelling) it is possible to identify most of them without manual intervention and with a good degree of confidence to collect the house numbers as needed.
+Harvesting house numbers from LRPP and associating them to the OSON roads is possibly the simplest stage of the overall workflow, as the source datasets from OS and LR are good quality and well documented. Although the streets referenced in LRPP do not exactly match the ones in OSON (e.g. because of slightly different spelling, or being associated to localities rather than the main towns) it is possible to identify most of them without manual intervention and with a good degree of confidence.
 
 \subsection{Inferring the existence of house numbers} 
 \label{inference-algorithms} 
 
-\textbf{Numbering convention} Inferring house numbers is strictly dependent on the numbering convention for the assignment of house numbers and names to buildings. Each culture developed its own over time. In the UK, buildings are typically numbered sequentially starting from 1, corresponding to the extremity of the road that is closest to the centre of the town. Odd numbers are on the left-hand side, as seen from the centre, while even number are on the right-hand side. House numbers can be suffixed by one or more letters: this is typical of larger buildings that at some point in time got divided into more smaller dwellings. 
+\textbf{House numbering convention} Inferring house numbers is strictly dependent on the numbering convention for the assignment of house numbers and names to buildings. Each culture developed its own over time. In the UK, buildings are typically numbered sequentially starting from 1, corresponding to the extremity of the road that is closest to the centre of the town. Odd numbers are on the left-hand side, as seen from the centre, while even number are on the right-hand side. House numbers can be suffixed by one or more letters: this is typical of larger buildings that at some point in time got divided into more smaller dwellings. 
         
-\textbf{Inference algorithms} From knowing the numbering convention, inference can be used to create a large volume of missing house numbers from the observation of known house numbers. Algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} below have a very high probability to infer correctly the existence of house numbers\footnote{It should be remembered, though, that centuries of house development and using the described numbering system loosely of course created many exceptions: e.g. there are buildings in the UK whose house number is zero, places where numbers were assigned consecutively on the same side of the street, and house numbers that are simply missing etc. Other available open data sources enable more complex algorithms, e.g. Ordnance Survey's "Open Maps - Local" includes summary shapes for the buildings in each street, hence enabling the detection of how many buildings are present and hint at which house numbers may be missing.}. 
+\textbf{Inference algorithms} From knowing the numbering convention, inference can be used to create a large volume of missing house numbers from the observation of known house numbers. Algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} below have a very high probability to infer correctly the existence of house numbers\footnote{It should be considered, though, that centuries of house development and using the described numbering system loosely of course created many exceptions: e.g. there are buildings in the UK whose house number is zero, places where numbers were assigned consecutively on the same side of the street, and house numbers that are simply missing etc. Other available open data sources enable more complex algorithms, e.g. Ordnance Survey's "Open Maps - Local" includes summary shapes for the buildings in each street, hence enabling the detection of how many buildings are present and hint at which house numbers may be missing.}. 
 
 \vspace{5mm}
 
@@ -72,7 +66,7 @@ Although the streets referenced in LRPP may not necessarily exactly match the on
 
 \subsection{Enabling the application of the inference algorithms} 
 
-It is evident from the specification of the algorithms that the inference of house numbers is enabled by one of the following two conditions: (a) the knowledge of two or more different house numbers in the same street and (b) the knowledge of two or more suffixes for the same number. To infer the largest set of house numbers for a road it is necessary to have as input its lowest and highest known house numbers\footnote{For simplicity, we did not consider (a) that it is also useful to know if the streets have both odd and even house numbers and (b) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
+It is evident from the specification of the algorithms that the inference of house numbers is enabled by one of the following two conditions: (a) the knowledge of two or more different house numbers in the same street and (b) the knowledge of two or more suffixes for the same number. The former has the highest potential to generate new house numbers. To infer the largest sets of numbers it is necessary to use as input the road's lowest and highest known house numbers\footnote{For simplicity, we did not consider (a) that it is also useful to know if the streets have both odd and even house numbers and (b) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
 
 In order to evaluate the platform, it was deployed specifically to address this component of the overall problem and implement the workflow shown in Figure \ref{fig:workflow_2}.
 
@@ -82,7 +76,11 @@ In order to evaluate the platform, it was deployed specifically to address this 
 	\label{fig:workflow_2}
 \end{figure}
 
-Figure \ref{fig:workflow_1} shows in more detail which primary and derived datasets were used in each stage of the workflow. A new component is added to the picture, that is Ordnance Survey's "Open Roads"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-roads.html}.} ("OSOR"). OSOR is used to calculate the geographical coordinates of the extremities of the roads where the lowest and the highest house numbers are more likely to be found. These are offered as "points of interest" to support the crowdworkers in their search. It is an example of how open data can be used not necessarily as a direct input into producing the output dataset, but to support the human participants in their function, too.
+The "stop conditions" referred to in the diagram are every condition not strictly related to the function of the system, e.g. the availability of budget. In other words, the workflow is iterated as long as budget is available, even if the aimed outcome is not achieved. 
+
+Figure \ref{fig:workflow_1} shows in more detail which primary and derived datasets were used in each stage of the workflow. A new component is added to the picture, that is OS' "Open Roads"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-roads.html}.} ("OSOR"). OSOR is used to calculate the geographical coordinates of the extremities of the roads where the lowest and the highest house numbers are more likely to be found. These are offered as "points of interest" to support the crowdworkers in their search. It is an example of how open data can be used not necessarily as a direct input into producing the output dataset, but to support the human participants in their function, too.
+
+[CAN WE MAKE THIS PICTURE SMALLER?]
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{workflow-1.png}
@@ -94,9 +92,7 @@ Figure \ref{fig:workflow_1} shows in more detail which primary and derived datas
 
 The crowdsourcing component of the platform can be configured to create the house numbers needed to enable inference. 
 
-\textbf{Finding house numbers as a labelling exercise} Observing the imagery of a street to identify its lowest and highest house number is not conceptually different than crowdsourced annotation applications that extensively studied in literature. 
-
-It is worth though to highlight a few differences, though:
+\textbf{Finding house numbers as a labelling exercise} Observing the imagery of a street to identify its lowest and highest house number is not conceptually different than crowdsourced annotation applications that extensively studied in literature, with the following exceptions:
 
 \begin{itemize}
         
@@ -119,23 +115,23 @@ The following is a description of the approach that was used for crowdsourcing a
 \textbf{Strategy.} 
 The strategy relies on traditional crowdsourcing techniques for image labelling.
 
-\textbf{Crowd $\rightarrow$ Worker.} Each Worker provides judgement on a task by browsing the pictures and declaring if she has found the lowest and the highest house numbers or none. Multiple Workers are asked to identify the house numbers for the same street. The resulting data is chosen through majority voting. We use CrowdFlower as our crowdsourcing platform, presenting each task by embedding customised Google Maps and Google Street View applets into web pages built using the system's templating system. 
+\textbf{Crowd $\rightarrow$ Worker.} Each Worker provides judgement on a task by browsing the pictures and declaring if she has found the lowest and the highest house numbers or none. Multiple Workers are asked to identify the house numbers for the same street. The resulting data is chosen through majority voting.
 
 \textbf{Quality.} Quality is defined by a combination of (a) accuracy of the Workers in responding to tests questions, and (b) consensus in the data submitted through repeated surveys of the same road. Aggregation takes place accordingly as explained below.
 
 \subsubsection{Workers quality}
     
-Probing Workers using conventional test questions - e.g. where the correspondence of the Worker submissions is checked vs the same data collected by the research team as described in \cite{Kittur:2008gj} - would be a powerful tool to identify high vs low quality Workers, but is very expensive in OLAF's case. The task of surveying a street is not trivial, and early anecdotal evidence showed many Workers leaving after performing no more than two or three surveys. To further damage the performance of the system, the ones who stayed longer started cheating, or showed a substantial drop in their performance. This suggested that spending a substantial part of the Worker's effort on test questions - e.g. making one out of three surveys a test - was not affordable.
+Probing Workers using conventional test questions - e.g. where the correspondence of the Worker submissions is checked vs the same data collected by the research team as described in \cite{Kittur:2008gj} - would be a powerful tool to identify high vs low quality contributors, but is very expensive in OLAF's case. The task of surveying a street is not trivial, and early anecdotal evidence from early tests of the implementation showed many Workers leaving after performing no more than two or three surveys. To further damage the performance of the system, the ones who stayed longer started cheating, or showed a substantial drop in their performance. This suggested that spending a substantial part of the Worker's effort on test questions - e.g. making one out of three surveys a test - was not affordable.
 
-Not using any kind of test question is unlikely to be successful, too, and it was explored in previous work such as \cite{DellaPenna:tf} [THIS PAPER ACTUALLY THEORISES THE IMPOSSIBILITY OF GOOD RESULTS WHEN WORKERS HAVE ACCESS TO COMMONLY SHARED PREJUDICE: COULD THIS BE EQUIVALENT TO THE CASE WHERE MY WORKERS ALL END UP BELIEVING THAT SOME EASILY ACCESSIBLE AND VISIBLE CORNER OF A STREET HAS THE HIGHEST HOUSE NUMBER, BUT THE REAL ONE IS ELSEWHERE?]. As an alternative, though, simple test questions can be set up on data that is already available, in a way that is similar to classic anti-spamming techniques like CAPTCHAs as described in \cite{Difallah:2012ty}. In OLAF's case the name of the street itself is used: Workers are asked to copy and paste or type the name of the street as part of their survey. Workers that do not achieve the target accuracy are excluded from further work.
+Not using any kind of test question is unlikely to be successful, too, and it was explored in previous work such as \cite{DellaPenna:tf}. As an alternative, though, simple test questions can be set up on data that is already available, in a way that is similar to classic anti-spamming techniques like CAPTCHAs as described in \cite{Difallah:2012ty}. In OLAF's case the name of the street itself is used: Workers are asked to copy and paste or type the name of the street as part of their survey. Workers that do not achieve the target accuracy are excluded from further work.
 
 \subsubsection{Results aggregation}
 
-Repeated surveys are equivalent to the use of repeated judgement in conventional image labelling exercises. These have been explored extensively in literature and demonstrate that the results produced by a few expensive expert individuals are comparable to what emerges from involving multiple answers by crowds of non-expert Workers, e.g. in \cite{Snow:2008wo} and \cite{Sheng:2008gra}. As the answers are inevitably noisy, different Workers were asked to survey the same road, and their responses are aggregated to decide what is the most likely and truthful observation. 
+Repeated surveys of the same road are equivalent to the use of repeated judgement in conventional image labelling exercises. This practice is described extensively in literature and demonstrate that the results produced by a few expensive expert individuals are comparable to what emerges from involving multiple answers by crowds of non-expert Workers, e.g. in \cite{Snow:2008wo} and \cite{Sheng:2008gra}. As the answers are inevitably noisy, different Workers were asked to survey the same road, and their responses are aggregated to decide what is the most likely and truthful observation. 
         
 Approaches to aggregation are an equally well studied subject, and a majority decision is a natural option (e.g. \cite{Le:2010ug}). The detailed parameters and process of how consensus is defined and calculated are tuned for better performance and address issues specific to the context (e.g. in \cite{Hirth:2011fh}). 
 
-In the case of OLAF, consensus is measured by using Fleiss' kappa statistics for inter-annotator agreement, as described for example in \cite{Nowak:2010gt}. For those streets where the house numbers {\it were} stated to be found, a kappa of 60\% on at least 5 surveys is sufficient consensus (e.g. see \cite{Landis:1977kv}). For those streets where the house numbers were stated {\it not} to be found, a kappa of 80\% on at least 10 surveys is required instead, as it is more likely that unreliable Workers agree in reporting that.
+In the case of OLAF, consensus is measured by using Fleiss' kappa statistics for inter-annotator agreement, as described for example in \cite{Nowak:2010gt}. For those streets where the house numbers {\it were} found, a kappa of 60\% on at least 5 surveys is sufficient consensus (e.g. see \cite{Landis:1977kv}). For those streets where the house numbers were {\it not} found, a kappa of 80\% on at least 10 surveys is required instead, as it is more likely that unreliable Workers agree in reporting that.
 
 The number of 5 and 10 judgements is chosen because they are respectively the minimum number of judgements where 60\% and 80\% kappa can be achieved without the need of an unanimous agreement (4 vs 1 for 60\% and 9 vs 1 for 80\%). 
 
@@ -147,19 +143,19 @@ We sourced all our Workers from CrowdFlower. For each experiment, we created one
 
 \textbf{Geography} Limited to the top 10 contributor countries in CrowdFlower where English is an official or officially recognised language\footnote{See \url{https://success.crowdflower.com/hc/en-us/articles/202703345-Crowd-Demographics}, the identification of the countries was last repeated on 19 December 2015, before the running the experiments described in this paper. The list of countries is: Bangladesh, Canada, India, Malaysia, Netherlands, Pakistan, Philippines, Sri Lanka, United Kingdom and United States of America.}.
 
-\textbf{Skills} We chose Workers from the default CrowdFlower performance category (formerly named "level 2"), that accounts for 29\% of the total population\footnote{See \url{https://success.crowdflower.com/hc/en-us/articles/202703345-Crowd-Demographics}, the calculation was done on 19 December 2015.}[MORE INTERESTING TO KNOW THE VOLUME OF JUDGEMENTS THEY MAKE, THE OLDER CROWDFLOWER UI SEYI USED GAVE THIS INFORMATION].
+\textbf{Skills} We chose Workers from the default CrowdFlower performance category (formerly named "level 2"), that accounts for 29\% of the total population\footnote{See \url{https://success.crowdflower.com/hc/en-us/articles/202703345-Crowd-Demographics}, the calculation was done on 19 December 2015.}.
 
 \textbf{Accuracy} As described in the previous section, as a test question Workers were asked to copy and paste or type the name of the street as part of their submission in each task. Being the question this simple, error was not accepted the requested accuracy was 99\%\footnote{CrowdFlower does not allow the Requester to set target accuracy to 100\%.}.
 
-\textbf{Judgements} In groups of 3 per road, repeated until consensus is reached, by different Workers without repetition. Each worker is allowed to contribute to a maximum of 10\% of the streets available to survey at each round.
+\textbf{Judgements} In groups of 5 per road, repeated until consensus is reached, by different Workers without repetition. Each Worker is allowed to contribute to as many tasks as possible.
 
 \textbf{Behaviour} Each Worker was paid for 1 task, and 1 task is made of 1 street to survey.
 
 \textbf{Reward / Time Limits} The reward was 0.20 US Dollars per task. Workers requiring less than 90 seconds per task were considered at high risk of being malicious and excluded to perform additional tasks. CrowdFlower imposes a time limit of 30 minutes maximum per task.
 
-[TEXT REVISED UP TO HERE]
-
 \subsection{Implementation}
+
+[THIS IS STILL MISSING, WHAT DO I WANT TO WRITE MORE?]
 
 (i) ingestion and preparation of the reference data\footnote{See the GitHub repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_reference_data}.}, (ii) inference of house numbers where made possible from LRPP data\footnote{See the GitHub repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_inference_data}.} and (iii) creation of the data for the crowdsourcing component and elaborating its results\footnote{See the GitHub repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab}, {\it data-prep-scripts} and {\it analysis-scripts} folders respectively.}. 
 
