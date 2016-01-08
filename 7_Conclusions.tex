@@ -1,1 +1,11 @@
 \section{Conclusions}
+
+We have presented a platform to integrate geospatial open data, computation and original human contribution to create original data, using human-machine hybrid workflows. To maximise the platform's scalability and availability, our design has relied as much as possible on the native features of a commercial SaaS crowdsourcing platform: CrowdFlower. We have then implemented the platform to tackle components of one specific real life problem, that is the creation of OLAF: the list of all valid UK addresses. Where the conditions to enable computation were not verified, we deployed the platform to use paid microtask crowdsourcing to create the missing input data.
+
+The evaluation of the platform has showed how critical the crowdsourcing component of the system is, particularly when it needs to support contributors in performing more complex activities than what is common in microtasking, such as surveying interactive imagery of locations. 
+
+Moreover, our experience with CrowdFlower has also showed how, occasionally, a third party crowdsourcing platform's native features may be intrinsically inconsistent with the needs of a worflow, de facto forcing the system designer to write ad hoc software that uses their API instead. This adds complexity and points of failure to the overall solution that could be avoided instead, and possibly compromises scalability and availability. 
+
+Our plans for future work include exploring alternative configurations of pre-existing open data, computation and human contribution where the crowdsourcing component can be designed to achieve a higher degree of success. 
+
+Another interesting direction of research is to both (a) investigate how to re-design our platform in a way that makes the best use of the crowdsourcing provider's native functionality, and (b) work with the crowdsourcing provider to implement those missing features and/or work around the limitations we identified during this work.
