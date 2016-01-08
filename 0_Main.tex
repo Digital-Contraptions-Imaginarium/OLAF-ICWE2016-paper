@@ -4,6 +4,8 @@
 \usepackage{floatrow}
 \usepackage[utf8]{inputenc}
 
+\usepackage{datetime}
+
 \usepackage{url}
 %% This was made necessary to break` long URLs, no other system I tried worked and a few URLs still fail; see http://tex.stackexchange.com/a/10419/60582 
 \makeatletter
@@ -32,9 +34,13 @@
 \begin{abstract}
 As more open data is published by governments and organisations, the task of creating new or improving existing data evolves from being a ground-up process - where data is collected and shaped from scratch - to an enhancement process, where pre-existing sources and original additions merge into new, valuable data products. 
 
-Machine learning, computer vision and automation in general can't (yet?) address all challenges in this area. Available data, computation and original contributions by human participants - e.g. through crowdsourcing - need integration and enabling each other through hybrid human-machine workflows. 
+Automation can't (yet?) address all challenges in this area, and human contribution is still central to the creation of original data. Differently than before, though, we have now the opportunity to use hybrid human-machine workflows to integrate available open data, computation and crowdsourcing that enable each other. 
 
-In this paper we present an experimental platform that implements this model, aimed specifically at the creation and curation of geospatial data. The platform is then applied to a real world use case: the creation of "OLAF", an open dataset of all valid UK addresses, starting from available open data, augmenting it through computational inference and complementing it by using microtask crowdsourcing. Experimental evaluation shows the feasibility, effectiveness and challenges of the approach.
+In this paper we present an experimental platform that implements this model, aimed specifically at the creation and curation of geospatial data. To maximise cost-effectiveness, scalability and availability, we design it to rely only the native features of a chosen crowdsourcing platform: CrowdFlower. 
+
+The platform is then applied to a real world use case: the creation of "OLAF", a dataset of all valid UK addresses, starting from available open data, augmenting it through computational inference and complementing it by using paid microtask crowdsourcing. 
+
+Experimental evaluation shows the feasibility, effectiveness and challenges of the approach.
 \end{abstract}
 
 \begin{keywords}
@@ -44,6 +50,7 @@ Crowdsourcing, Geographic Information, hybrid human-machine systems, open data
 [REVIEW NOTES IN THIS DOCUMENT ARE SHOWN IN CAPITALISED LETTERS AND / ON IN SQUARE BRACKETS] 
 \begin{itemize}
 
+    \item YOU'RE READING A VERSION COMPILED AT \currenttime ON \today.
     \item MAX 18 PAGES
     \item OPEN POINTS
         \begin{itemize}
@@ -65,7 +72,8 @@ Crowdsourcing, Geographic Information, hybrid human-machine systems, open data
 \input{6_Discussion.tex}
 \input{7_Conclusions.tex}
 
-\textbf{Acknowledgements.} [REMOVED IF REVIEW IS BLIND]
+\vspace{5mm}
+\textbf{Acknowledgements.} [OMITTED IF REVIEW IS BLIND]
 
 \input{compile_bibitems.bbl}
 
