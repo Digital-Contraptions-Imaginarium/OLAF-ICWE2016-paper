@@ -2,13 +2,15 @@
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
 
-\bibitem{Anonymous:2007ux}
-{The GISPro Interview with OSM founder Steve Coast}. GIS Professional (18)
-  (2007)
-
 \bibitem{Wearethedata:2015uo}
 {We are the data} (Jul 2015),
   \url{http://www.slideshare.net/elenasimperl/we-are-the-data}
+
+\bibitem{Ballatore:2015kg}
+Ballatore, A., Mooney, P.: {Conceptualising the geographic world: the
+  dimensions of negotiation in crowdsourced cartography}. International Journal
+  of Geographical Information Science pp. 1--18 (Aug 2015),
+  \url{http://www.tandfonline.com/doi/full/10.1080/13658816.2015.1076825}
 
 \bibitem{Butler:2006fe}
 Butler, D.: {The web-wide world}. Nature  439(7078),  776--778 (2006),
@@ -75,6 +77,10 @@ Hirth, M., Hossfeld, T., Tran-Gia, P.: {Cost-Optimal Validation Mechanisms and
   Cheat-Detection for Crowdsourcing Platforms}. IEEE (2011),
   \url{http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=5976178}
 
+\bibitem{Howe:2006uj}
+Howe, J.: {The Rise of Crowdsourcing}. Wired  (Jun 2006),
+  \url{http://www.wired.com/2006/06/crowds/}
+
 \bibitem{Kittur:2008gj}
 Kittur, A., Chi, E.H., Suh, B.: {Crowdsourcing user studies with Mechanical
   Turk}. ACM, New York, New York, USA (Apr 2008),
@@ -118,10 +124,11 @@ Quinn, A.J., Bederson, B.B.: {Human computation: a survey and taxonomy of a
   York, USA (May 2011),
   \url{http://dl.acm.org/citation.cfm?doid=1978942.1979148}
 
-\bibitem{shadboltpaf}
-Shadbolt, N.: {A Cornerstone for Open Data: The Postcode Address File} (Apr
-  2013),
-  \url{http://theodi.org/blog/cornerstone-open-data-postcode-address-file}
+\bibitem{Rice:2012vy}
+Rice, M.T., Paez, F.I., Mulhollen, A.P., Shore, B.M., Caldwell, D.R.:
+  {Crowdsourced Geospatial Data: A Report on the Emerging Phenomena of
+  Crowdsourced and User-Generated Geospatial Data}  (Nov 2012),
+  \url{http://oai.dtic.mil/oai/oai?verb=getRecord&metadataPrefix=html&identifier=ADA576607}
 
 \bibitem{sheng2008get}
 Sheng, V.S., Provost, F., Ipeirotis, P.G.: {Get another label? improving data
