@@ -11,21 +11,36 @@ Crowdsourcing geospatial data became the subject of extensive research. Because 
 \subsection{Challenges of crowdsourcing geospatial data}
 \label{challenges-of-crowdsourcing-geospatial-data}
 
-The challenges of crowdsourcing geospatial data are extensively discussed in literature, but a few in particularly were addressed by our research and are summarised in the following.
+There are a number of recognised challenges in crowdsourcing geospatial data. The most relevant to our research are summarised here.
 
-\textbf{Contributor credibility} Both VGI and paid crowdsourcing share the problem of the contributors' credibility. This was examined for example in \cite{Flanagin:2008ck}. Although Flanagin and Metzger's work is focused on VGI only, crowdsourcing GI in general shares the same problems of data gatekeeping, quality control and credibility in general of the contributors and their output. 
+\textbf{Contributor credibility} 
 
-Harvey \cite{Harvey:2012wsa} also highlights a distinction between VGI and GI that is instead collected as a side-effect of using a service, typically mobile networks, or GPS-enabled applications, that he calls "contributed" GI. Harvey argues that understanding the nature of the sources of crowdsourced data is instrumental to identify possible biases. As an example, he offers a scenario where a local activist group draws on OSM data to show the location of squats, only to find out that the data has been volunteered by the police force. 
 
-\textbf{Data reliability} Even assuming that the contributors are sufficiently credible, the quality of their work may anyway not be sufficiently reliable for the target application. Haklay in \cite{Haklay:2010vs} performed a comparative study of the data offered by OSM and the British NMCA Ordnance Survey ("OS"). Already in 2008, he found that OSM offered a reasonable accuracy of about 6m and an overlap of up to 100\% of roads in OS' data. 
 
-Moreover, although the quality of the data was inconsistent and heavily dependent on the contributor rather than the complexity of the spatial unit, further research in \cite{Haklay:2010wf} suggested that, the volume of contributors - even when working without a central coordination - can be considered as an intrinsic quality assurance measure, in a way analogous to what happens with open source software.
 
-\textbf{Data completeness} Volunteered GI in particular also has a completeness issue. Haklay attributes this to the loose organisation of the contributors and socioeconomic barriers \cite{Haklay:2010vs}: at the time when physical survey of the streets was still one of the main channels to create new data, OSM creator Steve Coast stated in an interview that "Nobody wants to do council estates" \cite{Anonymous:2007ux} and in general there will always be places volunteers won't be interested in contributing to.
+Contributor credibility comprises practices such as gatekeeping and quality control to assure the validity of the data that each individual contributor submits to the system. When data is volunteered in particular, Harvey \cite{Harvey:2012wsa} also argues that bias in the contribution can be an additional issue and understanding its nature is instrumental to success.
 
-Moreover, even if completeness could be achieved eventually, depending on the application the data may be useful only if it is timely available.
+[WE DROPPED THE REFERENCE TO \cite{Flanagin:2008ck}]
 
-\textbf{Motivation and incentives} The volume of literature on VGI in respect to non-volunteered crowdsourcing of GI appears to represent some degree of mistrust in the possibility that the latter kind of system could be successful, or worth exploring in general in respect to traditional practices for geospatial data creation and maintenance.   
+In our research we used paid crowdsourcing also for the opportunity to rely on contributors with no relation with the locations, in the ambition of nullify bias.
+
+\textbf{Data reliability} Even assuming that the contributors are credible, the quality of their output may anyway not be sufficiently reliable for a target application. 
+
+The reliability of mainstreams VGI systems was assessed for example in Haklay in \cite{Haklay:2010vs}, who performed a comparative study of similar data offered by OSM and the British NMCA Ordnance Survey (OS). Already in 2008, only a few years after OSM was started, he found that the system offered a reasonable accuracy of about 6m and an overlap of up to 100\% of roads in OS' data. 
+
+Further research in \cite{Haklay:2010wf} also suggests that the volume of volunteers involved in a project - even when working without a central coordination - can be considered as an intrinsic quality assurance measure, in a way analogous to what happens with open source software and is sometimes called "Linus' Law".
+
+In our research, using paid crowdsourcing gave us more direct control over the volume of contributors we could engage on creating or validating the data and enabled us to use more robust statistical tools.
+
+\textbf{Data completeness} Volunteered GI intrinsically has a completeness issue, exemplified by OSM creator Steve Coast when he once stated in an interview that "Nobody wants to do council estates"\footnote{"The GISPro Interview with OSM founder Steve Coast" GIS Professional, no. 18, 2007.}. Loose organisation of the contributors and socioeconomic barriers \cite{Haklay:2010vs} may never achieve sufficient coverage of those geographical areas volunteers are not interested into.
+
+Moreover, even if completeness can be achieved eventually, some applications may have timing constraints and require the data to be produced within a given timeframe.
+
+Using paid crowdsourcing effectively could be used to complement what is achievable through the re-use of pre-existing data and the best effort of volunteers.
+
+\textbf{Domain conceptualisation} In crowdsourced GI projects contributors usually need to negotiate a shared conceptualisation that defines the domain, such as the concept of what is a road, what is a building etc. \cite{Ballatore:2015kg}. 
+
+In our work we attempted at eliminating this component, by simplifying the contributor task down to making simple observations on interactive imagery of the surveyed locations.
 
 \subsection{Open data and open Geographic Information}
 \label{open-data-and-gi}
