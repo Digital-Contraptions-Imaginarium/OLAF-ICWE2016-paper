@@ -80,8 +80,6 @@ The "stop conditions" referred to in the diagram are every condition not strictl
 
 Figure \ref{fig:workflow_1} shows in more detail which primary and derived datasets were used in each stage of the workflow. A new component is added to the picture, that is OS' "Open Roads"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-roads.html}.} ("OSOR"). OSOR is used to calculate the geographical coordinates of the extremities of the roads where the lowest and the highest house numbers are more likely to be found. These are offered as "points of interest" to support the crowdworkers in their search. It is an example of how open data can be used not necessarily as a direct input into producing the output dataset, but to support the human participants in their function, too.
 
-[CAN WE MAKE THIS PICTURE SMALLER?]
-
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{workflow-1.png}
 	\caption{Primary and derived datasets used to implement the workflow}
@@ -155,4 +153,6 @@ We sourced all our Workers from CrowdFlower. For each experiment, we created one
 
 \subsection{Implementation}
 
-The code implementing the platform can be found in the following GitHub repositories: (i) ingestion and preparation of the reference data\footnote{See the GitHub repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_reference_data}.}, (ii) inference of house numbers where made possible from LRPP data\footnote{See the GitHub repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_inference_data}.} and (iii) creation of the data for the crowdsourcing component and elaborating its results\footnote{See the GitHub repository at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab}, {\it data-prep-scripts} and {\it analysis-scripts} folders respectively.}. 
+\begin{sloppypar} %% see http://tex.stackexchange.com/questions/54946/how-to-break-long-url-in-an-item#comment114992_54949
+The code implementing the platform and detailed documentation can be found in the following GitHub repositories: (i) ingestion and preparation of the reference data at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_reference_data}, (ii) inference of house numbers at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_inference_data}, (iii) instructions video for the Workers at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab_instructions-video} and (iv) preparation of the data for crowdsourcing and elaboration of the results at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab}, in the {\it data-prep-scripts} and {\it analysis-scripts} folders respectively. All code is released under the MIT licence, and any other asset under CC BY 4.0 International.
+\end{sloppypar}
