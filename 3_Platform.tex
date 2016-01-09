@@ -12,17 +12,17 @@ This section describes a platform that was designed to support a possible, gener
 
 \subsection{Overall design principles}
 
-In designing the platform, the design principles below were used as guidance:
+The platform was designed following the principles below:
 
-\textbf{Support to human-machine workflows} The opportunity to exploit hybrid human-machine workflows was a key assumption in our research. The solution was required to automate as much as possible of the data creation / curation process while effectively integrating human components, from the crowdsourcing of part of the data to the administration of the process itself.
+\textbf{Human-machine workflows support} The platform meant to automate as much as possible of the data creation / curation process, while effectively integrating human components, from administration to the crowdsourcing of part.
 
-\textbf{Data re-use} Making the best possible use of pre-existing, reliable data was a key design driver, as described in chapter \ref{open-data-and-gi}.
+\textbf{Data re-use} As mentioned in chapter \ref{open-data-and-gi} we wanted to make the best possible use of pre-existing, high quality and authoritative open data sources.
 
-\textbf{Open source software} It was assumed that most original components required by the solution could be built using open source software only, also to assure that the platform could be re-used by others and preserve any available budget for the compensation of paid contributors to the crowdsourcing campaigns.
+\textbf{Open source software} It was assumed that open source software could be used to implement any required component of the platform. This also saves budget for the compensation of paid contributors.
 
-\textbf{Scalability and high availability} The solution was designed to be highly scalable and available - well beyond the needs of the evaluation described in this document - and suitable for real-world deployment.
+\textbf{Scalability and high availability} The solution was designed to be highly scalable and available, suitable for real-world deployment.
 
-\textbf{Versatility} The solution needed being versatile and suitable to support different workflows, input data sources and target output datasets. Despite the extensive literature, crowdsourcing in particular is still more of a craft than science and no design formula can assure success without experimentation. The design of the solution needed to support different forms of crowdsourcing across its many dimensions: paid contributors vs volunteers, results aggregation, quality assessment etc.
+\textbf{Versatility} The platform had to be versatile and suitable to be applicable to a range of problems describable within the workflow above and leveraging different input data sources as needed. The crowdsourcing component is required to be flexible enough to cater for different models: paid contributors vs volunteers, approaches to results aggregation, quality assessment etc.
 
 \subsection{Crowdsourcing component design principles}
 
