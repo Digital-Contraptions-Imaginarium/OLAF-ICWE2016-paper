@@ -26,41 +26,41 @@ The platform was designed following the principles below:
 
 \subsection{Crowdsourcing component design principles}
 
-The following is a high level description of the crowdsourcing component of the platform according to the dimensions presented by Simperl in \cite{Wearethedata:2015uo}. The description is independent of the specific objective of the system. 
+The crowdsourcing element was intentionally designed to explore characteristics not extensively explored in VGI literature. The hypothesis and ambition is that findings can be complementary to what can be achieved with VGI and enrich the set of tools available to the system designer.
 
-A general observation is that the crowdsourcing element was intentionally designed to explore characteristics that are far from what has been already extensively explored in VGI literature. The hypothesis and ambition is that the finding of the research can be complementary to what can be achieved with VGI and enrich the set of tools available to the system designer.
+The crowdsourcing component, can be described against the dimensions presented by Simperl in \cite{Wearethedata:2015uo}. 
 
 \textbf{What is outsourced} The objective of the outsourcing activity is the production of original geospatial data or the curation (correction, validation etc.) of pre-existing data, wherever the activity can be only performed by human agents. 
 
 The activity typically translates into surveying the locations or examining imagery thereof and record observations (e.g. "how many trees can be seen from longitude x and latitude y?"), or, alternatively, amend some previous recording of the same (e.g. "can you confirm that there is a hospital in Vicarage Rd, Watford, Hertfordshire?"). 
 
-To avoid the cost of performing a physical survey of the locations, participants examine publicly available imagery of the location. This is not uncommon, e.g. OSM uses aerial imagery from Microsoft Bing to let its contributors edit the topology of the streets\footnote{See \url{https://www.openstreetmap.org/edit}.}. The cost effectiveness of humans observers is expected to outperform machine learning, computer vision and automation in general for a few more years, particularly in observing imagery that are ambiguous [IT WOULD BE NICE TO QUOTE SOMEONE HERE].
+To avoid the cost of performing a physical survey of the locations, participants examine publicly available imagery of the location. This is not uncommon, e.g. OSM uses aerial imagery from Microsoft Bing to let its contributors edit the topology of the streets\footnote{See \url{https://www.openstreetmap.org/edit}.}. The cost effectiveness of humans observers is expected to outperform machine learning, computer vision and automation in general for a few more years, particularly in observing ambiguous imagery [SOME QUOTE].
 
-\textbf{Who is the crowd} In VGI, contributors are often associated to the locations they work on, as it is a driver for their motivation and, occasionally, direct knowledge of the place is necessary to assure the completeness of the data. The function of buildings or the location of mailboxes, for example, can't be inferred from observing OSM's aerial imagery. Moreover, the first survey of new locations, e.g. new developments before they are visible on aerial imagery, are often made using specialised equipment, e.g. to record GPS tracks\footnote{E.g. OSM advises against using conventional mobile phone GPS functionality, as it can be very difficult to work out the technical accuracy of a track. See \url{http://wiki.openstreetmap.org/wiki/Recording_GPS_tracks}.}.
+\textbf{Who is the crowd} In VGI, contributors are often associated to the locations they work on, as it is a driver for their motivation and, occasionally, direct knowledge of the place is necessary to assure the completeness of the data. The function of buildings or the location of mailboxes, for example, can't be inferred from observing OSM's aerial imagery. Whenever aerial imagery is not availale, survey of new locations requires the use of specialised equipment, e.g. to record GPS tracks\footnote{E.g. OSM advises against using conventional mobile phone GPS functionality, see \url{http://wiki.openstreetmap.org/wiki/Recording_GPS_tracks}.}.
 
-For our platform, specialised knowledge or skills are not required, nor a connection to the places being surveyed. The crowdsourcing task design intends to assure the contributors detachment from the locations.
+For our platform, specialised knowledge, skills and equipment are not required, nor is a connection to the places being surveyed. The crowdsourcing task design intends to assure the contributors' detachment from the locations.
 
-\textbf{How are the task outsourced} Again, to explore different formulae than what is common in VGI, the crowdsourcing component focuses on implementing micro rather than macro tasks. Wherever possible, one's contribution is limited to max few minutes of work at the computer, the shorter the time required the better. Ideal tasks are closed- rather than open-ended and require no particular thought or focus. The participant has no visibility of the workflow she is part of: e.g. the volume of effort spent in preparing the data, aggregating the responses, assessing their accuracy etc. 
+\textbf{How are the task outsourced} Again, to explore alternative models than what is common in VGI, the crowdsourcing component focuses on implementing micro rather than macro tasks. Wherever possible, one's contribution is limited to a few minutes' work at the computer, the shorter the time the better. Ideal tasks are closed- rather than open-ended and require no particular thinking or focus. Contributors have no visibility of the workflow they are part of: e.g. the preparation of the data, response aggregation etc. 
 
-\textbf{Why do people contribute} In VGI, crowds are made of intrinsically motivated volunteers: open data advocates, geospatial practitioners and individuals who are passionate about geography in general [SOME REFERENCE]. Our contributors are oblivious of the the context of the project, have no personal connection to the locations being surveyed, and likely are unaware of and find no motivation in contributing to the "cause" of open data in general. They perform their tasks driven merely by the financial reward. This is typically the crowd that can be recruited through mainstream crowdwork platforms such as Amazon Mechanical Turk and CrowdFlower. 
+\textbf{Why do people contribute} VGI tend to attract crowds of intrinsically motivated volunteers. Coleman {\it et al.} examined this in detail in \cite{Coleman:2009vd}. 
+
+Our contributors are oblivious of the the context of the project, have no personal connection to the locations being surveyed, and likely are unaware of and find no motivation in contributing to the "cause" of open data in general. They perform their tasks driven merely by the financial reward. This is typically the crowd that can be recruited through mainstream crowdwork platforms such as Amazon Mechanical Turk and CrowdFlower. 
 
 \subsection{Implementation}
 
 \subsubsection{Overview} \leavevmode \\ %% Why is this necessary to get a new line?
 
-From the platform owner point of view, the system is made of:
+From the platform owner's point of view, the system is made of:
 
 \begin{enumerate}
     \item A set of tools to ingest the primary data sources into a reference database.
     \item A set of tools to process the ingested data and derive new / enhanced data computationally, e.g. through statistical inference.
     \item A set of templates to configure the crowdsourcing platform of choice - e.g. Amazon Mechanical Turk or CrowdFlower - and set up the interface the participants use to contribute.
-    \item A set of tools to iteratively (i) identify what the highest priority gaps in the reference and derived data are, (ii) load data into the crowdsourcing platform accordingly, to enable the collection of what is missing and (iii) evaluate the crowd's output, until a stop condition is verified, e.g. the data was successfully collected and at the target level of quality, or, in the case of paid crowdsourcing all budget has been spent.
-    \item A set of tools to consolidate the original, derived and crowdsourced data in one consistent dataset.
+    \item A set of tools iteratively to (i) identify what the highest priority gaps in the reference and derived data are, (ii) load data into the crowdsourcing platform accordingly, to enable the collection of what is missing and (iii) evaluate the crowd's output, until a stop condition is verified, e.g. the data was successfully collected and at the target level of quality, or, in the case of paid crowdsourcing all the budget has been spent.
+    \item A set of tools to consolidate primary, derived and crowdsourced data in one consistent dataset.
 \end{enumerate}
 
-From the participant point of view, the solution presents itself simply as a task hosted on their crowdsourcing platform of choice. The task web page offers interactive maps and a panoramic views of one or more locations to survey, and a form the participant will use to submit her observations, as shown in Figure \ref{fig:virtual-survey-tool-01}. 
-
-At the top of the page, for contributors who are new to the task, instructions are provided, possibly alongside a video used to illustrate the interactive features of the map and panoramic view, as in Figure \ref{fig:virtual-survey-tool-02}.
+From the participant's point of view, the solution presents itself simply as a task hosted on a crowdsourcing platform. The task web page offers interactive maps and panoramic views of one or more locations to survey, and a form contributors use to submit observations, as shown in Figure \ref{fig:virtual-survey-tool-01}. On first access, at the top of the page instructions are provided, possibly alongside a video used to illustrate the interactive features, as in Figure \ref{fig:virtual-survey-tool-02}.
 
 \begin{figure}[!ht]
     \begin{floatrow}
