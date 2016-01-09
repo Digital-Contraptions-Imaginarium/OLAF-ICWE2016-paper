@@ -48,6 +48,12 @@ Flanagin, A.J., Metzger, M.J.: {The credibility of volunteered geographic
   information}. GeoJournal  72(3-4),  137--148 (2008),
   \url{http://link.springer.com/article/10.1007/s10708-008-9188-y/fulltext.html}
 
+\bibitem{Goetz:1gd}
+Goetz, M., Zipf, A.: {Towards Defining a Framework for the Automatic Derivation
+  of 3D CityGML Models from Volunteered Geographic Information}. International
+  Journal of 3-D Information Modeling (IJ3DIM)  1(2),  1--16 (Jan 1),
+  \url{http://services.igi-global.com/resolvedoi/resolve.aspx?doi=10.4018/ij3dim.2012040101}
+
 \bibitem{Goodchild:2007vt}
 Goodchild, M.F.: {Citizens as sensors: the world of volunteered geography}.
   GeoJournal  (2007),
@@ -135,6 +141,11 @@ Rice, M.T., Paez, F.I., Mulhollen, A.P., Shore, B.M., Caldwell, D.R.:
   {Crowdsourced Geospatial Data: A Report on the Emerging Phenomena of
   Crowdsourced and User-Generated Geospatial Data}  (Nov 2012),
   \url{http://oai.dtic.mil/oai/oai?verb=getRecord&metadataPrefix=html&identifier=ADA576607}
+
+\bibitem{Schmid:2012we}
+Schmid, F., Cai, C., Frommberger, L.: {A new micro-mapping method for rapid
+  VGI-ing of small geographic features}. Proc GIScience  (2012),
+  \url{http://www.researchgate.net/profile/Lutz_Frommberger/publication/235720743_A_New_Micro-Mapping_Method_for_Rapid_VGI-ing_of_Small_Geographic_Features/links/02bfe512decf4d863b000000.pdf}
 
 \bibitem{sheng2008get}
 Sheng, V.S., Provost, F., Ipeirotis, P.G.: {Get another label? improving data
