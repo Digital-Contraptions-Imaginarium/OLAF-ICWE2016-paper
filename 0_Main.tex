@@ -32,11 +32,13 @@
 \maketitle
 
 \begin{abstract}
-As more open data is published by governments and organisations, the task of creating new or improving existing data evolves from being a ground-up process - where data is collected and shaped from scratch - to an enhancement process, where pre-existing sources and original additions merge into new, valuable data products. 
+[YOU'RE READING A VERSION COMPILED AT \currenttime ON \today.]
 
-Automation can't (yet?) address all challenges in this area, and human contribution is still central to the creation of original data. Differently than before, though, we have now the opportunity to use hybrid human-machine workflows to integrate available open data, computation and crowdsourcing that enable each other. 
+Until a few years ago, the creation and maintenance of geospatial data inevitably meant deploying expert personnel to survey the locations, with substantial cost and effort. As more open data is published by governments and organisations, new opportunities arise to create data products and services from integrating pre-existing sources with ad hoc additions.
 
-In this paper we present an experimental platform that implements this model, aimed specifically at the creation and curation of geospatial data. To maximise cost-effectiveness, scalability and availability, we design it to rely only the native features of a chosen crowdsourcing platform: CrowdFlower. 
+Human contribution is still central to the creation of original data, and automation cannot address all the challenges, such as replacing us in most surveying tasks. However, we have now the opportunity to create hybrid human-machine workflows in which re-using open data, computation and crowdsourcing enable and enhance each other's output. 
+
+In this paper we present an experimental platform implementing this hybrid model. In the attempt to maximise cost-effectiveness, scalability and availability of the technology component, we design it to rely only on the native features of a chosen crowdsourcing platform: CrowdFlower. 
 
 The platform is then applied to a real world use case: the creation of "OLAF", a dataset of all valid UK addresses, starting from available open data, augmenting it through computational inference and complementing it by using paid microtask crowdsourcing. 
 
@@ -46,23 +48,6 @@ Experimental evaluation shows the feasibility, effectiveness and challenges of t
 \begin{keywords}
 Crowdsourcing, Geographic Information, hybrid human-machine systems, open data 
 \end{keywords}
-
-[REVIEW NOTES IN THIS DOCUMENT ARE SHOWN IN CAPITALISED LETTERS AND / ON IN SQUARE BRACKETS] 
-\begin{itemize}
-
-    \item YOU'RE READING A VERSION COMPILED AT \currenttime ON \today.
-    \item MAX 18 PAGES
-    \item OPEN POINTS
-        \begin{itemize}
-            \item TOO LONG
-            \item NO REFERENCES TO ANY HUMAN-MACHINE WORKFLOW LITERATURE
-            \item MANY READERS DID NOT GET THE CONCEPT OF DATA "CURATION" AS A GENERIC TERM TO INCLUDE ALL ACTIVITIES RELATED TO THE DATA MAINTENANCE, FIXING ERRORS, UPDATING ETC.  PERHAPS IT'S NECESSARY TO MOVE TO ANOTHER TERM
-            \item WAS IT ELENA TO SUGGEST NOT TO TALK ABOUT OPEN DATA IN THE TITLE AND ABSTRACT? I BELIEVE IT COULD GIVE ME A LITTLE EDGE INSTEAD
-            \item AFTER THE FOCUS WAS SHIFTED TOWARDS PRESENTING THE "PLATFORM" IT IS USEFUL TO HIGHLIGHT THIS CAN BE EASILY USED TO CURATE DATA (E.G. FIX ERRROS) NOT ONLY CREATE IT, AS THE ORIGINAL TITLE SAID. I'VE DONE SOME OF THESE ADJUSTMENTS ALREADY
-            \item ALL THE REFERENCE METADATA NEEDS BEING CHECKED, IN PARTICULAR FOR THOSE FIELDS THAT THE REFERENCE MANAGER MAY HAVE GUESSED WRONG
-            \item IF THE REVIEW IS BLIND, WILL THE READMES IN THE GITHUB REPOSITORY REVEAL WHO WE ARE? SHOULD THEY BE HIDDEN?
-        \end{itemize}
-\end{itemize}
 
 \input{1_Introduction.tex}
 \input{2_Background_and_related_work.tex}
