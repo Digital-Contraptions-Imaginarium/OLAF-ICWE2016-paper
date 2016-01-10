@@ -3,47 +3,40 @@
 
 \subsection{How primary open data sources shape the OLAF solution}
 
-The availability of high quality and authoritative open data is central to the definition of the workflow. An assessment of available sources highlighted OS' "Open Names"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}, (OSON) as suitable primary input. OSON "lists definitive place names, roads numbers and postcodes in Great Britain", but not (i) which house names and numbers are in which road, and (ii) which house names and numbers are associate to which postcode. Therefore OLAF can be seen as an augmentation of OSON, obtained by adding those missing components.
+The availability of high quality and authoritative open data is central to the definition of the solution. An assessment of available sources highlighted OS' "Open Names"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}, (OSON) as suitable primary input. 
 
-The production of the missing data can be achieved through running three complementary processes decribed in figure *** as {\it p1}, {\it p2} and {\it p3}. 
+OSON "lists definitive place names, roads numbers and postcodes in Great Britain", but not (i) which house names and numbers are in which road, and (ii) which house names and numbers are associated with which postcode. Therefore, OLAF can be seen as an augmentation of OSON, obtained by adding those missing components.
+
+The production of the missing data can be achieved through running three complementary processes described in figure \ref{fig:problem_decomposition_2} as {\it p1}, {\it p2}\footnote{98\% of UK addresses are characterised by a house number rather than a house name, so tackling {\it p1} is substantially more relevant to OLAF's completeness than {\it p2}.} and {\it p3}. 
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{problem-decomposition-2.png}
-	\caption{A possible decomposition of the OLAF problem - First and second level}
+	\caption{A possible decomposition of OLAF}
 	\label{fig:problem_decomposition_2}
 \end{figure}
 
+The partial availability of the missing data in other primary sources such as Land Registry's "Price Paid Data"\footnote{Land Registry is a non-ministerial UK Government department with the responsibility to register the ownership of land and property in England and Wales. See \url{https://www.gov.uk/government/collections/price-paid-data}.} enables to further refinement of process {\it p1} in four sub-processes {\it p1.1}, {\it p1.2}, {\it p1.3}\footnote{Error in inferred house numbers is caused by three situations: (i) inferred house numbers for buildings that use house names instead (ii) inferred house numbers that in reality exist only in suffixed form (e.g. 7A instead of 7), and (iii) addresses that are simply missing, e.g. because a building was demolished. The volume of errors is considered not sufficient to compromise the use of inference. E.g. it can be calculated for (i) that the frequency of addresses identified by house names instead than house numbers is only 2\% of the total for the sampled geographic area. For (ii), the probability that a house number is used only in suffixed format is estimated to be 2.6\%, and that it is used {\it also} in suffixed format an additional 4.1\%. This is like saying that, out of 50 inferred house numbers, (i) 1 is in reality a house name, (ii) 2 are correct but are missing the suffixed variations and 1 is does not exist and should be replaced by its suffixed variations. Moreover, this is a worst case scenario, as the sample we used for the estimates is heavily urbanised.} and {\it p1.4}. LRPP records every property ownership transfer in England and Wales since 1995, including their full addresses\footnote{LRPP is the largest open data source that include UK addresses.}, from which the inference of addresses is possible.
 
-
-were available made it possible to consider solving the OLAF problem equivalent to solving three sub-problems {\it p1}, {\it p2} and {\it p3} as shown in figure \ref{fig:problem_decomposition_1}, focused on enhancing the same open dataset: OS' "Open Names"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}, (OSON).
-
-
-The availability of reliable relevant open data is central to the definition of the workflow. An assessment of what open data sources were available made it possible to consider solving the OLAF problem equivalent to solving three sub-problems {\it p1}, {\it p2} and {\it p3} as shown in figure \ref{fig:problem_decomposition_1}, focused on enhancing the same open dataset: OS' "Open Names"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}, (OSON).
+{\it p1.1}, {\it p1.2} and {\it p1.4} can be addressed using the generic workflow described in \ref{generic-workflow}, as shown in Figure \ref{fig:workflow_2}.
 
 \begin{figure}
-	\includegraphics[width=1.0\textwidth]{problem-decomposition-1.png}
-	\caption{A possible decomposition of the OLAF problem - First level}
-	\label{fig:problem_decomposition_1}
+	\includegraphics[width=1.0\textwidth]{workflow-2.png}
+	\caption{UML process diagram of the OLAF-specific workflow to create house numbers}
+	\label{fig:workflow_2}
 \end{figure}
 
-    
-Problems {\it p2}\footnote{Note that 98\% of UK addresses are characterised by a house number rather than a house name, so solving {\it p1} is substantially more relevant to achieve completeness in OLAF than {\it p2}.} and {\it p3} are not discussed further in this document. 
+The following describes the components of the worfklow.
 
-Problem {\it p1} can be further decomposed in four sub-problems as shown in figure \ref{fig:problem_decomposition_2}, thanks to the availability of additional open data sources and Land Registry's "Price Paid Data"\footnote{Land Registry is a non-ministerial UK Government department with the responsibility to register the ownership of land and property in England and Wales. See \url{https://www.gov.uk/government/collections/price-paid-data}.} (LRPP) in particular. LRPP records every property ownership transfer in England and Wales since 1995, including their full addresses. It is just one of the several open data publications in the UK that include addresses, and the largest in size, hence particularly suitable to be used in the experiments.
-    
+\subsection{Ingestion of primary data sources} 
 
-Problem {\it p1.3} is not discussed in this paper\footnote{Error in inferred house numbers is caused by three situations: (i) inferred house numbers for buildings that use house names instead (ii) inferred house numbers that in reality exist only in suffixed form (e.g. 7A instead of 7), and (iii) addresses that are simply missing, e.g. because a building was demolished. The volume of errors is considered not sufficient to compromise the use of inference. E.g. it can be calculated for (i) that the frequency of addresses identified by house names instead than house numbers is only 2\% of the total for the sampled geographic area. For (ii), the probability that a house number is used only in suffixed format is estimated to be 2.6\%, and that it is used {\it also} in suffixed format an additional 4.1\%. This is like saying that, out of 50 inferred house numbers, (i) 1 is in reality a house name, (ii) 2 are correct but are missing the suffixed variations and 1 is does not exist and should be replaced by its suffixed variations. Moreover, this is a worst case scenario, as the sample we used for the estimates is heavily urbanised.}.
+Both OSON and LRPP contain references to streets, by their name. The main challenge of harvesting LRPP is to identify unambiguously the streets the house numbers are associated to, across the two datasets. Issues such as differences in spelling (e.g. "Downing Street" instead of "Downing St") and association of the locations not to the same town, but to localities thereof (e.g. "Clapham" instead of "London"), need being managed with common data processing practices.
 
-\subsection{Creating a list of all existing house numbers for each road listed in OSON} 
-
-Harvesting house numbers from LRPP and associating them to the OSON roads is possibly the simplest stage of the overall workflow, as the source datasets from OS and LR are good quality and well documented. Although the streets referenced in LRPP do not exactly match the ones in OSON (e.g. because of slightly different spelling, or being associated to localities rather than the main towns) it is possible to identify most of them without manual intervention and with a good degree of confidence.
-
-\subsection{Inferring the existence of house numbers} 
+\subsection{Inference} 
 \label{inference-algorithms} 
 
-\textbf{House numbering convention} Inferring house numbers is strictly dependent on the numbering convention for the assignment of house numbers and names to buildings. Each culture developed its own over time. In the UK, buildings are typically numbered sequentially starting from 1, corresponding to the extremity of the road that is closest to the centre of the town. Odd numbers are on the left-hand side, as seen from the centre, while even number are on the right-hand side. House numbers can be suffixed by one or more letters: this is typical of larger buildings that at some point in time got divided into more smaller dwellings. 
+\textbf{House numbering convention} Inferring house numbers is strictly dependent on the local numbering convention for the assignment of house numbers and names to buildings. In the UK, buildings are typically numbered sequentially starting from 1, at the extremity of the road closest to the town centre. Odd numbers are on the left-hand side, as seen from the town centre, while even number are on the right-hand side. House numbers can be suffixed by one or more letters: this is typical of larger buildings that at some point in time got divided into smaller dwellings. 
         
-\textbf{Inference algorithms} From knowing the numbering convention, inference can be used to create a large volume of missing house numbers from the observation of known house numbers. Algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} below have a very high probability to infer correctly the existence of house numbers\footnote{It should be considered, though, that centuries of house development and using the described numbering system loosely of course created many exceptions: e.g. there are buildings in the UK whose house number is zero, places where numbers were assigned consecutively on the same side of the street, and house numbers that are simply missing etc. Other available open data sources enable more complex algorithms, e.g. Ordnance Survey's "Open Maps - Local" includes summary shapes for the buildings in each street, hence enabling the detection of how many buildings are present and hint at which house numbers may be missing.}. 
+\textbf{Inference algorithms} Once the numbering convention is known, inference can be used to create a large volume of missing house numbers from the observation of known house numbers. Algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} below have a very high probability of correctly inferring the existence of house numbers\footnote{It should be considered, however, that centuries of house development and loose application of the numbering system created many exceptions: e.g. there are buildings in the UK whose house number is zero, places where numbers were assigned consecutively on the same side of the street, and house numbers that are simply missing etc. Other available open data sources enable more complex algorithms, e.g. Ordnance Survey's "Open Maps - Local" includes summary shapes for the buildings in each street, hence enabling the detection of how many buildings are present and hint at which house numbers may be missing.}. 
 
 \vspace{5mm}
 
@@ -73,19 +66,13 @@ Harvesting house numbers from LRPP and associating them to the OSON roads is pos
     \label{algo:inference-numbers-suffix}
 \end{algorithm}
 
-\subsection{Enabling the application of the inference algorithms} 
+\subsection{Enabling inference for roads with no data} 
 
-It is evident from the specification of the algorithms that the inference of house numbers is enabled by one of the following two conditions: (a) the knowledge of two or more different house numbers in the same street and (b) the knowledge of two or more suffixes for the same number. The former has the highest potential to generate new house numbers. To infer the largest sets of numbers it is necessary to use as input the road's lowest and highest known house numbers\footnote{For simplicity, we did not consider (a) that it is also useful to know if the streets have both odd and even house numbers and (b) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
+Inference of house numbers is enabled by one of the following two conditions: (a) the knowledge of two or more different house numbers in the same street and (b) the knowledge of two or more suffixes for the same number. 
 
-In order to evaluate the platform, it was deployed specifically to address this component of the overall problem and implement the workflow shown in Figure \ref{fig:workflow_2}.
+The former has the highest potential to generate new house numbers, hence we focus the crowdsourcing effort on that only. To infer the largest sets of numbers it is necessary to use as input to algorithm \ref{algo:inference-numbers} the road's lowest and highest known house numbers\footnote{For simplicity, we did not consider (i) that it is also useful to know if the streets have both odd and even house numbers and (ii) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
 
-\begin{figure}
-	\includegraphics[width=1.0\textwidth]{workflow-2.png}
-	\caption{UML process diagram of the OLAF-specific workflow developed for evaluation}
-	\label{fig:workflow_2}
-\end{figure}
-
-The "stop conditions" referred to in the diagram are every condition not strictly related to the function of the system, e.g. the availability of budget. In other words, the workflow is iterated as long as budget is available, even if the aimed outcome is not achieved. 
+\textbf{Stop conditions} The stop conditions referred to in the diagram are every condition not strictly related to the function of the system, e.g. the availability of budget. In other words, the workflow is iterated as long as budget is available, even if the aimed outcome is not achieved. 
 
 Figure \ref{fig:workflow_1} shows in more detail which primary and derived datasets were used in each stage of the workflow. A new component is added to the picture, that is OS' "Open Roads"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-roads.html}.} (OSOR). OSOR is used to calculate the geographical coordinates of the extremities of the roads where the lowest and the highest house numbers are more likely to be found. These are offered as "points of interest" to support the crowdworkers in their search. It is an example of how open data can be used not necessarily as a direct input into producing the output dataset, but to support the human participants in their function, too.
 
@@ -95,7 +82,7 @@ Figure \ref{fig:workflow_1} shows in more detail which primary and derived datas
 	\label{fig:workflow_1}
 \end{figure}
 
-\subsection{Crowdsourcing house numbers}
+\subsection{Data collection in CrowdFlower}
 
 The crowdsourcing component of the platform can be configured to create the house numbers needed to enable inference. 
 
