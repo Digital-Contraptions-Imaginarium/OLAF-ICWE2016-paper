@@ -6,14 +6,18 @@ The workflow was implemented to address OLAF for a specific geographic sample, t
 
 Figure \ref{fig:scope} shows the sample in the context of the overall OLAF problem for the UK. The scope is large enough to be relevant, covering an area of ~113 $ km^2 $ of Greater London that includes 3,982 roads\footnote{Roads were considered in scope if they are classified by OSON as "named roads" and are fully included within any of the five tiles.}. At the same time, it is small enough not to be "big data", and was manageable using conventional data processing tools, e.g. manual visual verification for debugging. Because of London's long and complex history, the city offers a worst case scenario for evaluation, as the shape of the streets is not trivial, they have been subject to a lot of development over time etc. 
 
-\subsection{House number inference}
+\subsection{Ingestion of primary data sources}
 
-The application of the approach described in section \ref{crowdsourcing-olaf} showed that LRPP offers house numbers for 82\% of the streets. The conditions necessary to apply the inference algorithms, before using any crowdsourcing, were verified for the 74\% of roads, generating ~113k house numbers, that is about doubling the volume of the house numbers that were already known. Figure \ref{fig:results-inference} summarises these results.
+The data obtained by implementing the approach described in section \ref{crowdsourcing-olaf} successfully populated house numbers from LRPP for 82\% of the streets in OSON.
+
+\subsection{Inference}
+
+The conditions necessary to apply the inference algorithms, before using any crowdsourcing, were verified for 74\% of roads. Applied to these, algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} generated ~113k house numbers in addition to the already known ~111k. Figure \ref{fig:results-inference} summarises these results.
 
 \begin{figure}[!ht]
     \begin{floatrow}
-        \ffigbox{\includegraphics[width=0.505\textwidth]{scope.png}}{\caption{Scope for the evaluation.}\label{fig:scope}}
-        \ffigbox{\includegraphics[width=0.475\textwidth]{inference-results.png}}{\caption{Results of inference application.}\label{fig:results-inference}}
+        \ffigbox{\includegraphics[width=0.505\textwidth]{scope.png}}{\caption{Scope for the evaluation. Figures are estimates derived from the UK Census 2011.}\label{fig:scope}}
+        \ffigbox{\includegraphics[width=0.475\textwidth]{inference-results.png}}{\caption{Results summary of ingestion and inference.}\label{fig:results-inference}}
    \end{floatrow}
 \end{figure}
 
@@ -21,13 +25,13 @@ The application of the approach described in section \ref{crowdsourcing-olaf} sh
 
 The result of the crowdsourcing experiments is summarised in tables \ref{table:distribution-of-workers} and \ref{table:judgements-summary}. 
 
-A significant volume of Workers, the 18.75\%, failed the simple test of copying the name of the road in the form and were identified as not credible. Their contribution was ignored.
+A significant volume of Workers, 18.75\%, failed the test of copying the name of the road in the form and thus were identified as not credible. Their contribution was ignored.
 
-Three first rounds of 10 judgements per road were required to reach any consensus on the first batch of roads published on CrowdFlower. The judgements of 65 credible workers identified 4 out of the 10 roads as not having house numbers.
+Three rounds of 10 judgements per road were required to reach any consensus on the first batch of roads published on CrowdFlower. The judgements of 65 credible workers identified 4 out of the 10 roads as not having house numbers.
 
-One of the stop conditions was hit, however: after the third round the total number duplicate judgements by credible Workers was already higher than the number of unique judgements, 118 vs 117.
+Those three rounds were sufficient to hit one of the stop conditions: the total number of duplicate judgements by credible Workers was higher than the number of unique judgements, 118 vs 117.
 
-Three additional rounds were run at a later point in time to attempt leveraging a different Worker base. The judgements of 41 additional Workers were collected, achieving consensus on three more roads. The volume of duplicates though was well beyond acceptable to keep the experiment going, hitting the 73.1\% of total.
+Three additional rounds were run at a later point in time to attempt leveraging a different Worker base. The judgements of 41 additional Workers were collected, achieving consensus on 3 more roads. The volume of duplicates,  73.1\% of total, was well beyond acceptable to keep the experiment going at that stage.
 
 \begin{table}[]
 \centering
@@ -53,7 +57,7 @@ All six rounds     & 97                                                         
 \label{table:judgements-summary}
 \end{table}
 
-Diagrams \ref{fig:results-lowest-not-found} to \ref{fig:results-highest-found} show the evolution of the measure of Worker consensus through iterations the roads were subject to in the six performed rounds, in the attempt to identify a trend. 
+Diagrams \ref{fig:results-lowest-not-found} to \ref{fig:results-highest-found} show the evolution of the measure of Worker consensus through iterations, in the attempt to identify a trend. 
 
 \begin{figure}[!ht]
     \begin{floatrow}
@@ -69,10 +73,10 @@ Diagrams \ref{fig:results-lowest-not-found} to \ref{fig:results-highest-found} s
    \end{floatrow}
 \end{figure}
         
-The figures show very heterogeneous results, with the agreement on several of the roads not only failing to converge, but stalling or worsening as new iterations are run and the judgement of more Workers is collected. 
+The figures show heterogeneous results, with agreement on several of the roads not only failing to converge, but stalling or worsening with new iterations. 
 
-Cheating is a very likely cause of consensus failing to achieve high kappa values, in all cases. When aiming at such a high target, even a single wrong house number submitted by a malicious Worker can substantially damage the metric.
+Cheating is a likeliest cause of consensus failing to achieve high kappa values. When aiming at such a high target, even a single wrong house number submitted by a malicious Worker can substantially negatively impact the metric.
 
-Roads that do not have house numbers are the less problematic, confirming the hypothesis that consensus would be easier to achieve in that case. This is likely due to the larger proportion of malicious Workers who state that a road offers no house numbers but happen to be correct by chance.
+Roads that do not have house numbers are the less problematic. This confirms the hypothesis that consensus would be easier to achieve in that case. This is likely due to the larger proportion of malicious Workers who state that a road offers no house numbers but happen to be correct by chance.
 
-Roads that do have house numbers struggle the most to achieve consensus. In addition to cheating, this may be due to Workers who are in good faith but do not assure themselves to have surveyed the street thoroughly and are content when they find house numbers that look "small enough" or "high enough". The divergence of the submissions is captured by Fleiss' kappa that is sensitive to how judgements spread.
+Consensus on roads that do have house numbers is the most difficult to achieve. This may be due to a combination of cheating and sloppy surveying by Workers who are however in good faith. For example, they may be content of finding house numbers that look "small enough" or "high enough". The divergence in submissions for the same road is captured by Fleiss' kappa.
