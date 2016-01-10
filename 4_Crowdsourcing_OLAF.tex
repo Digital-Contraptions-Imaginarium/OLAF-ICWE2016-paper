@@ -17,27 +17,15 @@ The production of the missing data can be achieved through running three complem
 
 The partial availability of the missing data in other primary sources such as Land Registry's "Price Paid Data"\footnote{Land Registry is a non-ministerial UK Government department with the responsibility to register the ownership of land and property in England and Wales. See \url{https://www.gov.uk/government/collections/price-paid-data}.} enables to further refinement of process {\it p1} in four sub-processes {\it p1.1}, {\it p1.2}, {\it p1.3}\footnote{Error in inferred house numbers is caused by three situations: (i) inferred house numbers for buildings that use house names instead (ii) inferred house numbers that in reality exist only in suffixed form (e.g. 7A instead of 7), and (iii) addresses that are simply missing, e.g. because a building was demolished. The volume of errors is considered not sufficient to compromise the use of inference. E.g. it can be calculated for (i) that the frequency of addresses identified by house names instead than house numbers is only 2\% of the total for the sampled geographic area. For (ii), the probability that a house number is used only in suffixed format is estimated to be 2.6\%, and that it is used {\it also} in suffixed format an additional 4.1\%. This is like saying that, out of 50 inferred house numbers, (i) 1 is in reality a house name, (ii) 2 are correct but are missing the suffixed variations and 1 is does not exist and should be replaced by its suffixed variations. Moreover, this is a worst case scenario, as the sample we used for the estimates is heavily urbanised.} and {\it p1.4}. LRPP records every property ownership transfer in England and Wales since 1995, including their full addresses\footnote{LRPP is the largest open data source that include UK addresses.}, from which the inference of addresses is possible.
 
-\subsection{The workflow}
+\subsection{The OLAF-specific workflow}
 
-The generic workflow described in \ref{generic-workflow} can be used to produce parts of OLAF by addressing {\it p1.1}, {\it p1.2} and {\it p1.4}, as shown in Figure \ref{fig:workflow_2}. 
+The generic workflow described in \ref{generic-workflow} can be specialised for OLAF by integrating {\it p1.1}, {\it p1.2} and {\it p1.4}. Figure \ref{fig:workflow_2} shows the new workflow and the mapping against the three processes. 
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{workflow-2.png}
 	\caption{UML process diagram of the OLAF-specific workflow to create house numbers}
 	\label{fig:workflow_2}
 \end{figure}
-
-Figure \ref{fig:workflow_1} describes the same from a more data-centric perspective. A new component is added to the picture, that is OS' "Open Roads"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-roads.html}.} (OSOR). OSOR is used to calculate the geographical coordinates of the extremities of the roads where the lowest and the highest house numbers are more likely to be found. These are offered as "points of interest" to support the crowdworkers in their search. It is an example of how open data can be used not necessarily as a direct input into producing the output dataset, but to support the human participants in their function, too.
-
-\begin{figure}
-	\includegraphics[width=1.0\textwidth]{workflow-1.png}
-	\caption{Primary and derived datasets used to implement the workflow}
-	\label{fig:workflow_1}
-\end{figure}
-
-
-
-
 
 \subsection{Ingestion of primary data sources} 
 
@@ -80,14 +68,21 @@ Both OSON and LRPP contain references to streets, by their name. The main challe
 
 \subsection{Enabling inference for roads with no data} 
 
-Inference of house numbers is enabled by one of the following two conditions: (a) the knowledge of two or more different house numbers in the same street and (b) the knowledge of two or more suffixes for the same number. 
+Inference of house numbers is enabled by one of the following two conditions: (a) the knowledge of two or more different house numbers in the same street and (b) the knowledge of two or more suffixes for the same number. The former has the highest potential to generate new house numbers.
 
-The former has the highest potential to generate new house numbers, hence we focus the crowdsourcing effort on that only. To infer the largest sets of numbers it is necessary to use as input to algorithm \ref{algo:inference-numbers} the road's lowest and highest known house numbers\footnote{For simplicity, we did not consider (i) that it is also useful to know if the streets have both odd and even house numbers and (ii) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
+When dealing with roads for which LRPP provides no data, it is useful to focus crowdsourcing on creating the conditions that enable that potential. To infer the largest sets of numbers it is necessary to use as input to algorithm \ref{algo:inference-numbers} the road's lowest and highest known house numbers\footnote{For simplicity, we did not consider (i) that it is also useful to know if the streets have both odd and even house numbers and (ii) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
 
-\textbf{Stop conditions} The stop conditions referred to in the diagram are every condition not strictly related to the function of the system, e.g. the availability of budget. In other words, the workflow is iterated as long as budget is available, even if the aimed outcome is not achieved. 
+\subsection{Stop conditions} 
 
+The stop conditions referred to in the diagram are every condition not strictly related to the function of the system, e.g. the availability of budget. In other words, the workflow is iterated as long as budget is available, even if the aimed outcome is not achieved. 
 
-\subsection{Data collection in CrowdFlower}
+\subsection{Preparation and augmentation for crowdsourcing} 
+
+The data required by the crowdsourcing component may need preparation and augmentation before being used. In the case of OLAF, an additional primary data source is used to support the Workers in their tasks: OS' "Open Roads"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-roads.html}.} (OSOR). 
+
+OSOR is used to calculate the geographical coordinates of the extremities of the roads where the lowest and the highest house numbers are more likely to be found. These are offered as "points of interest" to support the crowdworkers in their search. It is an example of how open data can be used not necessarily as a direct input into producing the output dataset, but to support the human participants in their function, too.
+
+\subsection{Data collection in CrowdFlower and assessment}
 
 The crowdsourcing component of the platform can be configured to create the house numbers needed to enable inference. 
 
