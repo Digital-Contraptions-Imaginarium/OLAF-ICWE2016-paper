@@ -1,8 +1,10 @@
 \section{Discussion}
 
-From a merely technical perspective, following implementation we believe that the platform confirmed the potential to achieve the same scalability and availability that the third party services it relies on are capable of.
+From a merely technical perspective, the experience of implementing the platform confirmed the potential to achieve the same scalability and availability that the third party services it relies on are capable of.
 
-Conversely, the decision not to deploy custom software components for crowdsourcing and rather rely exclusively on CrowdFlower's native functionality forced us to work around many of their design characteristics. This affected negatively the performance of the overall system to a point compromising its effectiveness and nullifying the advantages. For example, not having the possibility to rely on CrowdFlower's own model for assessing consensus (size of consensus vs Fleiss' kappa) forced us in turn not to use their features that stop Workers to judge more than once the same item, hence causing the overwhelming volume of unwanted, repeated judgements. 
+Conversely, many of CrowdFlower's characteristics ended up not to be compatible with the needs of our model. Avoiding custom Worker-facing software components by relying exclusively on CrowdFlower's native functionality forced us to implement many ad hoc solutions. Several of the workarounds were far from ideal and affected negatively the performance of the overall system to a point compromising its effectiveness and nullifying the advantages. 
+
+For example, not having the possibility to rely on CrowdFlower's consensus model (size vs Fleiss' kappa) did not allow us to calculate it as new judgements came into the system, but only between rounds, possibly collecting more judgements than necessary. In turn, ***** not to use their features that stop Workers to judge more than once the same item, hence causing the overwhelming volume of unwanted, repeated judgements. 
 
 
 The inconsistencies between our crowdsourcing model design and what CrowdFlower made possible were many, from *** to ****. 
