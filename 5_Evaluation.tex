@@ -1,12 +1,14 @@
 \section{Evaluation}
 
-The workflow was implemented on the platform in order to address the problem for a specific geographic sample, that is the same five OS 1:10,000 raster tiles that were randomly selected by Haklay in \cite{Haklay:2010vs} to assess OSM\footnote{The tiles are: TQ37ne, TQ28ne, TQ29nw, TQ26se and TQ36nw.}.
+\subsection{Scope}
 
-Figure \ref{fig:scope} shows the sample in the context of the overall OLAF problem. The sample is small enough in size to allow, if necessary, manual visual verification of the same streets the crowdworkers worked on, but anyway covers a large area of ~113 $ km^2 $ of Greater London, including 3,982 roads\footnote{The roads that were considered in scope are the ones that are classified by OSON as "named roads" and are fully included within any of the five tiles.}. Because of its long history, London offers a worst case scenario for evaluation, as the shape of the streets is not trivial, the streets have been subject to a lot of development over time etc. 
+The workflow was implemented to address OLAF for a specific geographic sample, that is the same five OS 1:10,000 raster tiles that were previously used in literature to analyse the performance of GI crowdsourcing and originally selected by Haklay in \cite{Haklay:2010vs} to assess OSM\footnote{The tiles are: TQ37ne, TQ28ne, TQ29nw, TQ26se and TQ36nw.}.
+
+Figure \ref{fig:scope} shows the sample in the context of the overall OLAF problem for the UK. The scope is large enough to be relevant, covering an area of ~113 $ km^2 $ of Greater London that includes 3,982 roads\footnote{Roads were considered in scope if they are classified by OSON as "named roads" and are fully included within any of the five tiles.}. At the same time, it is small enough not to be "big data", and was manageable using conventional data processing tools, e.g. manual visual verification for debugging. Because of London's long and complex history, the city offers a worst case scenario for evaluation, as the shape of the streets is not trivial, they have been subject to a lot of development over time etc. 
 
 \subsection{House number inference}
 
-The implementation of the approach described in section \ref{crowdsourcing-olaf} showed that LRPP offers house numbers for 82\% of the streets in scope. The algorithms described in \ref{inference-algorithms} can be applied to the 74\% of roads, generating ~113k house numbers. Figure \ref{fig:results-inference} shows [SOMETHING].
+The application of the approach described in section \ref{crowdsourcing-olaf} showed that LRPP offers house numbers for 82\% of the streets. The conditions necessary to apply the inference algorithms, before using any crowdsourcing, were verified for the 74\% of roads, generating ~113k house numbers, that is about doubling the volume of the house numbers that were already known. Figure \ref{fig:results-inference} summarises these results.
 
 \begin{figure}[!ht]
     \begin{floatrow}
@@ -17,29 +19,27 @@ The implementation of the approach described in section \ref{crowdsourcing-olaf}
 
 \subsection{House number crowdsourcing}
 
-The result of the crowdsourcing experiments is summarised in tables \ref{table:distribution-of-workers} and \ref{table:judgements-summary} below. 
+The result of the crowdsourcing experiments is summarised in tables \ref{table:distribution-of-workers} and \ref{table:judgements-summary}. 
 
-After three consecutive iterations and a total of 150 judgements per road by 80 Workers, the number of total duplicate judgements by reliable Workers was higher than the number of unique judgements, hence triggering the stop condition. 
+A significant volume of Workers, the 18.75\%, failed the simple test of copying the name of the road in the form and were identified as not credible. Their contribution was ignored.
 
-18.75\% of Workers failed the simple test of copying the name of the road in the form, and were not considered trustworthy. 
+Three first rounds of 10 judgements per road were required to reach any consensus on the first batch of roads published on CrowdFlower. The judgements of 65 credible workers identified 4 out of the 10 roads as not having house numbers.
 
-Agreement could be reached on four streets only at the end of those three rounds. All roads were identified as not having house numbers.
+One of the stop conditions was hit, however: after the third round the total number duplicate judgements by credible Workers was already higher than the number of unique judgements, 118 vs 117.
 
-Collection was reprised at a later point in time to attempt leveraging a different Worker base, through three additional rounds. The judgements of 41 additional Workers were collected, achieving consensus on three more roads. 
+Three additional rounds were run at a later point in time to attempt leveraging a different Worker base. The judgements of 41 additional Workers were collected, achieving consensus on three more roads. The volume of duplicates though was well beyond acceptable to keep the experiment going, hitting the 73.1\% of total.
 
 \begin{table}[]
 \centering
-\begin{tabular}{|l|c|c|l|l|}
+\begin{tabular}{|l|c|c|l|l|l|}
 \hline
-                   & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Tot. no. of \\ Workers\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No. of new \\ Workers\end{tabular}} & \begin{tabular}[c]{@{}l@{}}No. of \\ reliable\\ Workers\end{tabular} & \begin{tabular}[c]{@{}l@{}}\% of \\ reliable \\ Workers\end{tabular} \\ \hline
-First three rounds & 80                                                                                  & -                                                                                  & 65                                                                   & 81.25\%                                                              \\ \hline
-All six rounds     & 121                                                                                 & 41                                                                                 & 97                                                                   & 80.16\%                                                              \\ \hline
+                   & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Tot. no. of \\ Workers\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No. of new \\ Workers\end{tabular}} & \begin{tabular}[c]{@{}l@{}}No. of \\ credible\\ Workers\end{tabular} & \begin{tabular}[c]{@{}l@{}}\% of \\ credible \\ Workers\end{tabular} & \begin{tabular}[c]{@{}l@{}}\% of duplicate \\ judgements\end{tabular} \\ \hline
+First three rounds & 80                                                                                  & -                                                                                  & 65                                                                   & 81.25\%                                                              & 50.2\%                                                                \\ \hline
+All six rounds     & 121                                                                                 & 41                                                                                 & 97                                                                   & 80.16\%                                                              & 73.1\%                                                                \\ \hline
 \end{tabular}
 \caption{Distribution of Workers across rounds}
 \label{table:distribution-of-workers}
 \end{table}
-
-
 
 \begin{table}[]
 \centering
@@ -53,7 +53,7 @@ All six rounds     & 97                                                         
 \label{table:judgements-summary}
 \end{table}
 
-The graph below illustrates how Fleiss kappa variated...
+Diagrams \ref{fig:results-lowest-not-found} to \ref{fig:results-highest-found} show the evolution of the measure of Worker consensus through iterations the roads were subject to in the six performed rounds, in the attempt to identify a trend. 
 
 \begin{figure}[!ht]
     \begin{floatrow}
@@ -69,3 +69,10 @@ The graph below illustrates how Fleiss kappa variated...
    \end{floatrow}
 \end{figure}
         
+The figures show very heterogeneous results, with the agreement on several of the roads not only failing to converge, but stalling or worsening as new iterations are run and the judgement of more Workers is collected. 
+
+Cheating is a very likely cause of consensus failing to achieve high kappa values, in all cases. When aiming at such a high target, even a single wrong house number submitted by a malicious Worker can substantially damage the metric.
+
+Roads that do not have house numbers are the less problematic, confirming the hypothesis that consensus would be easier to achieve in that case. This is likely due to the larger proportion of malicious Workers who state that a road offers no house numbers but happen to be correct by chance.
+
+Roads that do have house numbers struggle the most to achieve consensus. In addition to cheating, this may be due to Workers who are in good faith but do not assure themselves to have surveyed the street thoroughly and are content when they find house numbers that look "small enough" or "high enough". The divergence of the submissions is captured by Fleiss' kappa that is sensitive to how judgements spread.
