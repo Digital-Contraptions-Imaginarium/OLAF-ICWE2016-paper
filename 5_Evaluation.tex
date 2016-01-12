@@ -50,23 +50,7 @@ All six rounds     & 97                                                         
 \label{table:judgements-summary}
 \end{table}
 
-Diagrams \ref{fig:results-lowest-not-found} to \ref{fig:results-highest-found} show the evolution of the measure of Worker consensus through iterations, in the attempt to identify a trend. 
-
-\begin{figure}[!ht]
-    \begin{floatrow}
-        \ffigbox{\includegraphics[width=0.49\textwidth]{results-lowest-not-found.png}}{\caption{Roads for which the house numbers were not found. Submissions for the lowest house number.}\label{fig:results-lowest-not-found}}
-        \ffigbox{\includegraphics[width=0.49\textwidth]{results-highest-not-found.png}}{\caption{Roads for which the house numbers were not found. Submissions for the highest house number.}\label{fig:results-highest-not-found}}
-   \end{floatrow}
-\end{figure}
-        
-\begin{figure}[!ht]
-    \begin{floatrow}
-        \ffigbox{\includegraphics[width=0.49\textwidth]{results-lowest-found.png}}{\caption{Roads for which the house numbers were found. Submissions for the lowest house number.}\label{fig:results-lowest-found}}
-        \ffigbox{\includegraphics[width=0.49\textwidth]{results-highest-found.png}}{\caption{Roads for which the house numbers were found. Submissions for the highest house number.}\label{fig:results-highest-found}}
-   \end{floatrow}
-\end{figure}
-        
-The figures show heterogeneous results, with agreement on several of the roads not only failing to converge, but stalling or worsening with new iterations. 
+As an evaluation metric, the measure of Worker consensus through iterations was examined. No trend emerged, and agreement on several of the roads not only fails to converge, but stalls or worsen with new iterations\footnote{See \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/tree/gh-pages/docs#fleiss-kappa-vs-iterations}.}. 
 
 Cheating is a likeliest cause of consensus failing to achieve high kappa values. When aiming at such a high target, even a single wrong house number submitted by a malicious Worker can substantially negatively impact the metric.
 
