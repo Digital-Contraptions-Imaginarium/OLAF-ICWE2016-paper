@@ -27,9 +27,7 @@ WODA was designed following the principles below:
 
 \textbf{Versatility} WODA had to be versatile and suitable to be applicable to a range of problems describable within the workflow above and leveraging different input data sources as needed. The crowdsourcing component is required to be flexible enough to cater for different models: paid contributors vs volunteers, approaches to results aggregation, quality assessment etc.
 
-\subsection{Crowdsourcing component design principles}
-
-WODA's crowdsourcing element was intentionally designed to explore characteristics not extensively explored in VGI literature. The hypothesis and ambition is that findings can be complementary to what can be achieved with VGI and enrich the set of tools available to the system designer.
+\subsection{Crowdsourcing design principles}
 
 The crowdsourcing component, can be described against the dimensions presented by Simperl in \cite{Simperl:2015ju}. 
 
@@ -45,11 +43,11 @@ Progress in machine learning, computer vision etc. hints at a future in which th
 
 To contribute to WODA, specialised knowledge, skills and equipment are not required, nor is a connection to the places being surveyed. The crowdsourcing task design intends to assure the contributors' detachment from the locations.
 
-\textbf{How are the task outsourced} Again, to explore alternative models than what is common in VGI, the crowdsourcing component focuses on implementing micro rather than macro tasks. Wherever possible, one's contribution is limited to a few minutes' work at the computer, the shorter the time the better. Ideal tasks are closed- rather than open-ended and require no particular thinking or focus. Contributors have no visibility of the workflow they are part of: e.g. the preparation of the data, response aggregation etc. 
+\textbf{How is the task outsourced} The crowdsourcing component focuses on implementing micro rather than macro tasks. Wherever possible, one's contribution is limited to a few minutes' work at the computer, the shorter the time the better. Ideal tasks are closed- rather than open-ended and require no particular thinking or focus. Contributors have no visibility of the workflow they are part of: e.g. the preparation of the data, response aggregation etc. 
 
 \textbf{Why do people contribute} The motivation of crowds contributing to VGI is a complex subject, summarised for example by Coleman {\it et al.} in \cite{Coleman:2009vd}: motivation spans from altruism to intellectual stimulation, social reward and "pride of place". 
 
-Our contributors are driven merely by financial interest. They are oblivious of the the context of the project, have no personal connection to the locations being surveyed, and are likely unaware of and find no motivation in contributing to the "cause" of open data in general. This is typically the crowd that can be recruited through mainstream crowdwork platforms such as Amazon Mechanical Turk and CrowdFlower. 
+In the current implementation, WODA contributors are driven merely by financial interest. They are oblivious of the the context of the project, have no personal connection to the locations being surveyed, and are likely unaware of and find no motivation in contributing to the "cause" of open data in general. This is typically the crowd that can be recruited through mainstream crowdwork platforms such as Amazon Mechanical Turk and CrowdFlower. 
 
 \subsection{Implementation}
 
@@ -88,7 +86,7 @@ When using CML, the options available to implement a crowdsourcing model - such 
 
 \textbf{Scripting} Bash, NodeJS and PostgreSQL scripting are used to glue all components together wherever automation is possible.  
 
-\subsubsection{Legal implications}
+\subsection{Legal implications}
 
 The choices made in designing and implementing WODA have legal implications to be taken into account, in particular if the data resulting of the process is published under an open licence. It is outside of the scope of this paper to examine this in any detail; however some of the issues considered are described below.
 

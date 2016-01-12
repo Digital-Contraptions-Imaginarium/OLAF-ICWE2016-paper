@@ -5,7 +5,7 @@
 
 The availability of high quality and authoritative open data is central to the definition of the solution. An assessment of available sources highlighted OS' "Open Names"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}, (OSON) as suitable primary input. 
 
-OSON "lists definitive place names, roads numbers and postcodes in Great Britain", but not (i) which house names and numbers are in which road, and (ii) which house names and numbers are associated with which postcode. Therefore, OLAF can be seen as an augmentation of OSON, obtained by adding those missing components.
+OSON lists place names, roads numbers and postcodes in Great Britain, but not (i) which house names and numbers are in which road, and (ii) which house names and numbers are associated with which postcode. Therefore, OLAF can be seen as an augmentation of OSON, obtained by adding those missing components.
 
 The production of the missing data can be achieved through running three complementary processes described in figure \ref{fig:problem_decomposition_2} as {\it p1}, {\it p2}\footnote{98\% of UK addresses are characterised by a house number rather than a house name, so tackling {\it p1} is substantially more relevant to OLAF's completeness than {\it p2}.} and {\it p3}. 
 
@@ -15,7 +15,7 @@ The production of the missing data can be achieved through running three complem
 	\label{fig:problem_decomposition_2}
 \end{figure}
 
-The partial availability of the missing data in other primary sources such as Land Registry's "Price Paid Data"\footnote{Land Registry is a non-ministerial UK Government department with the responsibility to register the ownership of land and property in England and Wales. See \url{https://www.gov.uk/government/collections/price-paid-data}.} enables to further refinement of process {\it p1} in four sub-processes {\it p1.1}, {\it p1.2}, {\it p1.3}\footnote{See \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/blob/gh-pages/docs/README.md#error-in-inferred-house-numbers} for an assessment of the impact of error.} and {\it p1.4}. LRPP records every property ownership transfer in England and Wales since 1995, including their full addresses\footnote{LRPP is the largest open data source that include UK addresses.}, from which the inference of addresses is possible.
+The partial availability of the missing data in other primary sources such as Land Registry's "Price Paid Data"\footnote{Land Registry is a non-ministerial UK Government department with the responsibility to register the ownership of land and property in England and Wales. See \url{https://www.gov.uk/government/collections/price-paid-data}.} (LRPP) enables to further refinement of process {\it p1} in four sub-processes {\it p1.1}, {\it p1.2}, {\it p1.3}\footnote{See \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/blob/gh-pages/docs/README.md#error-in-inferred-house-numbers} for an assessment of the impact of error.} and {\it p1.4}. LRPP records every property ownership transfer in England and Wales since 1995, including their full addresses\footnote{LRPP is the largest open data source that include UK addresses.}, from which the inference of addresses is possible.
 
 \subsection{The OLAF-specific workflow}
 
@@ -31,7 +31,7 @@ The generic workflow described in \ref{generic-workflow} can be specialised for 
 
 Both OSON and LRPP contain references to streets, by their name. The main challenge of harvesting LRPP is to identify unambiguously the streets the house numbers are associated to, across the two datasets. Issues such as differences in spelling (e.g. "Downing Street" instead of "Downing St") and association of the locations not to the same town, but to localities thereof (e.g. "Clapham" instead of "London"), need being managed with common data processing practices.
 
-\subsection{Inference} 
+\subsection{House number inference} 
 \label{inference-algorithms} 
 
 \textbf{House numbering convention} Inferring house numbers is strictly dependent on the local numbering convention for the assignment of house numbers and names to buildings. In the UK, buildings are typically numbered sequentially starting from 1, at the extremity of the road closest to the town centre. Odd numbers are on the left-hand side, as seen from the town centre, while even number are on the right-hand side. House numbers can be suffixed by one or more letters: this is typical of larger buildings that at some point in time got divided into smaller dwellings. 
@@ -148,8 +148,6 @@ We sourced all our Workers from CrowdFlower. For each experiment, we created one
 \textbf{Reward / Time Limits} The reward was 0.20 US Dollars per task. Workers requiring less than 90 seconds per task were considered at high risk of being malicious and excluded to perform additional tasks. CrowdFlower imposes a time limit of 30 minutes maximum per task.
 
 \subsection{Implementation}
-
-
 
 \begin{sloppypar} %% see http://tex.stackexchange.com/questions/54946/how-to-break-long-url-in-an-item#comment114992_54949
 The code implementing WODA and detailed documentation can be found on GitHub, starting from the instructions at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/blob/gh-pages/README.md}.
