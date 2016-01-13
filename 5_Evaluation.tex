@@ -14,7 +14,7 @@ The evaluation is aimed at observing WODA's effectiveness at producing house num
 \textbf{Judgement collection} Iterative, 10 judgements per road per round.
 \textbf{Reward} 0.20 USD per Worker per judgement.
 \textbf{Consensus}: Fleiss kappa of 0.6 on roads where house numbers could be found, 0.8 on roads where house numbers could not be found, calculated at completion of each round. 
-\textbf{Stop conditions} Either ({\it s.1}) consensus is reached on all roads, or ({\it s.2}) the number of repeated judgements by reliable Workers is higher than the number of unique judgements, or ({\it s.3}) a total 300 USD budget is spent, whichever condition is verified first.
+\textbf{Stop conditions} Either ({\it s.1}) consensus is reached on all roads, or ({\it s.2}) the number of repeat judgements by reliable Workers is higher than the number of first judgements, or ({\it s.3}) a total 300 USD budget is spent, whichever condition is verified first.
 
 \subsection{Results}
 
@@ -22,37 +22,11 @@ The evaluation is aimed at observing WODA's effectiveness at producing house num
 
 \textbf{House number inference} The conditions necessary to apply the inference algorithms, before using any crowdsourcing, were verified for 74\% of roads. Applied to these, algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} generated ~113k house numbers in addition to the already known ~111k (+102\%). 
 
-\textbf{House number crowdsourcing} The result of the crowdsourcing experiments is summarised in tables \ref{table:distribution-of-workers} and \ref{table:judgements-summary}. 
+\textbf{House number crowdsourcing} Stop condition {\it s.2} was verified at the end of three rounds (118 repeat vs 117 first judgements). 
 
-A significant volume of Workers, 18.75\%, failed the test of copying the name of the road in the form and thus were identified as not credible. Their contribution was ignored. 
+A significant volume of Workers, 18.75\%, failed the test of copying the name of the road in the form and thus were identified as not credible. Their contribution was ignored. The data for only 4 roads only was collected successfully, with an average cost of 9.00 USD per road.
 
-Stop conditions {\it s.2} was verified at the end of the third round (118 vs 117 judgements). The data for 4 roads only was collected, with an average cost of 9.00 USD per road.
-
-\begin{table}[]
-\centering
-\begin{tabular}{|l|c|c|l|l|l|}
-\hline
-                   & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Tot. no. of \\ Workers\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No. of new \\ Workers\end{tabular}} & \begin{tabular}[c]{@{}l@{}}No. of \\ credible\\ Workers\end{tabular} & \begin{tabular}[c]{@{}l@{}}\% of \\ credible \\ Workers\end{tabular} & \begin{tabular}[c]{@{}l@{}}\% of duplicate \\ judgements\end{tabular} \\ \hline
-First three rounds & 80                                                                                  & -                                                                                  & 65                                                                   & 81.25\%                                                              & 50.2\%                                                                \\ \hline
-All six rounds     & 121                                                                                 & 41                                                                                 & 97                                                                   & 80.16\%                                                              & 73.1\%                                                                \\ \hline
-\end{tabular}
-\caption{Distribution of Workers across rounds}
-\label{table:distribution-of-workers}
-\end{table}
-
-\begin{table}[]
-\centering
-\begin{tabular}{|l|l|l|l|}
-\hline
-                   & \begin{tabular}[c]{@{}l@{}}No. of \\ reliable\\ Workers\end{tabular} & \begin{tabular}[c]{@{}l@{}}No. of non-duplicate\\ judgements\end{tabular} & \begin{tabular}[c]{@{}l@{}}No. of roads\\ where consensus\\ was achieved\end{tabular} \\ \hline
-First three rounds & 65                                                                   & 117                                                                       & 4                                                                                     \\ \hline
-All six rounds     & 97                                                                   & 227                                                                       & 7                                                                                     \\ \hline
-\end{tabular}
-\caption{Judgement numbers and consensus summary}
-\label{table:judgements-summary}
-\end{table}
-
-Worker consensus through iterations was examined, too, and three more rounds were run to see if any trends emerged. Agreement on most roads not only failed to converge, but stalled or worsened with new iterations\footnote{See \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/tree/gh-pages/docs#fleiss-kappa-vs-iterations}.}. 
+To better examine any trends in worker consensus through iterations, three more rounds were run. Agreement on most roads not only failed to converge, but stalled or worsened with new iterations\footnote{See \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/tree/gh-pages/docs#fleiss-kappa-vs-iterations}.}. 
 
 Cheating is a likeliest cause of consensus failing to achieve high kappa values. When aiming at such a high target, even a single wrong house number submitted by a malicious Worker can substantially negatively impact the metric.
 

@@ -38,8 +38,6 @@ Both OSON and LRPP contain references to streets, by their name. The main challe
         
 \textbf{Inference algorithms} Once the numbering convention is known, inference can be used to create a large volume of missing house numbers from the observation of known house numbers. Algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} below have a very high probability of correctly inferring the existence of house numbers\footnote{See \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/blob/gh-pages/docs/README.md#exceptions-in-the-uk-house-numbering-system} for exceptions in the convention}. 
 
-\vspace{5mm}
-
 \begin{algorithm}[H]
     \KwData{The list of known house numbers in a road}
     \KwResult{The list of inferred house numbers in the same road}
@@ -54,8 +52,6 @@ Both OSON and LRPP contain references to streets, by their name. The main challe
     \label{algo:inference-numbers}
 \end{algorithm}
 
-\vspace{5mm}
-
 \begin{algorithm}[H]
     \KwData{The list of known house numbers with suffixes in a road}
     \KwResult{The list of inferred house numbers with suffixes in the same road}
@@ -66,9 +62,7 @@ Both OSON and LRPP contain references to streets, by their name. The main challe
     \label{algo:inference-numbers-suffix}
 \end{algorithm}
 
-\subsection{Enabling inference for roads with no data} 
-
-Inference of house numbers is enabled by one of the following two conditions: (a) the knowledge of two or more different house numbers in the same street and (b) the knowledge of two or more suffixes for the same number. The former has the highest potential to generate new house numbers.
+\textbf{Enabling inference for roads with no data} Inference of house numbers is enabled by either of the following two conditions: (a) the knowledge of two or more different house numbers in the same street and (b) the knowledge of two or more suffixes for the same number. The former has the highest potential to generate new house numbers.
 
 When dealing with roads for which LRPP provides no data, it is useful to focus crowdsourcing on creating the conditions that enable that potential. To infer the largest sets of numbers it is necessary to use as input to algorithm \ref{algo:inference-numbers} the road's lowest and highest known house numbers\footnote{For simplicity, we did not consider (i) that it is also useful to know if the streets have both odd and even house numbers and (ii) the case where one house number only is known for a street, for which we could assume 1 to be the lowest house number.}.
 
