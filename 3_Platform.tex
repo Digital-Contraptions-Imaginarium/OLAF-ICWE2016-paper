@@ -3,7 +3,7 @@
 \subsection{The workflow}
 \label{generic-workflow}
 
-The generic workflow in Figure \ref{fig:workflow_0} uses primary and authoritative data sources as an input and iteratively augments them using computation, e.g. through inference. Wherever the conditions for computation are not verified, crowdsourcing is used to create the missing data to enable it. 
+The generic workflow in Figure \ref{fig:workflow_0} uses primary and authoritative data sources as an input and iteratively augments them using computation. Wherever the conditions for computation are not verified, crowdsourcing is used to create the missing data to enable it. 
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{workflow-0.png}
@@ -11,7 +11,7 @@ The generic workflow in Figure \ref{fig:workflow_0} uses primary and authoritati
 	\label{fig:workflow_0}
 \end{figure}
 
-This section outlines the design principles of WODA : a re-usable platform we set up to support implementations of such workflow. The crowdsourcing component is then explored in more detail.
+This section outlines the design principles of WODA: a re-usable platform to support implementations of such workflow. The crowdsourcing component is then explored in more detail.
 
 \subsection{Overall design principles}
 \label{desing-principles}
@@ -34,11 +34,11 @@ The crowdsourcing component, can be described against the dimensions presented b
 
 \textbf{What is outsourced} The objective of the outsourcing activity is the production of original geospatial data or the curation (correction, validation etc.) of pre-existing data, wherever the activity can be only performed by human agents. 
 
-The activity typically translates into surveying the locations or examining imagery thereof and record observations (e.g. "how many trees can be seen from longitude x and latitude y?"), or, alternatively, amend some previous recording of the same (e.g. "can you confirm that there is a hospital in Vicarage Rd, Watford, Hertfordshire?"). 
+The activity translates into surveying the locations or examining imagery thereof and record observations (e.g. "how many trees can be seen from longitude x and latitude y?"), or amend previous recordings (e.g. "can you confirm that there is a hospital in Vicarage Rd, Watford, Hertfordshire?"). 
 
 To avoid the cost of performing a physical survey of the locations, participants examine publicly available imagery. This is not uncommon, e.g. OSM currently uses aerial imagery from Microsoft Bing to let its contributors edit the topology of the streets.
 
-Progress in machine learning, computer vision etc. hints at a future in which the human component may be made redundant. To this day, however, automation is still something that can only complement rather than replace humans (e.g. in \cite{Goetz:1gd} or \cite{Schmid:2012we}).
+Progress in machine learning, computer vision etc. hints at a future in which the human component may be made redundant. To this day, however, automation can only complement rather than replace humans (e.g. in \cite{Goetz:1gd} or \cite{Schmid:2012we}).
 
 \textbf{Who is the crowd} In VGI, contributors are often associated to the locations they work on, and their work can be seen as the act of capturing the knowledge they own of a place. Occasionally, this can be instrumental to assure the completeness of the data, e.g. the function of public buildings can't be inferred from observing OSM's aerial imagery. Physical survey of the location may be required, using specialised equipment.
 
@@ -46,7 +46,7 @@ To contribute to WODA, specialised knowledge, skills and equipment are not requi
 
 \textbf{How is the task outsourced} In the current implementation, WODA focuses on outsourcing micro rather than macro tasks. Wherever possible, one's contribution is limited to a few minutes' work at the computer and does not require awareness of the larger system they are part of, in the attempt of removing complexity and barriers to participation.
 
-\textbf{Why do people contribute} The motivation of crowds contributing to VGI is a complex subject, summarised for example by Coleman {\it et al.} in \cite{Coleman:2009vd}: motivation spans from altruism to intellectual stimulation, social reward and "pride of place".
+\textbf{Why do people contribute} The motivation of VGI crowds is a complex subject, summarised e.g. in Coleman {\it et al.} in \cite{Coleman:2009vd}: motivation spans from altruism to intellectual stimulation, social reward and "pride of place".
 
 In the current implementation, WODA contributors are driven merely by financial interest. They are oblivious of the the context of the project, have no personal connection to the locations, and are likely unaware of and find no motivation in contributing to the "cause" of open data. This is typically the crowd that can be recruited through mainstream crowdwork platforms. 
 
@@ -54,7 +54,7 @@ In the current implementation, WODA contributors are driven merely by financial 
 
 \subsubsection{Overview} \leavevmode \\ %% Why is this necessary to get a new line?
 
-From the platform owner's point of view, WODA is made of several sets of tools to (i) ingest the primary data sources into a reference database, (ii) process the ingested data and derive new / enhanced data computationally, e.g. through statistical inference, (iii) configure the crowdsourcing platform of choice, including the user interface participants use, (iv) support the execution of the crowdsourcing stage (load data to the crowdsourcing platform, collect its results etc.), and (v) consolidate primary, derived and crowdsourced data in one consistent dataset.
+From the platform owner's point of view, WODA is made of several sets of tools to (i) ingest the primary data sources into a reference database, (ii) process the ingested data and derive new / enhanced data computationally, (iii) configure the crowdsourcing platform of choice, including the user interface participants use, (iv) support the execution of the crowdsourcing stage (load data to the crowdsourcing platform, collect its results etc.), and (v) consolidate primary, derived and crowdsourced data in one consistent dataset.
 
 From the participant's point of view, WODA presents itself simply as a task hosted on a crowdsourcing platform. The task web page offers interactive maps and panoramic views of one or more locations to survey, and a form contributors use to submit observations, as shown in Figure \ref{fig:virtual-survey-tool-01}. On first access, at the top of the page instructions are provided, possibly alongside a video used to illustrate the interactive features, as in Figure \ref{fig:virtual-survey-tool-02}.
 
@@ -67,22 +67,22 @@ From the participant's point of view, WODA presents itself simply as a task host
 
 \subsubsection{Components} \leavevmode \\ %% Why is this necessary to get a new line?
 
-\textbf{CrowdFlower} CrowdFlower was chosen as the crowdsourcing platform. It is a Software-as-a-Service platform specialised in hosting data-centred microtasks for volunteer or paid participants. Clients who accept that their data could be re-published as open data by CrowdFlower may access the service under the "Data for Everyone" plan, that has no costs but for the compensation to the paid participants and a 20\% commission. The service is available both through a templating system called "CrowdFlower Markup Language" (CML) that can be customised by using CrowdFlower's web-based tools, and through APIs. 
+\textbf{CrowdFlower} CrowdFlower was chosen as the crowdsourcing platform. It is a Software-as-a-Service platform specialised in hosting data-centred microtasks for volunteer or paid participants. Clients who accept that their data could be re-published as open data may access the service under a plan that has no costs but for the compensation to the paid participants and a commission. The service is available both through a templating system called CML and through APIs. 
 
-When using CML, the options available to implement a crowdsourcing model - such as how the accuracy of the contributor is assessed or how results are aggregated - are limited by the functionality supported by the system\footnote{For example, CrowdFlower calculates the Workers' agreement simply as the quorum of participants who expressed the majority vote, and tasks can be stopped automatically when a target \% is achieved. The same cannot be done when using alternative statistical measures of agreement, whose calculation must take place outside of the system.}. In order not to introduce additional components in the system and maximise scalability and high availability, it was decided to rely on CML only and work around its limitations by performing some of the tasks outside of CrowdFlower, e.g. results aggregation. 
+When using CML, the options available to implement a crowdsourcing model - such as how the accuracy of the contributor is assessed or how results are aggregated - are limited by the functionality supported by the system\footnote{For example, CrowdFlower calculates the Workers' agreement as the quorum of participants who expressed the majority vote, and tasks can be stopped automatically when a target \% is achieved. The same cannot be done when using alternative statistical measures of agreement, whose calculation must take place outside of the system.}. In order not to introduce additional components in the system and maximise scalability and high availability, we relied on CML only and worked around its limitations by performing some of the tasks outside of CrowdFlower. 
 
-\textbf{Google Maps} Google Maps is a mapping Software-as-a-Service for the web and mobile devices, made available by Google to the public for free\footnote{Other equivalent services could have been used, e.g. Microsoft's Bing Maps.}. It offers satellite and aerial imagery, maps, interactive panoramic views of streets ("Street View") alongside the metadata through APIs. Many of its services can be embedded in third party websites and customised using client-side JavaScript, hence making it very suitable to be integrated with CrowdFlower or any other template-based content management systems. 
+\textbf{Google Maps} Google Maps is a mapping SaaS, made available by Google to the public for free. It offers satellite and aerial imagery, maps, interactive panoramic views of streets alongside the metadata through APIs. Many of its services can be embedded in third party websites and customised using client-side JavaScript, hence making it suitable to integration with CrowdFlower or other template-based systems. 
 
-\textbf{YouTube} YouTube is a video publishing platform owned by Google. Similarly to Google Maps, videos can be embedded in third party websites, hence being suitable for integration in CML. WODA uses YouTube to offer participants instructions.  
+\textbf{YouTube} YouTube is a video publishing platform by Google. Similarly to Google Maps, videos can be embedded in third party websites, hence is suitable for integration in CML. WODA uses YouTube to offer participants instructions.  
 
-\textbf{PostgreSQL + PostGIS} The PostgreSQL relational database running the PostGIS spatial extender was chosen as the main data repository for WODA. All geospatial data is converted from its original format (CSV, ESRI Shapefile etc.) to PostGIS' native geospatial types to be consistent across all sources and enabling spatial and geographic querying. When needed, QGIS was used to quickly visualise the data on maps, e.g. for inspection and debugging.
+\textbf{PostgreSQL + PostGIS} The PostgreSQL relational database running the PostGIS spatial extender was chosen as the main data repository. All geospatial data is converted from its source format to PostGIS' native geospatial types to be consistent across all sources and enabling geographic querying. 
 
-\textbf{Scripting} Bash, NodeJS and PostgreSQL scripting are used to glue all components together wherever automation is possible.  
+\textbf{Scripting} Bash, NodeJS and PostgreSQL scripting were used to glue all components together wherever automation is possible.  
 
 \subsection{Legal implications}
 
-The choices made in designing and implementing WODA have legal implications to be taken into account, in particular if the data resulting of the process is published under an open licence. It is outside of the scope of this paper to examine this in any detail; however some of the issues considered are described below.
+The choices made in designing and implementing WODA have legal implications to be taken into account. It is outside of the scope of this paper to examine this in any detail, however some of the issues considered are described below.
 
-\textbf{Personal data and privacy implications.} According to EU Data Protection Directive (95/46/EC) geospatial data such as addresses can be considered "personal data" even when it is not associated to information about {\it who} lives at those locations, as it is "information relating to an identified or {\it identifiable} natural person" (no italics in the original). The directive describes a framework of good practices for Member States to make into law that we would impact on deployment.
+\textbf{Personal data and privacy implications.} According to EU Data Protection Directive (95/46/EC) geospatial data such as addresses can be considered "personal data" even when it is not associated to information about {\it who} lives at those locations, as it is "information relating to an identified or identifiable natural person". The directive describes a framework of good practices for Member States to make into law that we would impact on deployment.
 	
-\textbf{Imagery terms and conditions} Google Maps' terms of service specify a restriction on producing "derivative works of the Content or any part thereof". Moreover, and more specifically, they also include a restriction on using the services to create "a database of places or other local listings information". It can be argued that observing a map or the pictures of a street does not constitute "derivative work". In any case, it is advisable that - before deploying WODA to implement real-world applications - the mapping services provider is informed and licensing clarified. This is what OSM did when integrating Bing imagery.
+\textbf{Imagery terms and conditions} Google Maps' terms of service specify restrictions on producing "derivative works of the Content or any part thereof" or for creating "a database of places or other local listings information". It is advisable that - before deploying WODA to implement real-world applications - the mapping services provider is informed and licensing clarified. This is what OSM did when integrating Bing imagery.
