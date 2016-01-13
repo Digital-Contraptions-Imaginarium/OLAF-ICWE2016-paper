@@ -3,7 +3,7 @@
 \subsection{The workflow}
 \label{generic-workflow}
 
-It is the assumption of our research that most data creation and curation processes can be described along the lines of the generic worflow shown in Figure \ref{fig:workflow_0}. The workflow uses primary and authoritative data sources as an input and iteratively augments them using computation, e.g. through inference. Wherever the conditions for computation are not verified, crowdsourcing is used to create the missing data to enable it.
+The generic workflow in Figure \ref{fig:workflow_0} uses primary and authoritative data sources as an input and iteratively augments them using computation, e.g. through inference. Wherever the conditions for computation are not verified, crowdsourcing is used to create the missing data to enable it. 
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{workflow-0.png}
@@ -11,9 +11,10 @@ It is the assumption of our research that most data creation and curation proces
 	\label{fig:workflow_0}
 \end{figure}
 
-According the above assumption, this section outlines the design principles of WODA (Workflows for Open Data Augmentation): a re-usable platform we set up to support implementations of such workflow. The crowdsourcing component is then explored in more detail.
+This section outlines the design principles of WODA : a re-usable platform we set up to support implementations of such workflow. The crowdsourcing component is then explored in more detail.
 
 \subsection{Overall design principles}
+\label{desing-principles}
 
 WODA was designed following the principles below:
 
@@ -39,15 +40,15 @@ To avoid the cost of performing a physical survey of the locations, participants
 
 Progress in machine learning, computer vision etc. hints at a future in which the human component may be made redundant. To this day, however, automation is still something that can only complement rather than replace humans (e.g. in \cite{Goetz:1gd} or \cite{Schmid:2012we}).
 
-\textbf{Who is the crowd} In VGI, contributors are often associated to the locations they work on, as it is a driver for their motivation and, occasionally, direct knowledge of the place is necessary to assure the completeness of the data. The function of buildings or the location of mailboxes, for example, can't be inferred from observing OSM's aerial imagery. Whenever aerial imagery is not availale, survey of new locations requires the use of specialised equipment, e.g. to record GPS tracks\footnote{E.g. OSM advises against using conventional mobile phone GPS functionality, see \url{http://wiki.openstreetmap.org/wiki/Recording_GPS_tracks}.}.
+\textbf{Who is the crowd} In VGI, contributors are often associated to the locations they work on, and their work can be seen as the act of capturing the knowledge they own of a place. Occasionally, this can be instrumental to assure the completeness of the data, e.g. the function of public buildings can't be inferred from observing OSM's aerial imagery. Physical survey of the location may be required, using specialised equipment\footnote{E.g. OSM advises against using conventional mobile phone GPS functionality, see \url{http://wiki.openstreetmap.org/wiki/Recording_GPS_tracks}.}.
 
-To contribute to WODA, specialised knowledge, skills and equipment are not required, nor is a connection to the places being surveyed. The crowdsourcing task design intends to assure the contributors' detachment from the locations.
+To contribute to WODA, specialised knowledge, skills and equipment are not required, nor is a connection to the places being surveyed. 
 
-\textbf{How is the task outsourced} The crowdsourcing component focuses on implementing micro rather than macro tasks. Wherever possible, one's contribution is limited to a few minutes' work at the computer, the shorter the time the better. Ideal tasks are closed- rather than open-ended and require no particular thinking or focus. Contributors have no visibility of the workflow they are part of: e.g. the preparation of the data, response aggregation etc. 
+\textbf{How is the task outsourced} In the current implementation, WODA focuses on outsourcing micro rather than macro tasks. Wherever possible, one's contribution is limited to a few minutes' work at the computer and does not require awareness of the larger system they are part of, in the attempt of removing complexity and barriers to participation.
 
-\textbf{Why do people contribute} The motivation of crowds contributing to VGI is a complex subject, summarised for example by Coleman {\it et al.} in \cite{Coleman:2009vd}: motivation spans from altruism to intellectual stimulation, social reward and "pride of place". 
+\textbf{Why do people contribute} The motivation of crowds contributing to VGI is a complex subject, summarised for example by Coleman {\it et al.} in \cite{Coleman:2009vd}: motivation spans from altruism to intellectual stimulation, social reward and "pride of place".
 
-In the current implementation, WODA contributors are driven merely by financial interest. They are oblivious of the the context of the project, have no personal connection to the locations being surveyed, and are likely unaware of and find no motivation in contributing to the "cause" of open data in general. This is typically the crowd that can be recruited through mainstream crowdwork platforms such as Amazon Mechanical Turk and CrowdFlower. 
+In the current implementation, WODA contributors are driven merely by financial interest. They are oblivious of the the context of the project, have no personal connection to the locations, and are likely unaware of and find no motivation in contributing to the "cause" of open data. This is typically the crowd that can be recruited through mainstream crowdwork platforms. 
 
 \subsection{Implementation}
 

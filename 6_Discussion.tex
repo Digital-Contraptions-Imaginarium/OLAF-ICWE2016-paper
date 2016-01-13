@@ -1,6 +1,6 @@
 \section{Discussion}
 
-From a merely technical perspective, the experience of implementing WODA confirmed the potential to achieve the same scalability and availability that the third party services it relies on are capable of.
+From a merely technical perspective, the experience of implementing WODA confirmed that it is feasible to implement a system that supports non-trivial human-machine hybrid workflows, while relying only on the scalability and availability of third party services.
 
 Conversely, from a functional point of view, many of CrowdFlower's characteristics ended up not to be compatible with the needs of our model. So, while we achieved avoiding custom Worker-facing software components by relying exclusively on CrowdFlower's native features, we were also forced to implement many ad hoc workarounds. Several of these solutions were far from ideal and affected negatively the performance of the overall system to a point compromising its effectiveness and nullifying the advantages. 
 
@@ -8,4 +8,4 @@ For example, not having the possibility to rely on CrowdFlower's own consensus m
 
 An equally pressing issue is the choice of crowdsourcing task. Its complexity and open-ended nature failed to catalyse effectively the contributors' agreement around results that are statistically credible. This also suggested that our concern around survey activities of this sort not being suitable to reproduce the success microtasking can achieve in other settings. Gottlieb {\it et al.} in \cite{Gottlieb:2012fh} faced similar difficulty, e.g. in exploring crowdsourcing to geolocate places in videos.
 
-Finally, any discussion should still be filtered through a cost / benefit examination: what is a "reasonable cost" of producing one address with a target degree of confidence? The volume of roads we could enable inference for was too little to make such considerations.
+Finally, any discussion should still be filtered through a cost / benefit examination: what is a "reasonable cost" of producing one address with a target degree of confidence. The volume of roads we could enable inference for was too little to make such considerations.

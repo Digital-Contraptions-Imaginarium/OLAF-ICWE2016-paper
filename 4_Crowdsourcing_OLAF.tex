@@ -84,40 +84,28 @@ OSOR is used to calculate the geographical coordinates of the extremities of the
 
 \subsection{Data collection in CrowdFlower and assessment}
 
-The crowdsourcing component of WODA can be configured to create the house numbers needed to enable inference. 
+The crowdsourcing component of WODA can be configured to create the house numbers needed to enable inference. Observing the imagery of a street to identify its features is not conceptually different than crowdsourced labelling and annotation applications that are extensively studied in literature.\footnote{More detail is available at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/tree/gh-pages/docs#finding-house-numbers-as-a-labelling-exercise}.}
 
-\textbf{Finding house numbers as a labelling exercise} Observing the imagery of a street to identify its lowest and highest house number is not conceptually different than crowdsourced annotation applications that extensively studied in literature, with the following exceptions:
-
-\begin{itemize}
-        
-    \item For each item subject to annotation, two independent\footnote{One could argue that the two annotations are not truly independent, as the lowest house number is, by definition, lower than the highest house number. In practical terms, though, the task of surveying a street cannot leverage such mathematical relation. In other words, knowing what the highest house number is won't help the participant finding the lowest house number, as her finding is rather due to the observation of the topology of the street and the progression of nearby house numbers.} annotations rather than one are collected: the lowest and highest visible house numbers\footnote{It is not useful to as a participant to look for the lowest house number and another to look for the highest. By exploring the pictures, participants will naturally focus her research on the extremities of the road, where the relevant house numbers are, without knowing in advance which of the two she is finding first.}.
-        
-    \item The information subject to the annotation could be identified as existing, but the annotation may not be possible anyway\footnote{E.g. a participant may be able to identify the first house in a street, but vegetation may hide the number. There is also the possibility that the mapping provider coverage does not include the surveyed street. Moreover, unlike other countries, in the UK local authorities do not provide house number plates to the building owners, so this remains their responsibility. Building owners have the option not to affix any plate at all.}.
-        
-    \item The road to survey may be no buildings\footnote{Because of how the workflow was defined, crowdsourcing is used on streets of which there is little or no reference in LRPP over the last 20 years. This means that the road is likely rural and have few buildings.}.
-        
-\end{itemize}
-
-The following is a description of the approach that was used for crowdsourcing addresses, that is common to all experimental conditions that were tested.
+The following is a description of the approach that was used for crowdsourcing house numbers, that is common to all experimental conditions that were tested.
 
 \subsubsection{Task model} \leavevmode \\ %% Why is this necessary to get a new line?
 
-\textbf{Requester.} The Requester desires to gather the lowest and the highest house numbers that can be observed in a specified street, as they can be intelligibly identified by browsing pictures of the street. Alternatively, if no two house numbers are identifiable, the Requester needs being informed, too. Different streets have different degree of interest to the Requester, who is interested in prioritising the collection of the data for the higher interest streets in respect to the lower interest ones. The Requester requires the help of human agents to carry out the tasks, that we will call Workers in the following.
+\textbf{Requester.} The Requester desires to gather the lowest and the highest house numbers that can be observed in a specified street, as they can be intelligibly identified by browsing imagery, or the lack thereof. The Requester requires the help of human agents to carry out the tasks, that we will call Workers in the following.
 
-\textbf{Task.} Each HIT (Human Intelligence Task) consists of browsing the pictures of a street until achieving reasonable certainty of having identified the lowest and the highest house numbers or, alternatively, the lack thereof.
+\textbf{Task.} Each HIT (Human Intelligence Task) consists of browsing the pictures of a street until achieving reasonable certainty of having identified the lowest and the highest house numbers or the lack thereof.
 
 \textbf{Strategy.} 
 The strategy relies on traditional crowdsourcing techniques for image labelling.
 
 \textbf{Crowd $\rightarrow$ Worker.} Each Worker provides judgement on a task by browsing the pictures and declaring if she has found the lowest and the highest house numbers or none. Multiple Workers are asked to identify the house numbers for the same street. The resulting data is chosen through majority voting.
 
-\textbf{Quality.} Quality is defined by a combination of (a) accuracy of the Workers in responding to tests questions, and (b) consensus in the data submitted through repeated surveys of the same road. Aggregation takes place accordingly as explained below.
+\textbf{Quality.} Quality is defined by a combination of (a) credibility of the Workers in responding to tests questions, and (b) consensus in the data submitted through repeated surveys of the same road. Aggregation takes place accordingly, as explained below.
 
 \subsubsection{Workers quality}
     
-Probing Workers using conventional test questions - e.g. where the correspondence of the Worker submissions is checked vs the same data collected by the research team as described in \cite{Kittur:2008gj} - would be a powerful tool to identify high vs low quality contributors, but is very expensive in OLAF's case. The task of surveying a street is not trivial, and early anecdotal evidence from early tests of the implementation showed many Workers leaving after performing no more than two or three surveys. To further damage the performance of the system, the ones who stayed longer started cheating, or showed a substantial drop in their performance. This suggested that spending a substantial part of the Worker's effort on test questions - e.g. making one out of three surveys a test - was not affordable.
+Probing Workers using conventional test questions - e.g. where the correspondence of the Worker submissions is checked vs the same data collected by the research team as described in \cite{Kittur:2008gj} - would be a powerful tool to identify high vs low quality contributors, but is very expensive in OLAF's case. Spending a substantial part of the Worker's effort on test questions - e.g. making one out of three surveys a test - was not affordable.
 
-Not using any kind of test question is unlikely to be successful, too, and it was explored in previous work such as \cite{DellaPenna:tf}. As an alternative, though, simple test questions can be set up on data that is already available, in a way that is similar to classic anti-spamming techniques like CAPTCHAs as described in \cite{Difallah:2012ty}. In OLAF's case the name of the street itself is used: Workers are asked to copy and paste or type the name of the street as part of their survey. Workers that do not achieve the target accuracy are excluded from further work.
+As an alternative, though, simple test questions can be set up on data that is already available, in a way that is similar to classic anti-spamming techniques like CAPTCHAs as described in \cite{Difallah:2012ty}. In OLAF's case the name of the street itself is used: Workers are asked to copy and paste or type the name of the street as part of their survey. Workers that do not achieve the target accuracy are excluded from further work.
 
 \subsubsection{Results aggregation}
 
