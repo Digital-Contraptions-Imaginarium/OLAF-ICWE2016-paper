@@ -67,9 +67,9 @@ Landis, J.R., Koch, G.G.: {The Measurement of Observer Agreement for
   Categorical Data}. biometrics  33(1),  159 (Mar 1977)
 
 \bibitem{Le:2010ug}
-Le, J., Edmonds, A., Hester, V.: {Ensuring quality in crowdsourced search
-  relevance evaluation: The effects of training question distribution}. SIGIR
-  2010 workshop on {\ldots}  (2010)
+Le, J., Edmonds, A., Hester, V., Biewald, L.: {Ensuring quality in crowdsourced
+  search relevance evaluation: The effects of training question distribution}.
+  In: SIGIR 2010 Workshop on Crowdsourcing for Search Evaluation (Jul 2010)
 
 \bibitem{Nowak:2010gt}
 Nowak, S., R{\"u}ger, S.: {How reliable are annotations via crowdsourcing: a
