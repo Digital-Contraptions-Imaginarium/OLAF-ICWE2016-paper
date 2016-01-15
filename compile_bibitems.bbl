@@ -84,8 +84,9 @@ Schmid, F., Cai, C., Frommberger, L.: {A new micro-mapping method for rapid
 
 \bibitem{Sheng:2008gra}
 Sheng, V.S., Provost, F., Ipeirotis, P.G.: {Get another label? improving data
-  quality and data mining using multiple, noisy labelers}. ACM, New York, New
-  York, USA (Aug 2008)
+  quality and data mining using multiple, noisy labelers}. In: 14th ACM SIGKDD
+  international conference on Knowledge discovery and data mining. pp.
+  614--622. ACM (Aug 2008)
 
 \bibitem{Simperl:2015ju}
 Simperl, E.: {How to Use Crowdsourcing Effectively: Guidelines and Examples}.
