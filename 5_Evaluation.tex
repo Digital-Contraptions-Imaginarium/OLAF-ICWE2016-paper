@@ -8,21 +8,13 @@ WODA was deployed to address OLAF for a specific geographic sample, that is the 
 
 The evaluation is aimed at observing WODA's effectiveness at producing house numbers for the sample. Performance is calculated as the average cost of producing the data per road. 
 
-\subsection{Experimental conditions}
-
-\textbf{Source dataset} The full sample, in "rounds" of max 10 roads, chosen according to prioritisation. As roads reach consensus, they are removed and new roads added for the following round.
-\textbf{Judgement collection} Iterative, 10 judgements per road per round.
-\textbf{Reward} 0.20 USD per Worker per judgement.
-\textbf{Consensus}: Fleiss kappa of 0.6 on roads where house numbers could be found, 0.8 on roads where house numbers could not be found, calculated at completion of each round. 
-\textbf{Stop conditions} Either ({\it s.1}) consensus is reached on all roads, or ({\it s.2}) the number of repeat judgements by reliable Workers is higher than the number of first judgements, or ({\it s.3}) a total 300 USD budget is spent, whichever condition is verified first.
-
 \subsection{Results}
 
 \textbf{Ingestion of primary data sources} The data obtained by implementing the approach described in section \ref{crowdsourcing-olaf} successfully populated house numbers from LRPP for 82\% of the streets in OSON.
 
 \textbf{House number inference} The conditions necessary to apply the inference algorithms, before using any crowdsourcing, were verified for 74\% of roads. Applied to these, algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} generated ~113k house numbers in addition to the already known ~111k (+102\%). 
 
-\textbf{House number crowdsourcing} Stop condition {\it s.2} was verified at the end of three rounds (118 repeat vs 117 first judgements). 
+\textbf{House number crowdsourcing} Stop condition {\it s.2} - with 118 repeat judgments vs 117 first judgements - was verified at the end of three rounds. 
 
 A significant volume of Workers, 18.75\%, failed the test of copying the name of the road in the form and thus were identified as not credible. Their contribution was ignored. The data for only 4 roads only was collected successfully, with an average cost of 9.00 USD per road.
 
