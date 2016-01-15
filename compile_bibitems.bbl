@@ -93,8 +93,9 @@ Simperl, E.: {How to Use Crowdsourcing Effectively: Guidelines and Examples}.
   Liber Quarterly  25(1), ~18 (Aug 2015)
 
 \bibitem{Snow:2008wo}
-Snow, R., O'Connor, B., Jurafsky, D., Ng, A.Y.: {Cheap and fast---but is it
-  good?: evaluating non-expert annotations for natural language tasks}.
-  Proceedings of the conference {\ldots} pp. 254--263 (Oct 2008)
+Snow, R., O'Connor, B., Jurafsky, D., Ng, A.Y.: {Cheap and fast - but is it
+  good? Evaluating non-expert annotations for natural language tasks}. In:
+  Conference on Empirical Methods in Natural Language Processing. pp. 254--263.
+  Association for Computational Linguistics (Oct 2008)
 
 \end{thebibliography}
