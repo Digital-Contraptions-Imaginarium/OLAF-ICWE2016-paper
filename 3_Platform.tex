@@ -60,7 +60,7 @@ From the \textbf{participant}'s point of view, WODA presents itself simply as a 
 
 \begin{figure}
     %% NOTE: the choice of width % below is key to stay in the 18 pages limit! Even a 0.01 variation can make a difference because of how LaTeX manages text flow.
-	\frame{\includegraphics[width=0.70\textwidth]{virtual-survey-tool-01.png}}
+	\frame{\includegraphics[width=0.75\textwidth]{virtual-survey-tool-01.png}}
 	\caption{The task section of the web page, offering the Google Maps and Street View panes and the form participants use to submit their observations.}
 	\label{fig:virtual-survey-tool-01}
 \end{figure}
@@ -83,8 +83,8 @@ When using CML, the options available to implement a crowdsourcing model - such 
 
 \subsection{Legal implications}
 
-The choices made in designing and implementing WODA have legal implications to be taken into account. It is outside of the scope of this paper to examine this in any detail, however some of the issues considered are described below.
+The design choices have legal implications to be taken into account when deploying beyond research.\footnote{See \url{https://peepbeep.wordpress.com/2015/12/18/what}.} It is outside of the scope of this paper to examine this in any detail, however some of the matters are described below.
 
-\textbf{Personal data and privacy implications.} According to EU Data Protection Directive (95/46/EC) geospatial data such as addresses can be considered "personal data" even when it is not associated to information about {\it who} lives at those locations, as it is "information relating to an identified or identifiable natural person". The directive describes a framework of good practices for Member States to make into law that we would impact on deployment.
+\textbf{Personal data and privacy implications.} According to EU Data Protection Directive (95/46/EC), implemented in the UK by the Data Protection Act of 1998, geospatial data such as addresses can be considered as personal data even when it is not associated to information about who lives at the locations, as it is "information relating to an identified or identifiable natural person". The directive describes a framework of practices to follow.
 	
-\textbf{Imagery terms and conditions} Google Maps' terms of service specify restrictions on producing "derivative works of the Content or any part thereof" or for creating "a database of places or other local listings information". It is advisable that - before deploying WODA to implement real-world applications - the mapping services provider is informed and licensing clarified. This is what OSM did when integrating Bing imagery.
+\textbf{Imagery terms and conditions} Google Maps' terms of service specify restrictions on producing "derivative works of the Content or any part thereof" and on creating "a database of places or other local listings information". It is advisable that - before deploying WODA for real-world applications - the mapping services provider is informed and licensing clarified. This is what OSM did when integrating Bing imagery.
