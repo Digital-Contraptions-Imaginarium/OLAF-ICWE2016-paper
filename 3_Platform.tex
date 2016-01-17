@@ -3,15 +3,15 @@
 \subsection{The workflow}
 \label{generic-workflow}
 
-The generic workflow in Figure \ref{fig:workflow_0} uses primary and authoritative data sources as an input and iteratively augments them using computation. Wherever the conditions for computation are not verified, crowdsourcing is used to create the missing data to enable it. 
+The generic workflow in Figure \ref{fig:workflow_0} uses primary and authoritative data sources as an input, and iteratively augments them using computation. Wherever the conditions for computation are not verified, crowdsourcing is used to create the missing data to enable it. 
+
+This section outlines the design principles of WODA: a re-usable platform to support implementations of such workflow. The crowdsourcing component is then explored in more detail.
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{workflow-0.png}
-	\caption{General workflow}
+	\caption{UML process diagram of the generic WODA-supported workflow}
 	\label{fig:workflow_0}
 \end{figure}
-
-This section outlines the design principles of WODA: a re-usable platform to support implementations of such workflow. The crowdsourcing component is then explored in more detail.
 
 \subsection{Overall design principles}
 \label{desing-principles}
@@ -34,13 +34,13 @@ The crowdsourcing component, can be described against the dimensions presented b
 
 \textbf{What is outsourced} The objective of the outsourcing activity is the production of original geospatial data or the curation (correction, validation etc.) of pre-existing data, wherever the activity can be only performed by human agents. 
 
-The activity translates into surveying the locations or examining imagery thereof and record observations (e.g. "how many trees can be seen from longitude x and latitude y?"), or amend previous recordings (e.g. "can you confirm that there is a hospital in Vicarage Rd, Watford, Hertfordshire?"). 
+The activity translates into surveying the locations or examining imagery thereof and record observations (e.g. "how many trees can be seen from longitude x and latitude y?"), or amend previous recordings (e.g. "can you confirm that there is a hospital in Vicarage Rd, Watford?"). 
 
-To avoid the cost of performing a physical survey of the locations, participants examine publicly available imagery. This is not uncommon, e.g. OSM currently uses aerial imagery from Microsoft Bing to let its contributors edit the topology of the streets.
+To avoid the cost of performing a physical survey of the locations, participants examine publicly available imagery. This is not uncommon, e.g. OSM currently uses aerial imagery from Microsoft Bing to let its contributors edit street topology.
 
 Progress in machine learning, computer vision etc. hints at a future in which the human component may be made redundant. To this day, however, automation can only complement rather than replace humans (e.g. in \cite{Goetz:1gd} or \cite{Schmid:2012we}).
 
-\textbf{Who is the crowd} In VGI, contributors are often associated to the locations they work on, and their work can be seen as the act of capturing the knowledge they own of a place. Occasionally, this can be instrumental to assure the completeness of the data, e.g. the function of public buildings can't be inferred from observing OSM's aerial imagery. Physical survey of the location may be required, using specialised equipment.
+\textbf{Who is the crowd} In VGI, contributors are often associated to the locations they work on, and their work can be seen as the act of capturing the knowledge they own of a place. Occasionally, this can be instrumental to assure the completeness of the data, e.g. the function of public buildings can't be inferred from observing OSM's aerial imagery. Physical survey of the location may be also required, using specialised equipment.
 
 To contribute to WODA, specialised knowledge, skills and equipment are not required, nor is a connection to the places being surveyed. 
 
@@ -54,9 +54,9 @@ In the current implementation, WODA contributors are driven merely by financial 
 
 \subsubsection{Overview} \leavevmode \\ %% Why is this necessary to get a new line?
 
-From the platform owner's point of view, WODA is made of several sets of tools to (i) ingest the primary data sources into a reference database, (ii) process the ingested data and derive new / enhanced data computationally, (iii) configure the crowdsourcing platform of choice, including the user interface participants use, (iv) support the execution of the crowdsourcing stage (load data to the crowdsourcing platform, collect its results etc.), and (v) consolidate primary, derived and crowdsourced data in one consistent dataset.
+From the \textbf{platform owner}'s point of view, WODA is made of several sets of tools to (i) ingest the primary data sources into a reference database, (ii) process the ingested data and derive new / enhanced data computationally, (iii) configure the crowdsourcing platform of choice, including the user interface participants use, (iv) support the execution of the crowdsourcing stage (load data to the crowdsourcing platform, collect its results etc.), and (v) consolidate primary, derived and crowdsourced data in one consistent dataset.
 
-From the participant's point of view, WODA presents itself simply as a task hosted on a crowdsourcing platform. The task web page offers interactive maps and panoramic views of one or more locations to survey, and a form contributors use to submit observations, as shown in Figure \ref{fig:virtual-survey-tool-01}. On first access, at the top of the page instructions are provided, possibly alongside a video used to illustrate the interactive features, as in Figure \ref{fig:virtual-survey-tool-02}.
+From the \textbf{participant}'s point of view, WODA presents itself simply as a task hosted on a crowdsourcing platform. The task web page offers interactive maps and panoramic views of one or more locations to survey, and a form contributors use to submit observations, as shown in Figure \ref{fig:virtual-survey-tool-01}. On first access, at the top of the page instructions are provided, possibly alongside a video used to illustrate the interactive features, as in Figure \ref{fig:virtual-survey-tool-02}.
 
 \begin{figure}[!ht]
     \begin{floatrow}
