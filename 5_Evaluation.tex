@@ -14,14 +14,11 @@ The evaluation is aimed at observing WODA's effectiveness at producing house num
 
 \textbf{House number inference} The conditions necessary to apply the inference algorithms, before using any crowdsourcing, were verified for 74\% of roads. Applied to these, algorithms \ref{algo:inference-numbers} and \ref{algo:inference-numbers-suffix} generated ~113k house numbers in addition to the already known ~111k (+102\%). 
 
-\textbf{House number crowdsourcing} Stop condition {\it s.2} - with 118 repeat judgments vs 117 first judgements - was verified at the end of three rounds. 
+\textbf{House number crowdsourcing} Stop condition {\it s.2} - with 118 repeat judgments vs 117 first judgements - was verified at the end of three crowdsourcing rounds.  The data for only 4 roads only was collected successfully, with an average cost of 9.00 USD per road. 
 
-A significant volume of Workers, 18.75\%, failed the test of copying the name of the road in the form and thus were identified as not credible. Their contribution was ignored. The data for only 4 roads only was collected successfully, with an average cost of 9.00 USD per road.
+To better examine any trends in Worker behaviour and consensus through iterations, three additional rounds were run, too. 
 
-To better examine any trends in worker consensus through iterations, three more rounds were run. Agreement on most roads not only failed to converge, but stalled or worsened with new iterations.\footnote{See \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/tree/gh-pages/docs#fleiss-kappa-vs-iterations}.} 
+More than 12\% of Workers were caught submitting judgements earlier than the 90 seconds limit, and were excluded from contributing further. 19\% failed the test of copying the name of the road in the form at least once, and thus were identified as not credible and their judgements ignored. The average time it took for credible Workers to complete the tasks was 6:14. 83\% of them were always faster than 3:00, that means that they never watched the instructions video in full before submitting.
 
-Cheating is a likeliest cause of consensus failing to achieve high kappa values. When aiming at such a high target, even a single wrong house number submitted by a malicious Worker can substantially negatively impact the metric.
+The extra three rounds showed how agreement on most roads not only failed to converge, but stalled or worsened with new iterations.\footnote{See \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/tree/gh-pages/docs#fleiss-kappa-vs-iterations}.} 
 
-Roads that do not have house numbers were the less problematic. This suggests the correctness of the hypothesis we made that consensus would be easier to achieve in that case. This is likely due to the larger proportion of malicious Workers who state that a road offers no house numbers but happen to be correct by chance.
-
-Consensus on roads that do have house numbers is the most difficult to achieve. This may be due to a combination of cheating and sloppy surveying by Workers who are however in good faith. For example, they may be content of finding house numbers that look "small enough" or "high enough". The divergence in submissions for the same road is captured by Fleiss' kappa.
