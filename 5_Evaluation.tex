@@ -2,7 +2,7 @@
 
 \subsection{Data}
 
-WODA was deployed to address OLAF for a specific geographic sample, that is the same five OS 1:10,000 raster tiles that were previously used in literature to analyse the performance of GI crowdsourcing and originally selected by Haklay in \cite{Haklay:2010vs} to assess OSM\footnote{The tiles are: TQ37ne, TQ28ne, TQ29nw, TQ26se and TQ36nw.}. This is an area of ~113 $ km^2 $ of Greater London that includes 3,982 named roads. 
+WODA was deployed for a specific geographic sample, that is the same five OS 1:10,000 raster tiles that were previously used in literature to analyse the performance of GI crowdsourcing and originally selected by Haklay in \cite{Haklay:2010vs} to assess OSM\footnote{The tiles are: TQ37ne, TQ28ne, TQ29nw, TQ26se and TQ36nw.}. This is an area of ~113 $ km^2 $ of Greater London that includes 3,982 named roads. 
 
 \subsection{Evaluation metrics}
 
@@ -18,10 +18,10 @@ The evaluation is aimed at observing WODA's effectiveness at producing house num
 
 A significant volume of Workers, 18.75\%, failed the test of copying the name of the road in the form and thus were identified as not credible. Their contribution was ignored. The data for only 4 roads only was collected successfully, with an average cost of 9.00 USD per road.
 
-To better examine any trends in worker consensus through iterations, three more rounds were run. Agreement on most roads not only failed to converge, but stalled or worsened with new iterations\footnote{See \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/tree/gh-pages/docs#fleiss-kappa-vs-iterations}.}. 
+To better examine any trends in worker consensus through iterations, three more rounds were run. Agreement on most roads not only failed to converge, but stalled or worsened with new iterations.\footnote{See \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/tree/gh-pages/docs#fleiss-kappa-vs-iterations}.} 
 
 Cheating is a likeliest cause of consensus failing to achieve high kappa values. When aiming at such a high target, even a single wrong house number submitted by a malicious Worker can substantially negatively impact the metric.
 
-Roads that do not have house numbers are the less problematic. This confirms the hypothesis that consensus would be easier to achieve in that case. This is likely due to the larger proportion of malicious Workers who state that a road offers no house numbers but happen to be correct by chance.
+Roads that do not have house numbers were the less problematic. This suggests the correctness of the hypothesis we made that consensus would be easier to achieve in that case. This is likely due to the larger proportion of malicious Workers who state that a road offers no house numbers but happen to be correct by chance.
 
 Consensus on roads that do have house numbers is the most difficult to achieve. This may be due to a combination of cheating and sloppy surveying by Workers who are however in good faith. For example, they may be content of finding house numbers that look "small enough" or "high enough". The divergence in submissions for the same road is captured by Fleiss' kappa.
