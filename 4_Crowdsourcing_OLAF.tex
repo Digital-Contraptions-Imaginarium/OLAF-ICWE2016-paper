@@ -3,7 +3,7 @@
 
 \subsection{How primary open data sources shape the solution}
 
-The availability of high quality and authoritative open data is central to the definition of the solution. An assessment of available sources highlighted OS' "Open Names"\footnote{Ordnance Survey is the national mapping agency for Great Britain. See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}, (OSON) as suitable primary input. 
+The availability of high quality and authoritative open data is central to the definition of the solution. An assessment of available sources highlighted OS' "Open Names"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}, (OSON) as suitable primary input. 
 
 OSON lists place names, roads numbers and postcodes in Great Britain, but not (i) which house names and numbers are in which road, and (ii) which house names and numbers are associated with which postcode. Therefore, OLAF can be seen as an augmentation of OSON, obtained by adding those missing components.
 
@@ -15,11 +15,7 @@ The production of the missing data can be achieved through running three complem
 	\label{fig:problem_decomposition_2}
 \end{figure}
 
-The partial availability of the missing data in other primary sources such as Land Registry's "Price Paid Data"\footnote{Land Registry is a non-ministerial UK Government department with the responsibility to register the ownership of land and property in England and Wales. See \url{https://www.gov.uk/government/collections/price-paid-data}.} (LRPP) enables to further refinement of process {\it p1} in four sub-processes {\it p1.1}, {\it p1.2}, {\it p1.3}\footnote{See \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/blob/gh-pages/docs/README.md#error-in-inferred-house-numbers} for an assessment of the impact of error.} and {\it p1.4}. LRPP records every property ownership transfer in England and Wales since 1995, including their full addresses\footnote{LRPP is the largest open data source that include UK addresses.}, from which the inference of addresses is possible.
-
-\subsection{The OLAF-specific workflow}
-
-The generic workflow described in \ref{generic-workflow} can be specialised for OLAF by integrating {\it p1.1}, {\it p1.2} and {\it p1.4}. Figure \ref{fig:workflow_2} shows the new workflow and the mapping against the three processes. 
+The generic workflow described in \ref{generic-workflow} can be specialised for OLAF by integrating {\it p1.1}, {\it p1.2} and {\it p1.4}. Figure \ref{fig:workflow_2} shows the new workflow and the mapping against the three processes. The following describes in more detail its components.
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{workflow-2.png}
@@ -76,47 +72,39 @@ For the experiments, the conditions were as either ({\it s.1}) consensus is reac
 
 The data required by the crowdsourcing component may need preparation and augmentation before being used. In the case of OLAF, an additional primary data source is used to support the Workers in their tasks: OS' "Open Roads"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-roads.html}.} (OSOR). 
 
-OSOR is used to calculate the geographical coordinates of the extremities of the roads where the lowest and the highest house numbers are more likely to be found. These are offered as "points of interest" to support the crowdworkers in their search. It is an example of how open data can be used not necessarily as a direct input into producing the output dataset, but to support the human participants in their function, too.
+OSOR is used to calculate the geographical coordinates of the extremities of the roads where the lowest and the highest house numbers are more likely to be found. These are offered as "points of interest", to support participants in their search. It is an example of how open data can be used not necessarily as a direct input into producing the output dataset, but to support the human participants in their function, too.
 
 \subsection{Data collection in CrowdFlower and assessment}
 
 The crowdsourcing component of WODA can be configured to create the house numbers needed to enable inference. Observing the imagery of a street to identify its features is not conceptually different than crowdsourced labelling and annotation applications that are extensively studied in literature.\footnote{More detail is available at \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/tree/gh-pages/docs#finding-house-numbers-as-a-labelling-exercise}.}
 
-The following is a description of the approach that was used for crowdsourcing house numbers, that is common to all experimental conditions that were tested.
-
-\subsubsection{Task model} \leavevmode \\ %% Why is this necessary to get a new line?
+The following is a description of the task model and the approach in genera that were used for crowdsourcing house numbers, that is common to all experimental conditions that were tested.
 
 \textbf{Requester.} The Requester desires to gather the lowest and the highest house numbers that can be observed in a specified street, as they can be intelligibly identified by browsing imagery, or the lack thereof. The Requester requires the help of human agents to carry out the tasks, that we will call Workers in the following.
 
 \textbf{Task.} Each HIT (Human Intelligence Task) consists of browsing the pictures of a street until achieving reasonable certainty of having identified the lowest and the highest house numbers or the lack thereof.
 
-\textbf{Strategy.} 
-The strategy relies on traditional crowdsourcing techniques for image labelling.
+\textbf{Strategy.} The strategy relies on traditional crowdsourcing techniques for image labelling.
 
 \textbf{Crowd $\rightarrow$ Worker.} Each Worker provides judgement on a task by browsing the pictures and declaring if she has found the lowest and the highest house numbers or none. Multiple Workers are asked to identify the house numbers for the same street. The resulting data is chosen through majority voting.
 
-\textbf{Quality.} Quality is defined by a combination of (a) credibility of the Workers in responding to tests questions, and (b) consensus in the data submitted through repeated surveys of the same road. Aggregation takes place accordingly, as explained below.
+\textbf{Quality.} Quality is defined by a combination of (a) credibility of the Workers in responding to tests questions, and (b) consensus in the data submitted through repeated surveys of the same road.
 
-\subsubsection{Workers quality}
-    
 Probing Workers using conventional test questions - e.g. where the correspondence of the Worker submissions is checked vs the same data collected by the research team as described in \cite{Kittur:2008gj} - would be a powerful tool to identify high vs low quality contributors, but is very expensive in OLAF's case. Spending a substantial part of the Worker's effort on test questions - e.g. making one out of three surveys a test - was not affordable.
 
 As an alternative, though, simple test questions can be set up on data that is already available, in a way that is similar to classic anti-spamming techniques like CAPTCHAs as described in \cite{Difallah:2012ty}. In OLAF's case the name of the street itself is used: Workers are asked to copy and paste or type the name of the street as part of their survey. Workers that do not achieve the target accuracy are excluded from further work.
 
-\subsubsection{Results aggregation}
-
-Repeated surveys of the same road are equivalent to the use of repeated judgement in conventional image labelling exercises. This practice is described extensively in literature and demonstrate that the results produced by a few expensive expert individuals are comparable to what emerges from involving multiple answers by crowds of non-expert Workers, e.g. in \cite{Snow:2008wo} and \cite{Sheng:2008gra}. As the answers are inevitably noisy, different Workers were asked to survey the same road, and their responses are aggregated to decide what is the most likely and truthful observation. 
+\textbf{Results aggregation.} Repeated surveys of the same road are equivalent to the use of repeated judgement in conventional image labelling exercises. This practice is described extensively in literature and demonstrate that the results produced by a few expensive expert individuals are comparable to what emerges from involving multiple answers by crowds of non-expert Workers, e.g. in \cite{Snow:2008wo} and \cite{Sheng:2008gra}. As the answers are inevitably noisy, different Workers were asked to survey the same road, and their responses are aggregated to decide what is the most likely and truthful observation. 
         
 Approaches to aggregation are an equally well studied subject, and a majority decision is a natural option (e.g. \cite{Le:2010ug}). The detailed parameters and process of how consensus is defined and calculated are tuned for better performance and address issues specific to the context (e.g. in \cite{Hirth:2011fh}). 
 
-In the case of OLAF, consensus is measured by using Fleiss' kappa statistics for inter-annotator agreement, as described for example in \cite{Nowak:2010gt}. For those streets where the house numbers {\it were} found, a kappa of 60\% on at least 5 surveys is sufficient consensus (e.g. see \cite{Landis:1977kv}). For those streets where the house numbers were {\it not} found, a kappa of 80\% on at least 10 surveys is required instead, as it is more likely that unreliable Workers agree in reporting that.
+In the case of OLAF, consensus is measured by using Fleiss' kappa statistics for inter-annotator agreement, as described for example in \cite{Nowak:2010gt}. For those streets where the house numbers {\it were} found, a kappa of 0.6 on at least 5 surveys is sufficient consensus. For those streets where the house numbers were {\it not} found, a kappa of 0.8 on at least 10 surveys is required instead, as it is more likely that unreliable Workers agree in reporting that.
 
-The number of 5 and 10 judgements is chosen because they are respectively the minimum number of judgements where 60\% and 80\% kappa can be achieved without the need of an unanimous agreement (4 vs 1 for 60\% and 9 vs 1 for 80\%). 
+The number of 5 and 10 judgements is chosen because they are respectively the minimum number of judgements where 0.6 and 0.8 kappa can be achieved without the need of an unanimous agreement (4 vs 1 for 0.6 and 9 vs 1 for 0.8). 
 
 Rounds of 10 surveys per road are performed until consensus is reached on both its lowest and highest house numbers. Because of the nature of the task, new surveys are performed even if consensus is reached already on either of the two numbers.  
-\subsubsection{Recruitment}
 
-We sourced all our Workers from CrowdFlower. For each experiment, we created one dedicated CrowdFlower job. We used identical settings for each experiment set, consisting of the following parameters: \textbf{Geography} Limited to the top 10 contributor countries in CrowdFlower where English is an official or officially recognised language\footnote{See \url{https://success.crowdflower.com/hc/en-us/articles/202703345-Crowd-Demographics}, the identification of the countries was done on 19 December 2015. The list of countries is: Bangladesh, Canada, India, Malaysia, Netherlands, Pakistan, Philippines, Sri Lanka, United Kingdom and United States of America.}. \textbf{Skills} We chose Workers from the default CrowdFlower performance category (formerly named "level 2"), that accounts for 29\% of the total population\footnote{See \url{https://success.crowdflower.com/hc/en-us/articles/202703345-Crowd-Demographics}, the calculation was done on 19 December 2015.}. \textbf{Accuracy} As a test question, Workers were asked to copy and paste or type the name of the street as part of their submission in each task. Being the question this simple, the requested accuracy was 99\%\footnote{CrowdFlower does not allow the Requester to set target accuracy to 100\%.}. \textbf{Judgements} Each Worker is allowed to contribute to as many tasks as possible. Repeated judgements on the same street are allowed but ignored\footnote{This was a limitation of our configuration, explained later in this document.}. \textbf{Behaviour} Each Worker was paid for 1 task, and 1 task is made of 1 street to survey. \textbf{Reward / Time Limits} The reward was 0.20 US Dollars per task. Workers requiring less than 90 seconds per task were considered at high risk of being malicious and excluded to perform additional tasks. CrowdFlower imposes a time limit of 30 minutes maximum per task.
+\textbf{Recruitment.} We sourced all our Workers from CrowdFlower. For each experiment, we created one dedicated CrowdFlower job. We used identical settings for each experiment set, consisting of the following parameters: \textbf{Geography} Limited to the top 10 contributor countries in CrowdFlower where English is an official or officially recognised language\footnote{See \url{https://success.crowdflower.com/hc/en-us/articles/202703345-Crowd-Demographics}, the identification of the countries was done on 19 December 2015. The list of countries is: Bangladesh, Canada, India, Malaysia, Netherlands, Pakistan, Philippines, Sri Lanka, United Kingdom and United States of America.}. \textbf{Skills} We chose Workers from the default CrowdFlower performance category (formerly named "level 2"), that accounts for 29\% of the total population\footnote{See \url{https://success.crowdflower.com/hc/en-us/articles/202703345-Crowd-Demographics}, the calculation was done on 19 December 2015.}. \textbf{Accuracy} As a test question, Workers were asked to copy and paste or type the name of the street as part of their submission in each task. Being the question this simple, the requested accuracy was 99\%\footnote{CrowdFlower does not allow the Requester to set target accuracy to 100\%.}. \textbf{Judgements} Each Worker is allowed to contribute to as many tasks as possible. Repeated judgements on the same street are allowed but ignored\footnote{This was a limitation of our configuration, explained later in this document.}. \textbf{Behaviour} Each Worker was paid for 1 task, and 1 task is made of 1 street to survey. \textbf{Reward / Time Limits} The reward was 0.20 US Dollars per task. Workers requiring less than 90 seconds per task were considered at high risk of being malicious and excluded to perform additional tasks. CrowdFlower imposes a time limit of 30 minutes maximum per task.
 
 \subsection{Implementation}
 
