@@ -5,7 +5,7 @@
 
 The availability of high quality and authoritative open data is central to the definition of the solution. An assessment of available sources highlighted OS' "Open Names"\footnote{See \url{https://www.ordnancesurvey.co.uk/business-and-government/products/os-open-names.html}.}, (OSON) as the key primary input. 
 
-OSON lists place names, roads numbers and postcodes in Great Britain, but not (i) which house names and numbers are in which road, and (ii) which house names and numbers are associated with which postcode. Therefore, OLAF can be seen as an augmentation of OSON, obtained by adding those missing components. Production of the missing data can be obtained through running the three complementary processes {\it p1}, {\it p2}\footnote{98\% of UK addresses are characterised by a house number rather than a house name, so tackling {\it p1} is substantially more relevant to OLAF's completeness than {\it p2}.} and {\it p3} described in figure \ref{fig:problem_decomposition_2}. 
+OSON lists place names, roads numbers and postcodes in Great Britain, but not (i) which house names and numbers are in which road, and (ii) which house names and numbers are associated with which postcode. Therefore, OLAF can be seen as an augmentation of OSON, obtained by adding those missing components. Production of the missing data can be obtained through running the three complementary processes {\it p1}, {\it p2}\footnote{It is estimated 98\% of addresses are characterised by a house number, so {\it p1} is more relevant to OLAF's completeness than {\it p2}.} and {\it p3} described in figure \ref{fig:problem_decomposition_2}. 
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{problem-decomposition-2.png}
@@ -15,7 +15,7 @@ OSON lists place names, roads numbers and postcodes in Great Britain, but not (i
 
 Records of existing house numbers in other primary sources such as Land Registry's "Price Paid Data"\footnote{Land Registry is a non-ministerial UK Government department with the responsibility to register the ownership of land and property in England and Wales. See \url{https://www.gov.uk/government/collections/price-paid-data}.} (LRPP) enables to further refinement of {\it p1} in four sub-processes {\it p1.1}, {\it p1.2}, {\it p1.3}\footnote{See \url{https://github.com/Digital-Contraptions-Imaginarium/OLAF-yr2_lab/blob/gh-pages/docs/README.md#error-in-inferred-house-numbers} for an assessment of the impact of error.} and {\it p1.4}. LRPP records every property ownership transfer in England and Wales since 1995, including their full addresses, from which the inference of addresses is possible.
 
-The generic workflow described in \ref{generic-workflow} can be specialised for OLAF by integrating {\it p1.1}, {\it p1.2} and {\it p1.4}. Figure \ref{fig:workflow_2} shows the new workflow and the mapping against the three processes. The following describes in more detail its components.
+The generic workflow described in section \ref{generic-workflow} can be used to integrate {\it p1.1}, {\it p1.2} and {\it p1.4}. Figure \ref{fig:workflow_2} shows the new workflow and the mapping against the three processes. The following describes in more detail its components.
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{workflow-2.png}
